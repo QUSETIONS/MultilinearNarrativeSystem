@@ -1,0 +1,1936 @@
+{
+  "title": "东方快车谋杀案",
+  "characters": [
+    {
+      "id": "poirot",
+      "name": "赫尔克里·波洛"
+    },
+    {
+      "id": "debenham",
+      "name": "玛丽·德贝纳姆"
+    },
+    {
+      "id": "arbuthnot",
+      "name": "阿巴思诺特上校"
+    },
+    {
+      "id": "bouc",
+      "name": "布克先生"
+    },
+    {
+      "id": "mcdonald",
+      "name": "麦奎因"
+    },
+    {
+      "id": "rachett",
+      "name": "雷切特"
+    },
+    {
+      "id": "lieutenant",
+      "name": "迪博斯克中尉"
+    },
+    {
+      "id": "conductor",
+      "name": "列车员"
+    },
+    {
+      "id": "porter",
+      "name": "门房"
+    },
+    {
+      "id": "narrator",
+      "name": "旁白"
+    }
+  ],
+  "assets": {
+    "背景图": {
+      "station_night.png": "阿勒颇站台夜景（寒冷刺骨）",
+      "train_window.png": "火车窗景（玛丽向外看）",
+      "train_corridor.png": "火车走廊（乘客上火车）",
+      "train_compartment.png": "火车包厢内景（波洛和列车员对话）",
+      "train_compartment_night.png": "夜晚火车包厢（波洛蜷缩睡觉）",
+      "train_dining_car_morning.png": "清晨餐车（波洛观察德贝纳姆）",
+      "train_dining_car_day.png": "白天餐车（阿巴思诺特与德贝纳姆交谈）",
+      "mountain_scenery.png": "托罗斯山脉风光（奇里乞亚门）",
+      "station_night_snow.png": "科尼亚雪夜站台（乘客下车伸展）",
+      "train_corridor_day.png": "白天火车走廊（德贝纳姆心事重重）",
+      "train_stopped_day.png": "火车停驶（餐车下着火）",
+      "train_window_day.png": "白天火车窗外（德贝纳姆焦急询问）",
+      "train_moving_day.png": "白天火车行驶（继续前进）",
+      "hotel_lobby.png": "旅馆大堂（波洛询问门房）",
+      "hotel_restaurant.png": "旅馆餐厅（波洛观察雷切特）",
+      "hotel_lounge.png": "旅馆休息室（波洛与布克交谈）",
+      "train_station_night.png": "火车站夜景（登辛普朗东方快车）",
+      "train_window_departing.png": "火车出发窗外（站台远去）",
+      "train_window_moving.png": "火车行驶窗外（穿越欧洲）",
+      "train_dining_car.png": "餐车内景（波洛与布克用餐）"
+    },
+    "人物立绘": {
+      "poirot": "赫尔克里·波洛（小胡子，矮个子，侦探装扮）",
+      "debenham": "玛丽·德贝纳姆（黑发，修长苗条，干练旅行装）",
+      "arbuthnot": "阿巴思诺特上校（高个子，棕皮肤，两鬓斑白）",
+      "bouc": "布克先生（公司董事，友好热情）",
+      "mcdonald": "麦奎因（年轻美国人，高个子，友善）",
+      "rachett": "雷切特（六七十岁，慈善家外表，眼神狡诈）",
+      "lieutenant": "迪博斯克中尉（法国军官）",
+      "conductor": "列车员（高个子，脸色发黄）",
+      "porter": "门房（旅馆服务员）",
+      "narrator": "旁白（无立绘，用于描述场景）"
+    }
+  },
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "segment",
+      "title": "火车闲聊",
+      "next": "n2"
+    },
+    {
+      "id": "n2",
+      "type": "dialogue",
+      "bg": "station_night.png",
+      "speaker": null,
+      "text": "叙利亚，冬季，清晨五点钟。阿勒颇站台旁停着托罗斯快车，寒冷刺骨。",
+      "next": "n3"
+    },
+    {
+      "id": "n3",
+      "type": "dialogue",
+      "bg": "station_night.png",
+      "speaker": "lieutenant",
+      "text": "今天是星期日，明天，星期一晚上，您就到斯坦布尔了。",
+      "next": "n4"
+    },
+    {
+      "id": "n4",
+      "type": "dialogue",
+      "bg": "station_night.png",
+      "speaker": "poirot",
+      "text": "是啊。我从没去过斯坦布尔，错过了会很遗憾——是的。",
+      "next": "n5"
+    },
+    {
+      "id": "n5",
+      "type": "dialogue",
+      "bg": "station_night.png",
+      "speaker": "lieutenant",
+      "text": "我想，您打算在那儿待几天吧？",
+      "next": "n6"
+    },
+    {
+      "id": "n6",
+      "type": "dialogue",
+      "bg": "station_night.png",
+      "speaker": "poirot",
+      "text": "没错。我从没去过斯坦布尔，错过了会很遗憾——是的。没有负担——我会在那儿游览几天。",
+      "next": "n7"
+    },
+    {
+      "id": "n7",
+      "type": "dialogue",
+      "bg": "station_night.png",
+      "speaker": "lieutenant",
+      "text": "圣索菲，很漂亮。",
+      "next": "n8"
+    },
+    {
+      "id": "n8",
+      "type": "dialogue",
+      "bg": "train_window.png",
+      "speaker": null,
+      "text": "玛丽·德贝纳姆从卧铺车厢的窗帘缝隙向外看。她睡眠不足，心情烦躁。",
+      "next": "n9"
+    },
+    {
+      "id": "n9",
+      "type": "dialogue",
+      "bg": "train_window.png",
+      "speaker": "debenham",
+      "text": "（心想）这一定是阿勒颇。当然没什么好看的……",
+      "next": "n10"
+    },
+    {
+      "id": "n10",
+      "type": "dialogue",
+      "bg": "train_window.png",
+      "speaker": null,
+      "text": "她看到窗外有两个男人在交谈——一个是法国军官，另一个是留着夸张小胡子的矮个子。",
+      "next": "n11"
+    },
+    {
+      "id": "n11",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "conductor",
+      "text": "请上车，先生。火车就要开了。",
+      "next": "n12"
+    },
+    {
+      "id": "n12",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "poirot",
+      "text": "（装出不舍的样子上了火车）",
+      "next": "n13"
+    },
+    {
+      "id": "n13",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "lieutenant",
+      "text": "（敬礼）一路顺风！",
+      "next": "n14"
+    },
+    {
+      "id": "n14",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "poirot",
+      "text": "（嘟囔）可算结束了！",
+      "next": "n15"
+    },
+    {
+      "id": "n15",
+      "type": "choice",
+      "bg": "train_corridor.png",
+      "choices": [
+        {
+          "id": "c1",
+          "text": "继续默默观察",
+          "next": "segment_observation_start"
+        },
+        {
+          "id": "c2",
+          "text": "主动打招呼",
+          "next": "segment_observation_start"
+        },
+        {
+          "id": "c3",
+          "text": "询问列车员关于她的事",
+          "next": "segment_observation_start"
+        }
+      ]
+    },
+    {
+      "id": "segment_observation_start",
+      "type": "segment",
+      "title": "观察上校与小姐的对话",
+      "next": "n16"
+    },
+    {
+      "id": "n16",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "conductor",
+      "text": "先生的小旅行袋，我放这儿了。",
+      "next": "n17"
+    },
+    {
+      "id": "n17",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "poirot",
+      "text": "（递过小费）谢谢。",
+      "next": "n18"
+    },
+    {
+      "id": "n18",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "conductor",
+      "text": "谢谢，先生。我看旅行的人不太多呢。",
+      "next": "n19"
+    },
+    {
+      "id": "n19",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "poirot",
+      "text": "没几个吗？",
+      "next": "n20"
+    },
+    {
+      "id": "n20",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "conductor",
+      "text": "除了您，只有两位旅客——都是英国人。来自印度的上校和从巴格达来的年轻的英国小姐。",
+      "next": "n21"
+    },
+    {
+      "id": "n21",
+      "type": "dialogue",
+      "bg": "train_compartment_night.png",
+      "speaker": null,
+      "text": "清晨五点钟搭乘火车是个尴尬的时刻。还有两个小时才会天亮，考虑到晚上睡眠不足，并且刚刚成功地完成了一个棘手的任务，波洛先生蜷在角落里睡着了。",
+      "next": "n22"
+    },
+    {
+      "id": "n22",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": null,
+      "text": "醒来时已经是九点半，他冲进餐车，想喝杯热咖啡。",
+      "next": "n23"
+    },
+    {
+      "id": "n23",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": null,
+      "text": "此时那里只有一个旅客，很明显是列车员说的那位年轻的英国小姐。她身材修长苗条，黑色的头发，二十八岁上下。从她吃早饭以及让服务员添加咖啡的冷静样子来看，想必是个见多识广、经常旅行的人。她一身暗色的旅行装束，料子轻薄，很适合车上闷热的空气。",
+      "next": "n24"
+    },
+    {
+      "id": "n24",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "poirot",
+      "text": "（心想）赫尔克里·波洛先生无事可做，为了打发时间，就装作若无其事地观察起她来。",
+      "next": "n25"
+    },
+    {
+      "id": "n25",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "poirot",
+      "text": "（继续观察）她是在那种无论在哪都能照顾好自己的年轻女人，沉着能干。我尤其喜欢她那极为端正的五官和细致白皙的皮肤，也喜欢她那顺滑整洁的黑发，还有她那双冷淡的灰色眼睛。不过，她看起来太干练了，不是我心目的'美女'。",
+      "next": "n26"
+    },
+    {
+      "id": "n26",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": null,
+      "text": "没过多久，另一个人走进了餐车。这是个四五十岁的高个子男人，身形偏瘦，棕色皮肤，两鬓略有些斑白。",
+      "next": "n27"
+    },
+    {
+      "id": "n27",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "poirot",
+      "text": "（自言自语）印度来的上校。",
+      "next": "n28"
+    },
+    {
+      "id": "n28",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "arbuthnot",
+      "text": "（微微鞠了一躬）早上好，德贝纳姆小姐。",
+      "next": "n29"
+    },
+    {
+      "id": "n29",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "debenham",
+      "text": "早上好，阿巴思诺特上校。",
+      "next": "n30"
+    },
+    {
+      "id": "n30",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "arbuthnot",
+      "text": "（站住了，一只手搭在她对面的椅子上）你介意吗？",
+      "next": "n31"
+    },
+    {
+      "id": "n31",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "debenham",
+      "text": "当然不。请坐。",
+      "next": "n32"
+    },
+    {
+      "id": "n32",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "arbuthnot",
+      "text": "呃，你知道，早饭可不是聊天的好时间。",
+      "next": "n33"
+    },
+    {
+      "id": "n33",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "debenham",
+      "text": "正合我意。不过我不会咬人的。",
+      "next": "n34"
+    },
+    {
+      "id": "n34",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": null,
+      "text": "上校坐了下来。",
+      "next": "n35"
+    },
+    {
+      "id": "n35",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "arbuthnot",
+      "text": "（专横地命令道）服务员！",
+      "next": "n36"
+    },
+    {
+      "id": "n36",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": null,
+      "text": "他点了鸡蛋和咖啡。他的视线在赫尔克里·波洛身上短暂地停顿了片刻，又毫不在意地移开了。",
+      "next": "n37"
+    },
+    {
+      "id": "n37",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": "poirot",
+      "text": "（心想）波洛明白这个英国人的想法，知道他准会这么自言自语：'只不过是个该死的外国佬。'",
+      "next": "n38"
+    },
+    {
+      "id": "n38",
+      "type": "dialogue",
+      "bg": "train_dining_car_morning.png",
+      "speaker": null,
+      "text": "不愧是这个民族的，两个英国人并没有闲聊，只是简单地说了两句，女子就起身回自己的车厢了。",
+      "next": "n39"
+    },
+    {
+      "id": "n39",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": null,
+      "text": "午饭时，那两个人又坐在了同一张桌子旁边，仍然无视第三个旅客。他们的谈话比早饭时活跃了一些。阿巴思诺特上校说到了旁遮普，还间或询问了对方几个关于巴格达的问题。很明显，她在那儿当过家庭教师。谈话中他们发现了几个彼此共同的朋友，这立刻使二人友好起来，不再那么拘束了。他们提到了一个叫老汤米的人，还有一个老雷吉。",
+      "next": "n40"
+    },
+    {
+      "id": "n40",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": null,
+      "text": "上校问她是直接去英国还是在斯坦布尔下车。",
+      "next": "n41"
+    },
+    {
+      "id": "n41",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": "debenham",
+      "text": "我直接去英国。",
+      "next": "n42"
+    },
+    {
+      "id": "n42",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": "arbuthnot",
+      "text": "那岂不是很遗憾？",
+      "next": "n43"
+    },
+    {
+      "id": "n43",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": "debenham",
+      "text": "两年前我也坐过这趟车，那时候在斯坦布尔度过了三天。",
+      "next": "n44"
+    },
+    {
+      "id": "n44",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": "arbuthnot",
+      "text": "（略显笨拙地欠了欠身，脸色有点发红）哦，我明白了，我得说很高兴你直接去英国，因为我也是。",
+      "next": "n45"
+    },
+    {
+      "id": "n45",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": "poirot",
+      "text": "（饶有兴致地想）我们的上校很容易动感情啊。这趟火车跟在海上航行一样危险！",
+      "next": "n46"
+    },
+    {
+      "id": "n46",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": "debenham",
+      "text": "（淡然）那很不错。",
+      "next": "n47"
+    },
+    {
+      "id": "n47",
+      "type": "dialogue",
+      "bg": "train_dining_car_day.png",
+      "speaker": null,
+      "text": "她的态度有些克制。波洛注意到上校陪她回了她的车厢。",
+      "next": "n48"
+    },
+    {
+      "id": "n48",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": null,
+      "text": "后来，他们穿行在托罗斯壮丽的景色之中，两人肩并肩地站在过道上，俯瞰奇里乞亚门时，女子忽然叹了口气。波洛正站在他们旁边，听到她低声说道：",
+      "next": "n49"
+    },
+    {
+      "id": "n49",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "debenham",
+      "text": "真美啊，我希望——我希望——",
+      "next": "n50"
+    },
+    {
+      "id": "n50",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "arbuthnot",
+      "text": "什么？",
+      "next": "n51"
+    },
+    {
+      "id": "n51",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "debenham",
+      "text": "我希望自己能欣赏它！",
+      "next": "n52"
+    },
+    {
+      "id": "n52",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": null,
+      "text": "阿巴思诺特没有应答。他下巴的那条方形线条似乎更加严峻、冷酷了。",
+      "next": "n53"
+    },
+    {
+      "id": "n53",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "arbuthnot",
+      "text": "希望上帝让你摆脱这一切。",
+      "next": "n54"
+    },
+    {
+      "id": "n54",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "debenham",
+      "text": "嘘，请别说了。",
+      "next": "n55"
+    },
+    {
+      "id": "n55",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "arbuthnot",
+      "text": "（有点气恼地向波洛这边扫了一眼）哦，好吧。不过我不喜欢你当家庭教师这个想法——对那些专横的妈妈和她们讨厌的小鬼唯命是从。",
+      "next": "n56"
+    },
+    {
+      "id": "n56",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "debenham",
+      "text": "（笑了，声音有些失控）不，你不能这么想。家庭教师'饱受压迫'，是个已经被推翻了的传说。那些父母还怕被我欺负呢。",
+      "next": "n57"
+    },
+    {
+      "id": "n57",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": null,
+      "text": "两人没再说话。也许阿巴思诺特对自己的感情爆发感到羞愧。",
+      "next": "n58"
+    },
+    {
+      "id": "n58",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": "poirot",
+      "text": "（沉思着自言自语）我在这儿看到了一幕奇怪的小喜剧。",
+      "next": "n59"
+    },
+    {
+      "id": "n59",
+      "type": "dialogue",
+      "bg": "mountain_scenery.png",
+      "speaker": null,
+      "text": "他以后会记起这个想法的。",
+      "next": "n60"
+    },
+    {
+      "id": "n60",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": null,
+      "text": "那晚大约十一点半的时候，他们抵达科尼亚，那两个英国旅客下车伸展四肢，在布满积雪的站台上走来走去。",
+      "next": "n61"
+    },
+    {
+      "id": "n61",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": null,
+      "text": "波洛先生乐于透过玻璃窗观察车站上拥挤的情形。然而大约十分钟后，他觉得呼吸一下新鲜空气兴许不是件坏事，于是他仔细地准备了一番，用好几件大衣把自己裹严，围上围巾，又在整洁的靴子外面套上胶套鞋。穿戴完毕，他小心翼翼地走到站台上，一路向车头走去。",
+      "next": "n62"
+    },
+    {
+      "id": "n62",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": null,
+      "text": "一阵声音让他认出了站在货车厢阴影中的两个模糊的人影。阿巴思诺特正在说着：",
+      "next": "n63"
+    },
+    {
+      "id": "n63",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": "arbuthnot",
+      "text": "玛丽——",
+      "next": "n64"
+    },
+    {
+      "id": "n64",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": "debenham",
+      "text": "（打断了他）不是现在，不是现在。等一切都结束了，等事情过去了，再——",
+      "next": "n65"
+    },
+    {
+      "id": "n65",
+      "type": "choice",
+      "bg": "station_night_snow.png",
+      "choices": [
+        {
+          "id": "c1",
+          "text": "继续偷听",
+          "next": "segment_train_stop_start"
+        },
+        {
+          "id": "c2",
+          "text": "故意发出声音提醒他们",
+          "next": "segment_train_stop_start"
+        },
+        {
+          "id": "c3",
+          "text": "立即离开",
+          "next": "segment_train_stop_start"
+        }
+      ]
+    },
+    {
+      "id": "segment_train_stop_start",
+      "type": "segment",
+      "title": "火车停车",
+      "next": "n66"
+    },
+    {
+      "id": "n66",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": null,
+      "text": "波洛先生小心地转身走开了，暗自纳闷……他差点没听出来德贝纳姆小姐那冷淡而干练的声音……",
+      "next": "n67"
+    },
+    {
+      "id": "n67",
+      "type": "dialogue",
+      "bg": "station_night_snow.png",
+      "speaker": "poirot",
+      "text": "（自言自语）奇怪。",
+      "next": "n68"
+    },
+    {
+      "id": "n68",
+      "type": "dialogue",
+      "bg": "train_corridor_day.png",
+      "speaker": null,
+      "text": "第二天，不知道他们是否发生过口角，两人没怎么说话。他感觉那位姑娘心事重重的，眼睛周围也有了青晕。",
+      "next": "n69"
+    },
+    {
+      "id": "n69",
+      "type": "dialogue",
+      "bg": "train_stopped_day.png",
+      "speaker": null,
+      "text": "大约下午两点半时，火车忽然停了。大家都把脑袋探出窗外，几个人聚在轨道旁，看着餐车下方，还指指点点的。",
+      "next": "n70"
+    },
+    {
+      "id": "n70",
+      "type": "dialogue",
+      "bg": "train_stopped_day.png",
+      "speaker": null,
+      "text": "波洛也探出头，询问匆匆经过的列车员。那人回答完，波洛缩回脑袋，转过身，差点撞到站在他身后的玛丽·德贝纳姆小姐。",
+      "next": "n71"
+    },
+    {
+      "id": "n71",
+      "type": "dialogue",
+      "bg": "train_stopped_day.png",
+      "speaker": "debenham",
+      "text": "（急促地用法语问道）怎么了？为什么停车了？",
+      "next": "n72"
+    },
+    {
+      "id": "n72",
+      "type": "dialogue",
+      "bg": "train_stopped_day.png",
+      "speaker": "poirot",
+      "text": "没事，小姐，餐车下面有什么东西着火了，火势不严重，已经熄灭了，他们正在抢修。别担心，没有危险。",
+      "next": "n73"
+    },
+    {
+      "id": "n73",
+      "type": "dialogue",
+      "bg": "train_stopped_day.png",
+      "speaker": null,
+      "text": "她做了个不太淑女的手势，仿佛想把危险事故丢到一边，把那当作无关紧要的事。",
+      "next": "n74"
+    },
+    {
+      "id": "n74",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "debenham",
+      "text": "是的，是的，我明白，可是，时间！",
+      "next": "n75"
+    },
+    {
+      "id": "n75",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "poirot",
+      "text": "时间？",
+      "next": "n76"
+    },
+    {
+      "id": "n76",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "debenham",
+      "text": "没错，会延误的。",
+      "next": "n77"
+    },
+    {
+      "id": "n77",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "poirot",
+      "text": "有可能——没错。",
+      "next": "n78"
+    },
+    {
+      "id": "n78",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "debenham",
+      "text": "可我们不能误点！火车应该在六点五十五分到达，可我还得穿过博斯普鲁斯海峡，到对岸去坐九点钟的辛普朗东方快车，如果晚一两个小时，就赶不上那趟列车了！",
+      "next": "n79"
+    },
+    {
+      "id": "n79",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "poirot",
+      "text": "有可能——没错。",
+      "next": "n80"
+    },
+    {
+      "id": "n80",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": null,
+      "text": "他好奇地看着她。她握着窗口栏杆的那只手有些不稳，嘴唇也在哆嗦着。",
+      "next": "n81"
+    },
+    {
+      "id": "n81",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "poirot",
+      "text": "这对你很重要吗，小姐？",
+      "next": "n82"
+    },
+    {
+      "id": "n82",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": "debenham",
+      "text": "（声音紧张）嗯嗯，很重要。我——我必须赶上那趟车。",
+      "next": "n83"
+    },
+    {
+      "id": "n83",
+      "type": "choice",
+      "bg": "train_window_day.png",
+      "choices": [
+        {
+          "id": "c1",
+          "text": "安慰她",
+          "next": "segment_meet_bouc_start"
+        },
+        {
+          "id": "c2",
+          "text": "询问焦虑的具体原因",
+          "next": "segment_meet_bouc_start"
+        },
+        {
+          "id": "c3",
+          "text": "只是观察不做反应",
+          "next": "segment_meet_bouc_start"
+        }
+      ]
+    },
+    {
+      "id": "segment_meet_bouc_start",
+      "type": "segment",
+      "title": "与布克相遇",
+      "next": "n84"
+    },
+    {
+      "id": "n84",
+      "type": "dialogue",
+      "bg": "train_window_day.png",
+      "speaker": null,
+      "text": "她从他身边走开，去过道找阿巴思诺特上校了。",
+      "next": "n85"
+    },
+    {
+      "id": "n85",
+      "type": "dialogue",
+      "bg": "train_moving_day.png",
+      "speaker": null,
+      "text": "然而她完全没有必要担忧。十分钟之后火车又开动了。到海德帕萨时只晚了五分钟，损失的时间在途中补了回来。",
+      "next": "n86"
+    },
+    {
+      "id": "n86",
+      "type": "dialogue",
+      "bg": "train_moving_day.png",
+      "speaker": null,
+      "text": "博斯普鲁斯海峡风高浪急，波洛先生很不舒服，他在船上和同行的旅伴分开了，没有再见到他们。",
+      "next": "n87"
+    },
+    {
+      "id": "n87",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": null,
+      "text": "波洛抵达斯坦布尔，入住托卡林旅馆。",
+      "next": "n88"
+    },
+    {
+      "id": "n88",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "poirot",
+      "text": "（走向门房）有没有我的信件？",
+      "next": "n89"
+    },
+    {
+      "id": "n89",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "porter",
+      "text": "有三封信和一封电报，先生。",
+      "next": "n90"
+    },
+    {
+      "id": "n90",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "poirot",
+      "text": "（打开电报，皱眉）你预测的卡斯纳案件有了突破进展，请速回。",
+      "next": "n91"
+    },
+    {
+      "id": "n91",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "poirot",
+      "text": "（对门房）烦人。我今晚就得走。辛普朗东方快车什么时候开？",
+      "next": "n92"
+    },
+    {
+      "id": "n92",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "porter",
+      "text": "九点，先生。每年这个时候都不难买票。",
+      "next": "n93"
+    },
+    {
+      "id": "n93",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": null,
+      "text": "波洛在餐厅用餐，观察其他客人。",
+      "next": "n94"
+    },
+    {
+      "id": "n94",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "bouc",
+      "text": "（把手搭在波洛肩上）啊，老朋友，这真是个意外的惊喜！",
+      "next": "n95"
+    },
+    {
+      "id": "n95",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "poirot",
+      "text": "布克先生！",
+      "next": "n96"
+    },
+    {
+      "id": "n96",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "bouc",
+      "text": "这次算是离家远行了吧，亲爱的？",
+      "next": "n97"
+    },
+    {
+      "id": "n97",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "poirot",
+      "text": "在叙利亚有点小事。",
+      "next": "n98"
+    },
+    {
+      "id": "n98",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "bouc",
+      "text": "啊，所以你是要回家了？什么时候？",
+      "next": "n99"
+    },
+    {
+      "id": "n99",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "poirot",
+      "text": "今晚。我刚刚让他们买了一张卧铺票，本来打算在这儿待几天。可我又接到一封电报，说有重要的事要我回英国。",
+      "next": "n100"
+    },
+    {
+      "id": "n100",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": null,
+      "text": "波洛注意到餐厅另一桌的两个美国人。",
+      "next": "n101"
+    },
+    {
+      "id": "n101",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "poirot",
+      "text": "（心想）年轻的那位三十岁上下，长相讨喜。年长的那个……从远处看，俨然一副慈善家的和善面孔，但那双小眼睛露了馅儿——眼窝深陷，眼神十分狡诈。",
+      "next": "n102"
+    },
+    {
+      "id": "n102",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "rachett",
+      "text": "（声音沙哑柔软）结账去，赫克托。",
+      "next": "n103"
+    },
+    {
+      "id": "n103",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": null,
+      "text": "老人从波洛身边经过时，波洛感到一种奇怪的感觉——好像是一只野兽，一只凶残的野兽，从他身边窜了过去。",
+      "next": "n104"
+    },
+    {
+      "id": "n104",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": null,
+      "text": "完成这个艰巨的任务之后，波洛环视四周，等着他的下一道菜。餐厅里只有六个人，其中两个人引起了赫尔克里·波洛的注意。",
+      "next": "n105"
+    },
+    {
+      "id": "n105",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": null,
+      "text": "这两个人坐在离他不远的桌子旁，年轻一点儿的三十岁上下，长相讨喜，明显是个美国人。然而让这个小个子侦探感兴趣的却是他的同伴。",
+      "next": "n106"
+    },
+    {
+      "id": "n106",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": "poirot",
+      "text": "（仔细观察）这个男人有六七十岁，从远处看，俨然一副慈善家的和善面孔，有点秃顶，圆圆的额头，微笑起来露出一排洁白的假牙——这些都展示了他随和的性格。只是那双小眼睛露了馅儿——眼窝深陷，眼神十分狡诈。",
+      "next": "n107"
+    },
+    {
+      "id": "n107",
+      "type": "dialogue",
+      "bg": "hotel_restaurant.png",
+      "speaker": null,
+      "text": "还不止这些。他跟他年轻的同伴说话时，扫了一眼房间，瞪了波洛片刻，就在这一瞬间，脸上流露出一种奇怪的恶毒神情，透着不自然的紧张。",
+      "next": "n108"
+    },
+    {
+      "id": "n108",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": null,
+      "text": "随后，雷切特站起身。",
+      "next": "n109"
+    },
+    {
+      "id": "n109",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "rachett",
+      "text": "（声音沙哑柔软）结账去，赫克托。",
+      "next": "n110"
+    },
+    {
+      "id": "n110",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": null,
+      "text": "他的声音有些沙哑，柔软中含有古怪和危险的意味。",
+      "next": "n111"
+    },
+    {
+      "id": "n111",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": null,
+      "text": "波洛在休息室遇见他的朋友时，之前那两个人正准备离开旅馆。他们的行李被送到了楼下，年轻的那位在打理这些事，没多久，他打开玻璃门，说道：",
+      "next": "n112"
+    },
+    {
+      "id": "n112",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "mcdonald",
+      "text": "都准备妥当了，雷切特先生。",
+      "next": "n113"
+    },
+    {
+      "id": "n113",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": null,
+      "text": "那老人咕哝了一声表示知道了，接着便走了出去。",
+      "next": "n114"
+    },
+    {
+      "id": "n114",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "那么，你怎么看这两个人？",
+      "next": "n115"
+    },
+    {
+      "id": "n115",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "他们是美国人。",
+      "next": "n116"
+    },
+    {
+      "id": "n116",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "的确是美国人。我是说，对他们的性格你怎么看？",
+      "next": "n117"
+    },
+    {
+      "id": "n117",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "那个年轻人挺有礼貌的。",
+      "next": "n118"
+    },
+    {
+      "id": "n118",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "另一个呢？",
+      "next": "n119"
+    },
+    {
+      "id": "n119",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "实话说，我的朋友，我没怎么留意他。他给我的印象不太好。你觉得呢？",
+      "next": "n120"
+    },
+    {
+      "id": "n120",
+      "type": "choice",
+      "bg": "hotel_lounge.png",
+      "choices": [
+        {
+          "id": "c1",
+          "text": "详细描述野兽般的直觉",
+          "next": "segment_housing_argument_start"
+        },
+        {
+          "id": "c2",
+          "text": "简单说印象不好",
+          "next": "segment_housing_argument_start"
+        },
+        {
+          "id": "c3",
+          "text": "暂时保留看法",
+          "next": "segment_housing_argument_start"
+        }
+      ]
+    },
+    {
+      "id": "segment_housing_argument_start",
+      "type": "segment",
+      "title": "住房争吵",
+      "next": "n121"
+    },
+    {
+      "id": "n121",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "（停顿了一会儿）在餐厅他从我身边经过时，我有种奇怪的感觉。就好像是一只野兽，一只凶残的野兽，从我身边窜了过去。凶残的，你明白吗？",
+      "next": "n122"
+    },
+    {
+      "id": "n122",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "可他看起来是一副受人尊敬的样子。",
+      "next": "n123"
+    },
+    {
+      "id": "n123",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "没错！他的身体——那笼子——怎么看都那么令人尊敬，可是透过栏杆，那只野兽却在盯着你。",
+      "next": "n124"
+    },
+    {
+      "id": "n124",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "你的想象力真丰富，我的朋友。",
+      "next": "n125"
+    },
+    {
+      "id": "n125",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "也许是吧，可我怎么也摆脱不了邪恶跟我擦肩而过的感觉。",
+      "next": "n126"
+    },
+    {
+      "id": "n126",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "那位可敬的美国绅士吗？",
+      "next": "n127"
+    },
+    {
+      "id": "n127",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "poirot",
+      "text": "就是那位可敬的美国绅士。",
+      "next": "n128"
+    },
+    {
+      "id": "n128",
+      "type": "dialogue",
+      "bg": "hotel_lounge.png",
+      "speaker": "bouc",
+      "text": "好啦，可能你说得对。这世界上的邪恶太多了。",
+      "next": "n129"
+    },
+    {
+      "id": "n129",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": null,
+      "text": "就在这时，门开了，门房朝他们走来，一脸忧虑和抱歉。",
+      "next": "n130"
+    },
+    {
+      "id": "n130",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "porter",
+      "text": "太不寻常了，先生，火车上没有头等厢卧铺票了。",
+      "next": "n131"
+    },
+    {
+      "id": "n131",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "bouc",
+      "text": "（喊出了声）什么？这时候？肯定是旅游团，还是政客出访什么的——",
+      "next": "n132"
+    },
+    {
+      "id": "n132",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "porter",
+      "text": "我不清楚，先生，可的确是这样。",
+      "next": "n133"
+    },
+    {
+      "id": "n133",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "bouc",
+      "text": "好吧，好吧，别担心，我的朋友，我们会安排好的。十六号卧铺房总是空的，那是列车员说了算的！",
+      "next": "n134"
+    },
+    {
+      "id": "n134",
+      "type": "dialogue",
+      "bg": "hotel_lobby.png",
+      "speaker": "bouc",
+      "text": "（看了一眼挂钟）走吧，我们出发。",
+      "next": "n135"
+    },
+    {
+      "id": "n135",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": null,
+      "text": "晚上九点，火车站。布克先生和波洛准备登上辛普朗东方快车。",
+      "next": "n136"
+    },
+    {
+      "id": "n136",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "晚上好，先生。您在一号房间。",
+      "next": "n137"
+    },
+    {
+      "id": "n137",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "我听说今天的卧铺都满了？",
+      "next": "n138"
+    },
+    {
+      "id": "n138",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "太不可思议了，先生，全世界的人都选择在今晚出行！",
+      "next": "n139"
+    },
+    {
+      "id": "n139",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "不管怎样你都得帮这位先生找一间卧铺房，他是我的朋友，他可以住在十六号房。",
+      "next": "n140"
+    },
+    {
+      "id": "n140",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "已经有人了，先生。",
+      "next": "n141"
+    },
+    {
+      "id": "n141",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "什么？十六号？",
+      "next": "n142"
+    },
+    {
+      "id": "n142",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": null,
+      "text": "他们心照不宣地交换了个眼神，列车员笑了。他是个脸色发黄的高个子中年人。",
+      "next": "n143"
+    },
+    {
+      "id": "n143",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "是的，先生，就像我跟您说的那样，车里已经满满的了——到处都是人。",
+      "next": "n144"
+    },
+    {
+      "id": "n144",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "（气呼呼地质问）怎么回事？是什么地方开会吗？还是旅游团？",
+      "next": "n145"
+    },
+    {
+      "id": "n145",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "不是的，先生，这纯属巧合。刚好很多人都选择了今晚搭这趟火车。",
+      "next": "n146"
+    },
+    {
+      "id": "n146",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": null,
+      "text": "布克先生生气地感叹了几声。",
+      "next": "n147"
+    },
+    {
+      "id": "n147",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "在贝尔格莱德，会加一节从雅典开过来的车厢，还有一节布加勒斯特到巴黎的车厢。可我们明天晚上才能到贝尔格莱德，今晚是个问题。二等卧铺也没有空位了吗？",
+      "next": "n148"
+    },
+    {
+      "id": "n148",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "二等卧铺有一个，先生——",
+      "next": "n149"
+    },
+    {
+      "id": "n149",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "好，那就——",
+      "next": "n150"
+    },
+    {
+      "id": "n150",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "但那是个女士卧铺，而且已经有一位德国女士在里面了——一个女仆。",
+      "next": "n151"
+    },
+    {
+      "id": "n151",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "哎呀，真不巧。",
+      "next": "n152"
+    },
+    {
+      "id": "n152",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "poirot",
+      "text": "别烦恼了，我的朋友，我坐普通车厢就行。",
+      "next": "n153"
+    },
+    {
+      "id": "n153",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "不行，不行。旅客都到齐了吗？",
+      "next": "n154"
+    },
+    {
+      "id": "n154",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "（面带迟疑）其实，还有一位旅客没到。",
+      "next": "n155"
+    },
+    {
+      "id": "n155",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "说下去！",
+      "next": "n156"
+    },
+    {
+      "id": "n156",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "二等卧铺的七号房。现在差四分钟九点，这位先生还没来。",
+      "next": "n157"
+    },
+    {
+      "id": "n157",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "是谁？",
+      "next": "n158"
+    },
+    {
+      "id": "n158",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "（查了查名单）一个英国人，姓哈里斯。",
+      "next": "n159"
+    },
+    {
+      "id": "n159",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "poirot",
+      "text": "这名字是个好兆头，根据我的狄更斯小说，这位哈里斯先生不会来了。",
+      "next": "n160"
+    },
+    {
+      "id": "n160",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "把这位先生的行李搬到七号房间。如果哈里斯先生来了，就跟他说已经晚了，卧铺不能为他留太久，到时我们再设法另行安排。我干吗要在乎这位哈里斯先生呢？",
+      "next": "n161"
+    },
+    {
+      "id": "n161",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "conductor",
+      "text": "全听您的吩咐。",
+      "next": "n162"
+    },
+    {
+      "id": "n162",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": null,
+      "text": "列车员给波洛的搬运工指了路，自己则闪到车厢踏板的一边，请波洛上火车。",
+      "next": "n163"
+    },
+    {
+      "id": "n163",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "conductor",
+      "text": "最里面倒数第二间，先生。",
+      "next": "n164"
+    },
+    {
+      "id": "n164",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": null,
+      "text": "波洛缓缓地沿着过道走过去，大部分旅客在自己房间外面站着。他像钟表那样有规律且礼貌地说着'对不起'，最后终于走到了指定的房间，里面有人正伸手拿行李，正是在托卡林旅馆见到的那个年轻的高个子的美国人。",
+      "next": "n165"
+    },
+    {
+      "id": "n165",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "mcdonald",
+      "text": "（皱了皱眉）对不起，我想你弄错了。",
+      "next": "n166"
+    },
+    {
+      "id": "n166",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": null,
+      "text": "接着又用法语费力地重复了一遍。",
+      "next": "n167"
+    },
+    {
+      "id": "n167",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "poirot",
+      "text": "（用英语回答）你是哈里斯先生吗？",
+      "next": "n168"
+    },
+    {
+      "id": "n168",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "mcdonald",
+      "text": "不，我叫麦奎因。我——",
+      "next": "n169"
+    },
+    {
+      "id": "n169",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": null,
+      "text": "但就在这时，列车员的声音从波洛肩头传了过来——带有歉意而且急促的声音。",
+      "next": "n170"
+    },
+    {
+      "id": "n170",
+      "type": "dialogue",
+      "bg": "train_corridor.png",
+      "speaker": "conductor",
+      "text": "火车上没有别的卧铺了，先生，这位先生只能住在这儿了。",
+      "next": "n171"
+    },
+    {
+      "id": "n171",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": null,
+      "text": "说这话时，他拉起了过道上的窗户，把波洛的行李拎了进来。波洛对列车员语气中的歉意饶有兴致。这人肯定答应给列车员一笔不菲的小费，好让自己不受其他旅客的打扰，独自享用这个房间。可是，再慷慨的小费也不顶用了，因为公司的董事上了火车并下达了命令。",
+      "next": "n172"
+    },
+    {
+      "id": "n172",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "conductor",
+      "text": "都放好了，先生。您住上铺，七号房，火车一分钟后就开动了。",
+      "next": "n173"
+    },
+    {
+      "id": "n173",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": null,
+      "text": "说完，他便沿着过道匆匆走开。波洛走进房间。",
+      "next": "n174"
+    },
+    {
+      "id": "n174",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "poirot",
+      "text": "（愉快地说）我可从没见过列车员亲自摆放行李，真是闻所未闻！",
+      "next": "n175"
+    },
+    {
+      "id": "n175",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": "mcdonald",
+      "text": "（笑了笑）这列火车真是座无虚席啊！",
+      "next": "n176"
+    },
+    {
+      "id": "n176",
+      "type": "dialogue",
+      "bg": "train_compartment.png",
+      "speaker": null,
+      "text": "显然他已经忘记了刚才的不快——也许他觉得再追究此事也没什么意义了。",
+      "next": "n177"
+    },
+    {
+      "id": "n177",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": null,
+      "text": "随着汽笛一声巨响，火车头也凄凉地长啸一声。两人都从房间来到过道上，外面有个声音大喊：'上车！'",
+      "next": "n178"
+    },
+    {
+      "id": "n178",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "mcdonald",
+      "text": "车开了。",
+      "next": "n179"
+    },
+    {
+      "id": "n179",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": null,
+      "text": "但火车并没有开动，又传来一声汽笛。",
+      "next": "n180"
+    },
+    {
+      "id": "n180",
+      "type": "choice",
+      "bg": "train_window_departing.png",
+      "choices": [
+        {
+          "id": "c1",
+          "text": "接受好意，睡下铺",
+          "next": "segment_train_start_start"
+        },
+        {
+          "id": "c2",
+          "text": "婉言谢绝，坚持睡上铺",
+          "next": "segment_train_start_start"
+        },
+        {
+          "id": "c3",
+          "text": "提议轮流睡下铺",
+          "next": "segment_train_start_start"
+        }
+      ]
+    },
+    {
+      "id": "segment_train_start_start",
+      "type": "segment",
+      "title": "火车启动",
+      "next": "n181"
+    },
+    {
+      "id": "n181",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "mcdonald",
+      "text": "我说，先生，如果你愿意睡下铺——如果方便的话——别客气，我都行。",
+      "next": "n182"
+    },
+    {
+      "id": "n182",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": null,
+      "text": "真是个可爱的小伙子。",
+      "next": "n183"
+    },
+    {
+      "id": "n183",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "poirot",
+      "text": "不，不，我不能——",
+      "next": "n184"
+    },
+    {
+      "id": "n184",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "mcdonald",
+      "text": "没关系——",
+      "next": "n185"
+    },
+    {
+      "id": "n185",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "poirot",
+      "text": "你太客气了——",
+      "next": "n186"
+    },
+    {
+      "id": "n186",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": null,
+      "text": "两人谦让着。",
+      "next": "n187"
+    },
+    {
+      "id": "n187",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "poirot",
+      "text": "只是一个晚上，到贝尔格莱德——",
+      "next": "n188"
+    },
+    {
+      "id": "n188",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "mcdonald",
+      "text": "哦，我明白了。你在贝尔格莱德下车——",
+      "next": "n189"
+    },
+    {
+      "id": "n189",
+      "type": "dialogue",
+      "bg": "train_window_departing.png",
+      "speaker": "poirot",
+      "text": "也不全是。你知道——",
+      "next": "n190"
+    },
+    {
+      "id": "n190",
+      "type": "dialogue",
+      "bg": "train_window_moving.png",
+      "speaker": null,
+      "text": "火车猛然一动，两人被晃到窗口，看到灯火通明的站台缓缓地从他们身边远去。",
+      "next": "n191"
+    },
+    {
+      "id": "n191",
+      "type": "dialogue",
+      "bg": "train_window_moving.png",
+      "speaker": null,
+      "text": "东方快车开始了为期三天的贯穿欧洲之旅。",
+      "next": "segment_refuse_case_start"
+    },
+    {
+      "id": "segment_refuse_case_start",
+      "type": "segment",
+      "title": "拒绝接受案子",
+      "next": "n192"
+    },
+    {
+      "id": "n192",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": null,
+      "text": "第二天，波洛稍晚了一些才去餐车吃午饭。他起得很早，一个人吃了早饭，整个上午都在阅读那些让他回伦敦办案的文件，没怎么见过他的旅伴。",
+      "next": "n193"
+    },
+    {
+      "id": "n193",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": null,
+      "text": "布克先生已经坐在了桌边，招呼波洛坐在对面的空位上。波洛坐了下来，马上发现自己正坐在最佳的位置上——头一个享受餐点，而且种类丰富，味道出奇的好。",
+      "next": "n194"
+    },
+    {
+      "id": "n194",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "bouc",
+      "text": "如果我有巴尔扎克的文笔，就能好好描述一下这番景象了。我们周围的人，不同的阶层、不同的国籍、不同的年龄段，三天的旅程把这些互不相识的人聚集在一起……",
+      "next": "n195"
+    },
+    {
+      "id": "n195",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "除非发生什么事故……那么，这儿的所有人没准就被死亡联系在一起了。",
+      "next": "n196"
+    },
+    {
+      "id": "n196",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "bouc",
+      "text": "你太吓人了，我的朋友！也许是消化不良了。",
+      "next": "n197"
+    },
+    {
+      "id": "n197",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": null,
+      "text": "波洛观察餐车里的旅客：意大利商人、英国男仆、美国推销员、俄国德拉戈米罗夫公主、瑞典太太、玛丽·德贝纳姆、阿巴思诺特上校、德国女仆、匈牙利情侣、麦奎因和雷切特。",
+      "next": "n198"
+    },
+    {
+      "id": "n198",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": null,
+      "text": "午餐后，雷切特出乎意料地坐在了波洛对面。",
+      "next": "n199"
+    },
+    {
+      "id": "n199",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "能借个火吗？我姓雷切特。我想我有幸跟赫赫有名的赫尔克里·波洛先生说话，对吗？",
+      "next": "n200"
+    },
+    {
+      "id": "n200",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "您所知正确，先生。",
+      "next": "n201"
+    },
+    {
+      "id": "n201",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "在我们国家，人们说话一向开门见山。波洛先生，我希望你能接受我的一个委托。这可是一大笔钱。",
+      "next": "n202"
+    },
+    {
+      "id": "n202",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "先生，如今我的顾客十分有限，我很少接案子了。",
+      "next": "n203"
+    },
+    {
+      "id": "n203",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "波洛先生，我是个有钱人，非常有钱。高处不胜寒啊。我有个敌人。我的生命受到了威胁。",
+      "next": "n204"
+    },
+    {
+      "id": "n204",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "只有一个敌人吗？",
+      "next": "n205"
+    },
+    {
+      "id": "n205",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "你这话是什么意思？",
+      "next": "n206"
+    },
+    {
+      "id": "n206",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "先生，以我的经验来看，如果一个人到了你说的那个地位，往往不止有一个敌人。",
+      "next": "n207"
+    },
+    {
+      "id": "n207",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "（掏出手枪）我认为自己还不至于遭人暗算，但我要保证自己的安全万无一失。请记住，这可是一大笔钱。",
+      "next": "n208"
+    },
+    {
+      "id": "n208",
+      "type": "choice",
+      "bg": "train_dining_car.png",
+      "choices": [
+        {
+          "id": "c1",
+          "text": "接受委托，保护雷切特",
+          "next": "n209"
+        },
+        {
+          "id": "c2",
+          "text": "拒绝委托，离开餐车",
+          "next": "n209"
+        },
+        {
+          "id": "c3",
+          "text": "要求更多信息再做决定",
+          "next": "n209"
+        }
+      ]
+    },
+    {
+      "id": "n209",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "两万美元能打动你吗？",
+      "next": "n210"
+    },
+    {
+      "id": "n210",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "不能。",
+      "next": "n211"
+    },
+    {
+      "id": "n211",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "rachett",
+      "text": "如果你还想多要，那可不成，我是个识货的人。",
+      "next": "n212"
+    },
+    {
+      "id": "n212",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "我也是，雷切特先生。",
+      "next": "n213"
+    },
+    {
+      "id": "n213",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": "poirot",
+      "text": "（站起身）容我说句不客气的话——我不喜欢你那张脸，雷切特先生。",
+      "next": "n214"
+    },
+    {
+      "id": "n214",
+      "type": "dialogue",
+      "bg": "train_dining_car.png",
+      "speaker": null,
+      "text": "波洛离开了餐车。雷切特看着他离开，脸上露出阴郁的表情。",
+      "next": "n215"
+    },
+    {
+      "id": "n215",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": null,
+      "text": "当晚，火车抵达贝尔格莱德。由于大雪，火车加挂了车厢。布克先生搬到雅典车厢，波洛则搬到斯坦布尔－加来车厢的一号房。",
+      "next": "n216"
+    },
+    {
+      "id": "n216",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": "bouc",
+      "text": "但愿我们不会被大雪堵在路上，我跟你说，我可受不了！",
+      "next": "n217"
+    },
+    {
+      "id": "n217",
+      "type": "dialogue",
+      "bg": "train_station_night.png",
+      "speaker": null,
+      "text": "九点十五分，火车准时驶出车站，驶入风雪交加的夜晚。"
+    }
+  ]
+}
