@@ -10,11 +10,12 @@ func _ready() -> void:
 	_load_state()
 
 
-func reset_progress(entry_chapter_id: String = "") -> void:
+func reset_progress(entry_points: Array = []) -> void:
 	visited.clear()
 	unlocked.clear()
-	if not entry_chapter_id.is_empty():
-		unlocked[entry_chapter_id] = true
+	for entry in entry_points:
+		if not str(entry).is_empty():
+			unlocked[str(entry)] = true
 	_save_state()
 
 
@@ -49,13 +50,17 @@ func unlock_from_graph(graph: Dictionary, chapter_id: String) -> void:
 	_save_state()
 
 
-func ensure_entry_unlocked(entry_chapter_id: String) -> void:
-	if entry_chapter_id.is_empty():
-		return
-	if not unlocked.has(entry_chapter_id):
-		unlocked[entry_chapter_id] = true
-	_save_state()
-
+func ensure_entries_unlocked(entry_points: Array) -> void:
+	var changed = false
+	for entry_variant in entry_points:
+		var entry = str(entry_variant)
+		if entry.is_empty():
+			continue
+		if not unlocked.has(entry):
+			unlocked[entry] = true
+			changed = true
+	if changed:
+		_save_state()
 
 func _save_state() -> void:
 	var payload := {

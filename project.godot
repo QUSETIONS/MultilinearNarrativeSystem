@@ -8,16 +8,24 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Visual Novel Template"
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+ChapterRegistry="*res://scripts/chapter_registry.gd"
+ChapterEntryBridge="*res://scripts/chapter_entry_bridge.gd"
 SaveManager="*res://scripts/save_manager.gd"
+ChapterProgress="*res://scripts/chapter_progress.gd"
+BGMManager="*res://scripts/bgm_manager.gd"
 
 [dialogic]
 
@@ -34,6 +42,15 @@ directories/dch_directory={
 "rachett": "res://dialogic/characters/rachett.dch"
 }
 directories/dtl_directory={
+"chapter_b1": "res://dialogic/timelines/chapter_b1.dtl",
+"chapter_chapter2_with_bouc": "res://dialogic/timelines/chapter_chapter2_with_bouc.dtl",
+"chapter_chapter2_without_bouc": "res://dialogic/timelines/chapter_chapter2_without_bouc.dtl",
+"chapter_chapter3_with_bouc": "res://dialogic/timelines/chapter_chapter3_with_bouc.dtl",
+"chapter_chapter3_without_bouc": "res://dialogic/timelines/chapter_chapter3_without_bouc.dtl",
+"chapter_n1": "res://dialogic/timelines/chapter_n1.dtl",
+"chapter_n4_001": "res://dialogic/timelines/chapter_n4_001.dtl",
+"chapter_n5_001": "res://dialogic/timelines/chapter_n5_001.dtl",
+"chapter_n6_001": "res://dialogic/timelines/chapter_n6_001.dtl",
 "demo": "res://dialogic/timelines/demo.dtl",
 "orient_express": "res://dialogic/timelines/orient_express.dtl"
 }

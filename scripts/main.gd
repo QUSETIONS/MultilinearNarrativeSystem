@@ -12,7 +12,10 @@ func _ready() -> void:
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 	if Dialogic and not Dialogic.signal_event.is_connected(_on_dialogic_signal):
 		Dialogic.signal_event.connect(_on_dialogic_signal)
-		
+
+	if Dialogic and Dialogic.current_timeline != null:
+		return
+
 	await get_tree().process_frame
 	_show_chapter_entry()
 

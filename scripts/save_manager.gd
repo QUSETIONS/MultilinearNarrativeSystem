@@ -5,10 +5,23 @@ signal load_completed(slot_id: int)
 
 const MAX_SLOTS: int = 8
 const SAVE_DIR: String = "user://saves/"
+const MIGRATION_MARKER_PATH: String = "user://saves/legacy_migrated_v1.json"
 
 
 func _ready() -> void:
 	_ensure_save_dir()
+
+
+func get_slot_count() -> int:
+	return MAX_SLOTS
+
+
+func has_any_slot() -> bool:
+	for slot_id in range(1, MAX_SLOTS + 1):
+		var info := get_slot_info(slot_id)
+		if not bool(info.get("is_empty", true)):
+			return true
+	return _has_legacy_quick_slot()
 
 
 func get_slot_info(slot_id: int) -> Dictionary:
@@ -17,6 +30,16 @@ func get_slot_info(slot_id: int) -> Dictionary:
 
 	var save_path: String = _get_slot_path(slot_id)
 	if not FileAccess.file_exists(save_path):
+		if slot_id == 1 and _has_legacy_quick_slot():
+			return {
+				"slot_id": 1,
+				"is_empty": false,
+				"timestamp": "Legacy",
+				"chapter_name": "Legacy Quick Save",
+				"thumbnail": "",
+				"exists": true,
+				"is_legacy": true
+			}
 		return _empty_slot_info(slot_id)
 
 	var data: Dictionary = _read_save_file(save_path)
@@ -53,6 +76,7 @@ func save_game(slot_id: int) -> bool:
 
 	var saved: bool = _write_save_file(_get_slot_path(slot_id), save_data)
 	if saved:
+		_write_migration_marker()
 		save_completed.emit(slot_id)
 
 	return saved
@@ -68,6 +92,11 @@ func load_game(slot_id: int) -> bool:
 
 	var save_path: String = _get_slot_path(slot_id)
 	if not FileAccess.file_exists(save_path):
+		if slot_id == 1 and _has_legacy_quick_slot():
+			Dialogic.Save.load("")
+			_attempt_migrate_legacy_slot_to_new_format()
+			load_completed.emit(slot_id)
+			return true
 		push_warning("[SaveManager] Save slot %d is empty." % slot_id)
 		return false
 
@@ -81,6 +110,7 @@ func load_game(slot_id: int) -> bool:
 		return false
 
 	Dialogic.load_full_state(state)
+	_write_migration_marker()
 	load_completed.emit(slot_id)
 	return true
 
@@ -241,3 +271,35 @@ func _capture_thumbnail_base64() -> String:
 		return ""
 
 	return Marshalls.raw_to_base64(png_buffer)
+
+
+func _has_legacy_quick_slot() -> bool:
+	return is_instance_valid(Dialogic) and Dialogic.Save.has_slot("")
+
+
+func _attempt_migrate_legacy_slot_to_new_format() -> Dictionary:
+	if not _has_legacy_quick_slot():
+		return {"migrated": false, "reason": "legacy_not_found"}
+	if has_any_slot() and FileAccess.file_exists(_get_slot_path(1)):
+		_write_migration_marker()
+		return {"migrated": false, "reason": "new_slots_exist"}
+	var saved := save_game(1)
+	if saved:
+		_write_migration_marker()
+		return {"migrated": true, "slot": 1}
+	return {"migrated": false, "reason": "save_failed"}
+
+
+func migrate_legacy_slot_if_needed() -> Dictionary:
+	if FileAccess.file_exists(MIGRATION_MARKER_PATH):
+		return {"migrated": false, "reason": "already_marked"}
+	return _attempt_migrate_legacy_slot_to_new_format()
+
+
+func _write_migration_marker() -> void:
+	var file := FileAccess.open(MIGRATION_MARKER_PATH, FileAccess.WRITE)
+	if file == null:
+		return
+	file.store_string(JSON.stringify({
+		"timestamp": Time.get_datetime_string_from_system()
+	}))

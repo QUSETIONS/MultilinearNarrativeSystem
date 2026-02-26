@@ -33,18 +33,18 @@ theme_override_constants/separation = 10
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
-text = "Orient Express Chapters"
+text = "东方快车 章节列表"
 horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Loading chapters..."
+text = "正在加载章节..."
 horizontal_alignment = 1
 
 [node name="RefreshButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Refresh Chapter List"
+text = "刷新章节列表"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 420)

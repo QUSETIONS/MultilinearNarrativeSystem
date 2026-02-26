@@ -25,14 +25,14 @@ stretch_mode = 6
 
 [node name="DialogBox" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
+anchor_top = 0.62
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -220.0
-offset_right = -50.0
-offset_bottom = -20.0
+offset_left = 42.0
+offset_top = 0.0
+offset_right = -42.0
+offset_bottom = -26.0
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogBox"]
 layout_mode = 2
@@ -51,7 +51,7 @@ text = ""
 script = ExtResource("3_namelabel")
 
 [node name="DialogText" type="RichTextLabel" parent="DialogBox/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -74,13 +74,13 @@ text = "▼"
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.62
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -150.0
+offset_top = -90.0
 offset_right = 200.0
-offset_bottom = 50.0
+offset_bottom = 110.0
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 layer = 20
@@ -91,29 +91,29 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -260.0
-offset_right = -50.0
-offset_bottom = -220.0
+offset_left = -390.0
+offset_top = -76.0
+offset_right = -24.0
+offset_bottom = -28.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="AutoButton" type="Button" parent="UI_Layer/ControlPanel"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Auto"
+text = "自动"
 
 [node name="SkipButton" type="Button" parent="UI_Layer/ControlPanel"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Skip"
+text = "快进"
 
 [node name="SaveButton" type="Button" parent="UI_Layer/ControlPanel"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Save"
+text = "保存"
 
 [node name="LoadButton" type="Button" parent="UI_Layer/ControlPanel"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Load"
+text = "读取"

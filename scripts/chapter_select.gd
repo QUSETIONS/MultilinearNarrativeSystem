@@ -19,7 +19,7 @@ func _populate_chapter_list() -> void:
 
 	var registry := _registry()
 	if not is_instance_valid(registry):
-		status_label.text = "ChapterRegistry not available."
+		status_label.text = "章节注册器不可用。"
 		refresh_button.visible = false
 		return
 
@@ -27,12 +27,12 @@ func _populate_chapter_list() -> void:
 	if chapters.is_empty():
 		var reason := str(registry.last_error).strip_edges()
 		if reason.is_empty():
-			reason = "No chapters found."
-		status_label.text = "%s Click refresh or run import_orient_express.py first." % reason
+			reason = "未找到章节。"
+		status_label.text = "%s 请点击刷新，或先运行 import_orient_express.py。" % reason
 		refresh_button.visible = true
 		return
 
-	status_label.text = "Select a chapter to start"
+	status_label.text = "请选择一个章节开始"
 	refresh_button.visible = true
 	for chapter in chapters:
 		var chapter_id := str(chapter.get("id", ""))
@@ -51,15 +51,15 @@ func _populate_chapter_list() -> void:
 func _on_chapter_pressed(chapter_id: String) -> void:
 	var registry := _registry()
 	if not is_instance_valid(registry):
-		status_label.text = "ChapterRegistry not available."
+		status_label.text = "章节注册器不可用。"
 		return
 	if not registry.chapters.has(chapter_id):
-		status_label.text = "Chapter not found: %s" % chapter_id
+		status_label.text = "未找到章节：%s" % chapter_id
 		return
 
-	var started := registry.start_chapter(chapter_id)
+	var started: bool = bool(registry.start_chapter(chapter_id))
 	if not started:
-		status_label.text = "Failed to start chapter: %s" % chapter_id
+		status_label.text = "启动章节失败：%s" % chapter_id
 		return
 
 	queue_free()
@@ -68,14 +68,14 @@ func _on_chapter_pressed(chapter_id: String) -> void:
 func _on_refresh_pressed() -> void:
 	var registry := _registry()
 	if not is_instance_valid(registry):
-		status_label.text = "ChapterRegistry not available."
+		status_label.text = "章节注册器不可用。"
 		return
 
 	DialogicResourceUtil.update_directory(".dtl")
-	var ok := registry.rebuild_registry()
+	var ok: bool = bool(registry.rebuild_registry())
 	_populate_chapter_list()
 	if not ok:
 		var reason := str(registry.last_error).strip_edges()
 		if reason.is_empty():
-			reason = "No chapters were found."
-		status_label.text = "Refresh completed, but failed: %s" % reason
+			reason = "未找到章节。"
+		status_label.text = "刷新完成，但失败：%s" % reason
