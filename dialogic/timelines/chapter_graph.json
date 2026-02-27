@@ -1,0 +1,109 @@
+{
+  "version": "1.1",
+  "entry_chapter_id": "b1",
+  "entry_timeline_id": "chapter_b1",
+  "entry_points": [
+    "b1",
+    "n1"
+  ],
+  "nodes": [
+    {
+      "chapter_id": "b1",
+      "timeline_id": "chapter_b1",
+      "title": "布克的日常",
+      "order": 1
+    },
+    {
+      "chapter_id": "n1",
+      "timeline_id": "chapter_n1",
+      "title": "第一章：叙利亚到斯坦布尔",
+      "order": 2
+    },
+    {
+      "chapter_id": "chapter2_with_bouc",
+      "timeline_id": "chapter_chapter2_with_bouc",
+      "title": "第二章：与布克相遇",
+      "order": 3
+    },
+    {
+      "chapter_id": "chapter3_with_bouc",
+      "timeline_id": "chapter_chapter3_with_bouc",
+      "title": "第三章：与布克同行的旅程继续",
+      "order": 4
+    },
+    {
+      "chapter_id": "chapter2_without_bouc",
+      "timeline_id": "chapter_chapter2_without_bouc",
+      "title": "第二章：独自旅行的开始",
+      "order": 5
+    },
+    {
+      "chapter_id": "chapter3_without_bouc",
+      "timeline_id": "chapter_chapter3_without_bouc",
+      "title": "第三章：孤独的旅程",
+      "order": 6
+    },
+    {
+      "chapter_id": "n4_001",
+      "timeline_id": "chapter_n4_001",
+      "title": "第四章：暗夜惊叫",
+      "order": 7
+    },
+    {
+      "chapter_id": "n5_001",
+      "timeline_id": "chapter_n5_001",
+      "title": "第五章：罪行",
+      "order": 8
+    },
+    {
+      "chapter_id": "n6_001",
+      "timeline_id": "chapter_n6_001",
+      "title": "第六章：一个女人",
+      "order": 9
+    }
+  ],
+  "edges": [
+    {
+      "from_chapter_id": "n1",
+      "to_chapter_id": "chapter2_with_bouc",
+      "via_node_id": "chapter2_branch",
+      "choice_text": "bouc_decision=go"
+    },
+    {
+      "from_chapter_id": "n1",
+      "to_chapter_id": "chapter2_without_bouc",
+      "via_node_id": "chapter2_branch",
+      "choice_text": "bouc_decision=stay"
+    },
+    {
+      "from_chapter_id": "chapter3_with_bouc",
+      "to_chapter_id": "n4_001",
+      "via_node_id": "end_game_with_bouc",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n4_001",
+      "to_chapter_id": "n5_001",
+      "via_node_id": "n4_066",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n5_001",
+      "to_chapter_id": "n6_001",
+      "via_node_id": "n5_121",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "chapter2_with_bouc",
+      "to_chapter_id": "chapter3_with_bouc",
+      "via_node_id": "n191",
+      "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "chapter2_without_bouc",
+      "to_chapter_id": "chapter3_without_bouc",
+      "via_node_id": "n244",
+      "choice_text": "dialogue.next"
+    }
+  ]
+}

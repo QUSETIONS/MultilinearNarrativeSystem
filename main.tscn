@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://oa105mvpfeqq"]
+
+[ext_resource type="Script" uid="uid://seajcti3cudv" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://bj37dwpqwkrfc" path="res://scenes/vn_template.tscn" id="2_vn"]
+
+[node name="Main" type="Node" unique_id=1373263265]
+script = ExtResource("1_main")
+
+[node name="VNTemplate" parent="." unique_id=1595931926 instance=ExtResource("2_vn")]
+grow_horizontal = 2
+grow_vertical = 2

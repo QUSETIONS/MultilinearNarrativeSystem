@@ -1,0 +1,134 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/chapter_tree_select.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/chapter_tree_canvas.gd" id="2_canvas"]
+
+[node name="ChapterTreeSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_script")
+
+[node name="LeftOrnament" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -220.0
+offset_right = 56.0
+offset_bottom = 220.0
+text = "*"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightOrnament" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -220.0
+offset_right = -14.0
+offset_bottom = 220.0
+text = "*"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0.05, 0.04, 0.98)
+
+[node name="GrainOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.93, 0.84, 0.62, 0.03)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 28
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "东方快车 章节流程图"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "正在加载章节流程图..."
+horizontal_alignment = 1
+
+[node name="ButtonBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="RefreshButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonBar"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "刷新流程图"
+
+[node name="ListButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonBar"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "打开列表模式"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonBar"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "保存"
+
+[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonBar"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "读取"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonBar"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "返回主菜单"
+
+[node name="MapScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 620)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 2
+
+[node name="MapRoot" type="Control" parent="MarginContainer/VBoxContainer/MapScroll"]
+custom_minimum_size = Vector2(960, 900)
+layout_mode = 2
+
+[node name="LineLayer" type="Control" parent="MarginContainer/VBoxContainer/MapScroll/MapRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_canvas")
+mouse_filter = 2
+
+[node name="NodeLayer" type="Control" parent="MarginContainer/VBoxContainer/MapScroll/MapRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1

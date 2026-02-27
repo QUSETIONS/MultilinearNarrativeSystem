@@ -1,0 +1,100 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Visual Novel Template"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.6", "Forward Plus")
+
+[autoload]
+
+Dialogic="*uid://ds2q0uclmolvu"
+ChapterRegistry="*res://scripts/chapter_registry.gd"
+ChapterEntryBridge="*res://scripts/chapter_entry_bridge.gd"
+SaveManager="*res://scripts/save_manager.gd"
+ChapterProgress="*res://scripts/chapter_progress.gd"
+BGMManager="*res://scripts/bgm_manager.gd"
+
+[dialogic]
+
+directories/dch_directory={
+"american_gentleman": "res://dialogic/characters/american_gentleman.dch",
+"arbuthnot": "res://dialogic/characters/arbuthnot.dch",
+"bouc": "res://dialogic/characters/bouc.dch",
+"conductor": "res://dialogic/characters/conductor.dch",
+"constantine": "res://dialogic/characters/constantine.dch",
+"debenham": "res://dialogic/characters/debenham.dch",
+"hubbard": "res://dialogic/characters/hubbard.dch",
+"italian": "res://dialogic/characters/italian.dch",
+"lieutenant": "res://dialogic/characters/lieutenant.dch",
+"mcdonald": "res://dialogic/characters/mcdonald.dch",
+"narrator": "res://dialogic/characters/narrator.dch",
+"poirot": "res://dialogic/characters/poirot.dch",
+"police_inspector": "res://dialogic/characters/police_inspector.dch",
+"porter": "res://dialogic/characters/porter.dch",
+"rachett": "res://dialogic/characters/rachett.dch",
+"swedish_lady": "res://dialogic/characters/swedish_lady.dch"
+}
+directories/dtl_directory={
+"chapter_b1": "res://dialogic/timelines/chapter_b1.dtl",
+"chapter_chapter2_with_bouc": "res://dialogic/timelines/chapter_chapter2_with_bouc.dtl",
+"chapter_chapter2_without_bouc": "res://dialogic/timelines/chapter_chapter2_without_bouc.dtl",
+"chapter_chapter3_with_bouc": "res://dialogic/timelines/chapter_chapter3_with_bouc.dtl",
+"chapter_chapter3_without_bouc": "res://dialogic/timelines/chapter_chapter3_without_bouc.dtl",
+"chapter_n1": "res://dialogic/timelines/chapter_n1.dtl",
+"chapter_n4_001": "res://dialogic/timelines/chapter_n4_001.dtl",
+"chapter_n5_001": "res://dialogic/timelines/chapter_n5_001.dtl",
+"chapter_n5_alt_001": "res://dialogic/timelines/chapter_n5_alt_001.dtl",
+"chapter_n6_001": "res://dialogic/timelines/chapter_n6_001.dtl",
+"chapter_n6_alt_001": "res://dialogic/timelines/chapter_n6_alt_001.dtl",
+"demo": "res://dialogic/timelines/demo.dtl",
+"orient_express": "res://dialogic/timelines/orient_express.dtl"
+}
+text/letter_speed=0.03
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/autoadvance_per_character=0.1
+text/autoadvance_per_word=0.0
+text/autoadvance_ignored_characters_enabled=false
+text/autoadvance_ignored_characters={}
+text/autoskip_time_per_event=0.1
+animations/join_default_length=0.5
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/join_default_wait=true
+choices/autofocus_first=true
+choices/delay=0.0
+save/autosave=false
+history/history_enabled=true
+layout/style_directory={}
+
+[display]
+
+window/size/mode=2
+window/stretch/scale=1.8
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[input]
+
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
