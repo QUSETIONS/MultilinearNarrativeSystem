@@ -1,0 +1,39 @@
+# --- Chapter: 第三章：孤独的旅程 ---
+# --- ChapterId: chapter3_without_bouc ---
+# --- ChapterOrder: 6 ---
+
+# --- Segment: 第三章：孤独的旅程 ---
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 第二天，波洛独自一人在餐车用餐。没有布克先生的陪伴，他感觉旅程有些单调。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）虽然少了布克的陪伴有些遗憾，但这样我也能专心阅读案件文件。卡斯纳案件的进展确实令人兴奋。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 波洛观察着餐车里的其他旅客，但他没有特别注意任何人。因为没有布克的引荐，雷切特也没有机会接近波洛。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 旅途在平静中继续。波洛专注于他的案件文件，偶尔抬头看看窗外的风景。
+
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.0"]
+leave --All--
+narrator: 东方快车继续在风雪中前行，没有谋杀案，没有复杂的调查，只有一位侦探在思考着即将结束的案件。
+
+# --- Segment: 旅程结束 ---
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 三天后，火车平安抵达巴黎。波洛带着他对卡斯纳案件的思考下了车，准备回到伦敦继续他的工作。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （自言自语）一次平静的旅程。有时，没有谋杀案的世界也挺好。
+
+# --- Segment: 故事结束 ---

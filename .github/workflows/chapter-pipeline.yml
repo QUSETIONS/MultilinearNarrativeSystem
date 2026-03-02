@@ -1,0 +1,72 @@
+name: chapter-pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'import_orient_express.py'
+      - 'scripts/validate_chapter_outputs.py'
+      - 'scripts/check_chapter_pipeline.ps1'
+      - 'scripts/benchmark_parser.py'
+      - 'README.md'
+      - '*.json'
+  pull_request:
+    paths:
+      - 'import_orient_express.py'
+      - 'scripts/validate_chapter_outputs.py'
+      - 'scripts/check_chapter_pipeline.ps1'
+      - 'scripts/benchmark_parser.py'
+      - 'README.md'
+      - '*.json'
+
+jobs:
+  chapter-pipeline:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Detect story JSON
+        id: detect
+        shell: pwsh
+        run: |
+          $json = python - <<'PY'
+import json
+from pathlib import Path
+candidates=[]
+for p in Path('.').glob('*.json'):
+    try:
+        d=json.loads(p.read_text(encoding='utf-8'))
+    except Exception:
+        continue
+    if isinstance(d, dict) and 'nodes' in d and 'characters' in d:
+        candidates.append(str(p))
+if len(candidates) != 1:
+    raise SystemExit(f'Expected exactly one candidate JSON, got {len(candidates)}: {candidates}')
+print(candidates[0])
+PY
+          "STORY_JSON=$json" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Run chapter pipeline
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File scripts/check_chapter_pipeline.ps1 -InputJson "$env:STORY_JSON" -JsonReport
+
+      - name: Run parser benchmark
+        shell: pwsh
+        run: |
+          python scripts/benchmark_parser.py --input "$env:STORY_JSON"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter-pipeline-logs
+          path: |
+            logs/*.log
+            logs/*.json

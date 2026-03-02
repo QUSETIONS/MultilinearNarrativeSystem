@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "chapters": [
+    {
+      "chapter_id": "b1",
+      "timeline_id": "chapter_b1",
+      "title": "布克的日常",
+      "order": 1,
+      "start_node_id": "b1"
+    },
+    {
+      "chapter_id": "n1",
+      "timeline_id": "chapter_n1",
+      "title": "第一章：叙利亚到斯坦布尔",
+      "order": 2,
+      "start_node_id": "n1"
+    },
+    {
+      "chapter_id": "chapter2_with_bouc",
+      "timeline_id": "chapter_chapter2_with_bouc",
+      "title": "第二章：与布克相遇",
+      "order": 3,
+      "start_node_id": "chapter2_with_bouc_start"
+    },
+    {
+      "chapter_id": "chapter3_with_bouc",
+      "timeline_id": "chapter_chapter3_with_bouc",
+      "title": "第三章：与布克同行的旅程继续",
+      "order": 4,
+      "start_node_id": "chapter3_with_bouc_start"
+    },
+    {
+      "chapter_id": "chapter2_without_bouc",
+      "timeline_id": "chapter_chapter2_without_bouc",
+      "title": "第二章：独自旅行的开始",
+      "order": 5,
+      "start_node_id": "chapter2_without_bouc_start"
+    },
+    {
+      "chapter_id": "chapter3_without_bouc",
+      "timeline_id": "chapter_chapter3_without_bouc",
+      "title": "第三章：孤独的旅程",
+      "order": 6,
+      "start_node_id": "chapter3_without_bouc_start"
+    }
+  ],
+  "entries": {
+    "poirot": {
+      "entry_key": "poirot",
+      "chapter_id": "n1",
+      "timeline_id": "chapter_n1",
+      "label": "",
+      "title": "第一章：叙利亚到斯坦布尔"
+    },
+    "bouc": {
+      "entry_key": "bouc",
+      "chapter_id": "b1",
+      "timeline_id": "chapter_b1",
+      "label": "",
+      "title": "布克的日常"
+    }
+  }
+}

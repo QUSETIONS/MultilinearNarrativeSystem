@@ -1,0 +1,1290 @@
+# --- Variable Defaults ---
+set {bouc_decision} = ""
+
+# --- Segment: 布克的日常 ---
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 这趟出差真够累的，好在今晚就能坐东方快车回家了。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 布克先生在旅馆大堂检查文件，期待着回到欧洲的舒适生活。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+- 今晚就坐东方快车回家
+	set {bouc_decision} = "go"
+	jump b5
+- 太累了，明天再走
+	set {bouc_decision} = "stay"
+	jump b6
+
+label b5
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 还是今晚走吧，早点回家早点休息。
+	jump b7
+
+label b6
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 今天实在太累了，还是在旅馆好好休息一晚，明天再出发。
+	jump b8
+
+label b7
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 布克先生，您的车已经准备好了，需要我帮您叫行李员吗？
+	jump b9
+
+label b8
+# [background arg="hotel_room.png"]
+leave --All--
+narrator: 布克决定在旅馆多住一晚。他回到房间，舒服地躺在柔软的床上，很快就进入了梦乡。
+	jump end_bouc_story
+
+label b9
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 好的，谢谢。我这就出发去火车站。
+
+label end_bouc_story
+# --- Segment: 布克的故事结束 ---
+
+# --- Segment: 第一章：叙利亚到斯坦布尔 ---
+
+[background arg="res://assets/backgrounds/station_night.png" fade="1.0"]
+leave --All--
+narrator: 叙利亚，冬季，清晨五点钟。阿勒颇站台旁停着托罗斯快车，寒冷刺骨。
+
+[background arg="res://assets/backgrounds/station_night.png" fade="1.0"]
+leave --All--
+join lieutenant 1
+lieutenant: 今天是星期日，明天，星期一晚上，您就到斯坦布尔了。
+
+[background arg="res://assets/backgrounds/station_night.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 是啊。我从没去过斯坦布尔，错过了会很遗憾——是的。
+
+[background arg="res://assets/backgrounds/station_night.png" fade="1.0"]
+leave --All--
+join lieutenant 1
+lieutenant: 我想，您打算在那儿待几天吧？
+
+[background arg="res://assets/backgrounds/station_night.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 没错。我从没去过斯坦布尔，错过了会很遗憾——是的。没有负担——我会在那儿游览几天。
+
+[background arg="res://assets/backgrounds/station_night.png" fade="1.0"]
+leave --All--
+join lieutenant 1
+lieutenant: 圣索菲，很漂亮。
+
+[background arg="res://assets/backgrounds/train_window.png" fade="1.0"]
+leave --All--
+narrator: 玛丽·德贝纳姆从卧铺车厢的窗帘缝隙向外看。她睡眠不足，心情烦躁。
+
+[background arg="res://assets/backgrounds/train_window.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: （心想）这一定是阿勒颇。当然没什么好看的……
+
+[background arg="res://assets/backgrounds/train_window.png" fade="1.0"]
+leave --All--
+narrator: 她看到窗外有两个男人在交谈——一个是法国军官，另一个是留着夸张小胡子的矮个子。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 请上车，先生。火车就要开了。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （装出不舍的样子上了火车）
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join lieutenant 1
+lieutenant: （敬礼）一路顺风！
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （嘟囔）可算结束了！
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+- 继续默默观察
+	jump segment_observation_start
+- 主动打招呼
+	jump segment_observation_start
+- 询问列车员关于她的事
+	jump segment_observation_start
+
+label segment_observation_start
+# --- Segment: 观察上校与小姐的对话 ---
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 先生的小旅行袋，我放这儿了。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （递过小费）谢谢。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 谢谢，先生。我看旅行的人不太多呢。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 没几个吗？
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 除了您，只有两位旅客——都是英国人。来自印度的上校和从巴格达来的年轻的英国小姐。
+
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.0"]
+leave --All--
+narrator: 清晨五点钟搭乘火车是个尴尬的时刻。还有两个小时才会天亮，考虑到晚上睡眠不足，并且刚刚成功地完成了一个棘手的任务，波洛先生蜷在角落里睡着了。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+narrator: 醒来时已经是九点半，他冲进餐车，想喝杯热咖啡。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+narrator: 此时那里只有一个旅客，很明显是列车员说的那位年轻的英国小姐。她身材修长苗条，黑色的头发，二十八岁上下。从她吃早饭以及让服务员添加咖啡的冷静样子来看，想必是个见多识广、经常旅行的人。她一身暗色的旅行装束，料子轻薄，很适合车上闷热的空气。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）赫尔克里·波洛先生无事可做，为了打发时间，就装作若无其事地观察起她来。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （继续观察）她是在那种无论在哪都能照顾好自己的年轻女人，沉着能干。我尤其喜欢她那极为端正的五官和细致白皙的皮肤，也喜欢她那顺滑整洁的黑发，还有她那双冷淡的灰色眼睛。不过，她看起来太干练了，不是我心目的'美女'。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+narrator: 没过多久，另一个人走进了餐车。这是个四五十岁的高个子男人，身形偏瘦，棕色皮肤，两鬓略有些斑白。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （自言自语）印度来的上校。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: （微微鞠了一躬）早上好，德贝纳姆小姐。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 早上好，阿巴思诺特上校。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: （站住了，一只手搭在她对面的椅子上）你介意吗？
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 当然不。请坐。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 呃，你知道，早饭可不是聊天的好时间。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 正合我意。不过我不会咬人的。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+narrator: 上校坐了下来。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: （专横地命令道）服务员！
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+narrator: 他点了鸡蛋和咖啡。他的视线在赫尔克里·波洛身上短暂地停顿了片刻，又毫不在意地移开了。
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）波洛明白这个英国人的想法，知道他准会这么自言自语：'只不过是个该死的外国佬。'
+
+[background arg="res://assets/backgrounds/train_dining_car_morning.png" fade="1.0"]
+leave --All--
+narrator: 不愧是这个民族的，两个英国人并没有闲聊，只是简单地说了两句，女子就起身回自己的车厢了。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+narrator: 午饭时，那两个人又坐在了同一张桌子旁边，仍然无视第三个旅客。他们的谈话比早饭时活跃了一些。阿巴思诺特上校说到了旁遮普，还间或询问了对方几个关于巴格达的问题。很明显，她在那儿当过家庭教师。谈话中他们发现了几个彼此共同的朋友，这立刻使二人友好起来，不再那么拘束了。他们提到了一个叫老汤米的人，还有一个老雷吉。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+narrator: 上校问她是直接去英国还是在斯坦布尔下车。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 我直接去英国。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 那岂不是很遗憾？
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 两年前我也坐过这趟车，那时候在斯坦布尔度过了三天。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: （略显笨拙地欠了欠身，脸色有点发红）哦，我明白了，我得说很高兴你直接去英国，因为我也是。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （饶有兴致地想）我们的上校很容易动感情啊。这趟火车跟在海上航行一样危险！
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: （淡然）那很不错。
+
+[background arg="res://assets/backgrounds/train_dining_car_day.png" fade="1.0"]
+leave --All--
+narrator: 她的态度有些克制。波洛注意到上校陪她回了她的车厢。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+narrator: 后来，他们穿行在托罗斯壮丽的景色之中，两人肩并肩地站在过道上，俯瞰奇里乞亚门时，女子忽然叹了口气。波洛正站在他们旁边，听到她低声说道：
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 真美啊，我希望——我希望——
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 什么？
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 我希望自己能欣赏它！
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+narrator: 阿巴思诺特没有应答。他下巴的那条方形线条似乎更加严峻、冷酷了。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 希望上帝让你摆脱这一切。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 嘘，请别说了。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: （有点气恼地向波洛这边扫了一眼）哦，好吧。不过我不喜欢你当家庭教师这个想法——对那些专横的妈妈和她们讨厌的小鬼唯命是从。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: （笑了，声音有些失控）不，你不能这么想。家庭教师'饱受压迫'，是个已经被推翻了的传说。那些父母还怕被我欺负呢。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+narrator: 两人没再说话。也许阿巴思诺特对自己的感情爆发感到羞愧。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （沉思着自言自语）我在这儿看到了一幕奇怪的小喜剧。
+
+[background arg="res://assets/backgrounds/mountain_scenery.png" fade="1.0"]
+leave --All--
+narrator: 他以后会记起这个想法的。
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+narrator: 那晚大约十一点半的时候，他们抵达科尼亚，那两个英国旅客下车伸展四肢，在布满积雪的站台上走来走去。
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+narrator: 波洛先生乐于透过玻璃窗观察车站上拥挤的情形。然而大约十分钟后，他觉得呼吸一下新鲜空气兴许不是件坏事，于是他仔细地准备了一番，用好几件大衣把自己裹严，围上围巾，又在整洁的靴子外面套上胶套鞋。穿戴完毕，他小心翼翼地走到站台上，一路向车头走去。
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+narrator: 一阵声音让他认出了站在货车厢阴影中的两个模糊的人影。阿巴思诺特正在说着：
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 玛丽——
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: （打断了他）不是现在，不是现在。等一切都结束了，等事情过去了，再——
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+- 继续偷听
+	jump segment_train_stop_start
+- 故意发出声音提醒他们
+	jump segment_train_stop_start
+- 立即离开
+	jump segment_train_stop_start
+
+label segment_train_stop_start
+# --- Segment: 火车停车 ---
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+narrator: 波洛先生小心地转身走开了，暗自纳闷……他差点没听出来德贝纳姆小姐那冷淡而干练的声音……
+
+[background arg="res://assets/backgrounds/station_night_snow.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （自言自语）奇怪。
+
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.0"]
+leave --All--
+narrator: 第二天，不知道他们是否发生过口角，两人没怎么说话。他感觉那位姑娘心事重重的，眼睛周围也有了青晕。
+
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.0"]
+leave --All--
+narrator: 大约下午两点半时，火车忽然停了。大家都把脑袋探出窗外，几个人聚在轨道旁，看着餐车下方，还指指点点的。
+
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.0"]
+leave --All--
+narrator: 波洛也探出头，询问匆匆经过的列车员。那人回答完，波洛缩回脑袋，转过身，差点撞到站在他身后的玛丽·德贝纳姆小姐。
+
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: （急促地用法语问道）怎么了？为什么停车了？
+
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 没事，小姐，餐车下面有什么东西着火了，火势不严重，已经熄灭了，他们正在抢修。别担心，没有危险。
+
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.0"]
+leave --All--
+narrator: 她做了个不太淑女的手势，仿佛想把危险事故丢到一边，把那当作无关紧要的事。
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 是的，是的，我明白，可是，时间！
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 时间？
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 没错，会延误的。
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 有可能——没错。
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: 可我们不能误点！火车应该在六点五十五分到达，可我还得穿过博斯普鲁斯海峡，到对岸去坐九点钟的辛普朗东方快车，如果晚一两个小时，就赶不上那趟列车了！
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 有可能——没错。
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+narrator: 他好奇地看着她。她握着窗口栏杆的那只手有些不稳，嘴唇也在哆嗦着。
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 这对你很重要吗，小姐？
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+join debenham 1
+debenham: （声音紧张）嗯嗯，很重要。我——我必须赶上那趟车。
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+- 安慰她
+	jump chapter1_end
+- 询问焦虑的具体原因
+	jump chapter1_end
+- 只是观察不做反应
+	jump chapter1_end
+
+label chapter1_end
+# --- Segment: 第一章结束 ---
+
+if {bouc_decision} == "go":
+	jump chapter2_with_bouc_start
+elif {bouc_decision} == "stay":
+	jump chapter2_without_bouc_start
+else:
+	jump chapter2_with_bouc_start
+
+label chapter2_with_bouc_start
+# --- Segment: 第二章：与布克相遇 ---
+
+[background arg="res://assets/backgrounds/train_window_day.png" fade="1.0"]
+leave --All--
+narrator: 她从他身边走开，去过道找阿巴思诺特上校了。
+
+[background arg="res://assets/backgrounds/train_moving_day.png" fade="1.0"]
+leave --All--
+narrator: 然而她完全没有必要担忧。十分钟之后火车又开动了。到海德帕萨时只晚了五分钟，损失的时间在途中补了回来。
+
+[background arg="res://assets/backgrounds/train_moving_day.png" fade="1.0"]
+leave --All--
+narrator: 博斯普鲁斯海峡风高浪急，波洛先生很不舒服，他在船上和同行的旅伴分开了，没有再见到他们。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 波洛抵达斯坦布尔，入住托卡林旅馆。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （走向门房）有没有我的信件？
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 有三封信和一封电报，先生。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （打开电报，皱眉）你预测的卡斯纳案件有了突破进展，请速回。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （对门房）烦人。我今晚就得走。辛普朗东方快车什么时候开？
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 九点，先生。每年这个时候都不难买票。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 波洛在餐厅用餐，观察其他客人。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: （把手搭在波洛肩上）啊，老朋友，这真是个意外的惊喜！
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 布克先生！
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 这次算是离家远行了吧，亲爱的？
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 在叙利亚有点小事。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 啊，所以你是要回家了？什么时候？
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 今晚。我刚刚让他们买了一张卧铺票，本来打算在这儿待几天。可我又接到一封电报，说有重要的事要我回英国。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 波洛注意到餐厅另一桌的两个美国人。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）年轻的那位三十岁上下，长相讨喜。年长的那个……从远处看，俨然一副慈善家的和善面孔，但那双小眼睛露了馅儿——眼窝深陷，眼神十分狡诈。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: （声音沙哑柔软）结账去，赫克托。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 老人从波洛身边经过时，波洛感到一种奇怪的感觉——好像是一只野兽，一只凶残的野兽，从他身边窜了过去。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 完成这个艰巨的任务之后，波洛环视四周，等着他的下一道菜。餐厅里只有六个人，其中两个人引起了赫尔克里·波洛的注意。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 这两个人坐在离他不远的桌子旁，年轻一点儿的三十岁上下，长相讨喜，明显是个美国人。然而让这个小个子侦探感兴趣的却是他的同伴。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （仔细观察）这个男人有六七十岁，从远处看，俨然一副慈善家的和善面孔，有点秃顶，圆圆的额头，微笑起来露出一排洁白的假牙——这些都展示了他随和的性格。只是那双小眼睛露了馅儿——眼窝深陷，眼神十分狡诈。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 还不止这些。他跟他年轻的同伴说话时，扫了一眼房间，瞪了波洛片刻，就在这一瞬间，脸上流露出一种奇怪的恶毒神情，透着不自然的紧张。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 随后，雷切特站起身。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: （声音沙哑柔软）结账去，赫克托。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 他的声音有些沙哑，柔软中含有古怪和危险的意味。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 波洛在休息室遇见他的朋友时，之前那两个人正准备离开旅馆。他们的行李被送到了楼下，年轻的那位在打理这些事，没多久，他打开玻璃门，说道：
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 都准备妥当了，雷切特先生。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 那老人咕哝了一声表示知道了，接着便走了出去。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 那么，你怎么看这两个人？
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 他们是美国人。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 的确是美国人。我是说，对他们的性格你怎么看？
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 那个年轻人挺有礼貌的。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 另一个呢？
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 实话说，我的朋友，我没怎么留意他。他给我的印象不太好。你觉得呢？
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+- 详细描述野兽般的直觉
+	jump segment_housing_argument_start
+- 简单说印象不好
+	jump segment_housing_argument_start
+- 暂时保留看法
+	jump segment_housing_argument_start
+
+label segment_housing_argument_start
+# --- Segment: 住房争吵 ---
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （停顿了一会儿）在餐厅他从我身边经过时，我有种奇怪的感觉。就好像是一只野兽，一只凶残的野兽，从我身边窜了过去。凶残的，你明白吗？
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 可他看起来是一副受人尊敬的样子。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 没错！他的身体——那笼子——怎么看都那么令人尊敬，可是透过栏杆，那只野兽却在盯着你。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 你的想象力真丰富，我的朋友。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 也许是吧，可我怎么也摆脱不了邪恶跟我擦肩而过的感觉。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 那位可敬的美国绅士吗？
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 就是那位可敬的美国绅士。
+
+[background arg="res://assets/backgrounds/hotel_lounge.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 好啦，可能你说得对。这世界上的邪恶太多了。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 就在这时，门房朝他们走来，一脸忧虑和抱歉。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 太不寻常了，先生，火车上没有头等厢卧铺票了。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: （喊出了声）什么？这时候？肯定是旅游团，还是政客出访什么的——
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 我不清楚，先生，可的确是这样。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 好吧，好吧，别担心，我的朋友，我们会安排好的。十六号卧铺房总是空的，那是列车员说了算的！
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: （看了一眼挂钟）走吧，我们出发。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 晚上九点，火车站。布克先生和波洛准备登上辛普朗东方快车。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 晚上好，先生。您在一号房间。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 我听说今天的卧铺都满了？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 太不可思议了，先生，全世界的人都选择在今晚出行！
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 不管怎样你都得帮这位先生找一间卧铺房，他是我的朋友，他可以住在十六号房。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 已经有人了，先生。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 什么？十六号？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 他们心照不宣地交换了个眼神，列车员笑了。他是个脸色发黄的高个子中年人。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 是的，先生，就像我跟您说的那样，车里已经满满的了——到处都是人。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: （气呼呼地质问）怎么回事？是什么地方开会吗？还是旅游团？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 不是的，先生，这纯属巧合。刚好很多人都选择了今晚搭这趟火车。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 布克先生生气地感叹了几声。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 在贝尔格莱德，会加一节从雅典开过来的车厢，还有一节布加勒斯特到巴黎的车厢。可我们明天晚上才能到贝尔格莱德，今晚是个问题。二等卧铺也没有空位了吗？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 二等卧铺有一个，先生——
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 好，那就——
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 但那是个女士卧铺，而且已经有一位德国女士在里面了——一个女仆。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 哎呀，真不巧。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 别烦恼了，我的朋友，我坐普通车厢就行。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 不行，不行。旅客都到齐了吗？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: （面带迟疑）其实，还有一位旅客没到。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 说下去！
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 二等卧铺的七号房。现在差四分钟九点，这位先生还没来。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 是谁？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: （查了查名单）一个英国人，姓哈里斯。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 这名字是个好兆头，根据我的狄更斯小说，这位哈里斯先生不会来了。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 把这位先生的行李搬到七号房间。如果哈里斯先生来了，就跟他说已经晚了，卧铺不能为他留太久，到时我们再设法另行安排。我干吗要在乎这位哈里斯先生呢？
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 全听您的吩咐。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+narrator: 列车员给波洛的搬运工指了路，自己则闪到车厢踏板的一边，请波洛上火车。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 最里面倒数第二间，先生。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+narrator: 波洛缓缓地沿着过道走过去，大部分旅客在自己房间外面站着。他像钟表那样有规律且礼貌地说着'对不起'，最后终于走到了指定的房间，里面有人正伸手拿行李，正是在托卡林旅馆见到的那个年轻的高个子的美国人。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: （皱了皱眉）对不起，我想你弄错了。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+narrator: 接着又用法语费力地重复了一遍。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （用英语回答）你是哈里斯先生吗？
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 不，我叫麦奎因。我——
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+narrator: 但就在这时，列车员的声音从波洛肩头传了过来——带有歉意而且急促的声音。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 火车上没有别的卧铺了，先生，这位先生只能住在这儿了。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+narrator: 说这话时，他拉起了过道上的窗户，把波洛的行李拎了进来。波洛对列车员语气中的歉意饶有兴致。这人肯定答应给列车员一笔不菲的小费，好让自己不受其他旅客的打扰，独自享用这个房间。可是，再慷慨的小费也不顶用了，因为公司的董事上了火车并下达了命令。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 都放好了，先生。您住上铺，七号房，火车一分钟后就开动了。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+narrator: 说完，他便沿着过道匆匆走开。波洛走进房间。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （愉快地说）我可从没见过列车员亲自摆放行李，真是闻所未闻！
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: （笑了笑）这列火车真是座无虚席啊！
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+narrator: 显然他已经忘记了刚才的不快——也许他觉得再追究此事也没什么意义了。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+narrator: 随着汽笛一声巨响，火车头也凄凉地长啸一声。两人都从房间来到过道上，外面有个声音大喊：'上车！'
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 车开了。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+narrator: 但火车并没有开动，又传来一声汽笛。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+- 接受好意，睡下铺
+	jump segment_train_start_start
+- 婉言谢绝，坚持睡上铺
+	jump segment_train_start_start
+- 提议轮流睡下铺
+	jump segment_train_start_start
+
+label segment_train_start_start
+# --- Segment: 火车启动 ---
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 我说，先生，如果你愿意睡下铺——如果方便的话——别客气，我都行。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+narrator: 真是个可爱的小伙子。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 不，不，我不能——
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 没关系——
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 你太客气了——
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+narrator: 两人谦让着。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 只是一个晚上，到贝尔格莱德——
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 哦，我明白了。你在贝尔格莱德下车——
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 也不全是。你知道——
+
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.0"]
+leave --All--
+narrator: 火车猛然一动，两人被晃到窗口，看到灯火通明的站台缓缓地从他们身边远去。
+
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.0"]
+leave --All--
+narrator: 东方快车开始了为期三天的贯穿欧洲之旅。
+
+# --- Segment: 第三章：与布克同行的旅程继续 ---
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 第二天，波洛稍晚了一些才去餐车吃午饭。他起得很早，一个人吃了早饭，整个上午都在阅读那些让他回伦敦办案的文件，没怎么见过他的旅伴。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 布克先生已经坐在了桌边，招呼波洛坐在对面的空位上。波洛坐了下来，马上发现自己正坐在最佳的位置上——头一个享受餐点，而且种类丰富，味道出奇的好。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 如果我有巴尔扎克的文笔，就能好好描述一下这番景象了。我们周围的人，不同的阶层、不同的国籍、不同的年龄段，三天的旅程把这些互不相识的人聚集在一起……
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 除非发生什么事故……那么，这儿的所有人没准就被死亡联系在一起了。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 你太吓人了，我的朋友！也许是消化不良了。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 波洛观察餐车里的旅客：意大利商人、英国男仆、美国推销员、俄国德拉戈米罗夫公主、瑞典太太、玛丽·德贝纳姆、阿巴思诺特上校、德国女仆、匈牙利情侣、麦奎因和雷切特。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 午餐后，雷切特出乎意料地坐在了波洛对面。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: 能借个火吗？我姓雷切特。我想我有幸跟赫赫有名的赫尔克里·波洛先生说话，对吗？
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 您所知正确，先生。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: 在我们国家，人们说话一向开门见山。波洛先生，我希望你能接受我的一个委托。这可是一大笔钱。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 先生，如今我的顾客十分有限，我很少接案子了。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: 波洛先生，我是个有钱人，非常有钱。高处不胜寒啊。我有个敌人。我的生命受到了威胁。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 只有一个敌人吗？
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: 你这话是什么意思？
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 先生，以我的经验来看，如果一个人到了你说的那个地位，往往不止有一个敌人。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: （掏出手枪）我认为自己还不至于遭人暗算，但我要保证自己的安全万无一失。请记住，这可是一大笔钱。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+- 接受委托，保护雷切特
+	jump n209
+- 拒绝委托，离开餐车
+	jump n209
+- 要求更多信息再做决定
+	jump n209
+
+label n209
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: 两万美元能打动你吗？
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 不能。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join rachett 1
+rachett: 如果你还想多要，那可不成，我是个识货的人。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 我也是，雷切特先生。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （站起身）容我说句不客气的话——我不喜欢你那张脸，雷切特先生。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 波洛离开了餐车。雷切特看着他离开，脸上露出阴郁的表情。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 当晚，火车抵达贝尔格莱德。由于大雪，火车加挂了车厢。布克先生搬到雅典车厢，波洛则搬到斯坦布尔－加来车厢的一号房。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join bouc 1
+bouc: 但愿我们不会被大雪堵在路上，我跟你说，我可受不了！
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 九点十五分，火车准时驶出车站，驶入风雪交加的夜晚。
+
+# --- Segment: 旅程继续（原著剧情） ---
+
+label chapter2_without_bouc_start
+# --- Segment: 第二章：独自旅行的开始 ---
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+narrator: 波洛独自一人来到托卡林旅馆的门房处。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （走向门房）有没有我的信件？
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 有三封信和一封电报，先生。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （打开电报，皱眉）你预测的卡斯纳案件有了突破进展，请速回。
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （对门房）烦人。我今晚就得走。辛普朗东方快车什么时候开？
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.0"]
+leave --All--
+join porter 1
+porter: 九点，先生。每年这个时候都不难买票。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 波洛在餐厅独自用餐，观察着其他客人。没有遇到老朋友布克先生，让他感到一丝遗憾。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）布克大概是改了行程，不然应该会在这里遇到他的。也好，这样我能专心阅读案件文件了。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+narrator: 波洛注意到餐厅另一桌的两个美国人，但没有特别在意他们。
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）没有布克的介绍，那位美国老先生也不会来打扰我了。这样也好，我可以安静地思考案件。
+
+# [background arg="train_station_day.png"]
+leave --All--
+narrator: 晚上九点，火车站。波洛独自一人登上辛普朗东方快车。
+
+# [background arg="train_station_day.png"]
+leave --All--
+join conductor 1
+conductor: 晚上好，先生。您在一号房间。
+
+# [background arg="train_station_day.png"]
+leave --All--
+join poirot 1
+poirot: 谢谢。今天车上的旅客多吗？
+
+# [background arg="train_station_day.png"]
+leave --All--
+join conductor 1
+conductor: 太不可思议了，先生，全世界的人都选择在今晚出行！车里已经满满的了。
+
+# [background arg="train_station_day.png"]
+leave --All--
+join poirot 1
+poirot: 哦？那我的行李……
+
+# [background arg="train_station_day.png"]
+leave --All--
+join conductor 1
+conductor: 已经给您安排好了，先生。二等卧铺的七号房，有位哈里斯先生还没来。如果他不来，您就住那里。
+
+# [background arg="train_station_day.png"]
+leave --All--
+join poirot 1
+poirot: 这名字是个好兆头，根据我的狄更斯小说，这位哈里斯先生不会来了。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+narrator: 波洛缓缓地沿着过道走过去，大部分旅客在自己房间外面站着。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 最里面倒数第二间，先生。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+narrator: 波洛走到指定的房间，里面有人正伸手拿行李，是个年轻的高个子的美国人。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 对不起，我想你弄错了。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 你是哈里斯先生吗？
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join mcdonald 1
+mcdonald: 不，我叫麦奎因。
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 火车上没有别的卧铺了，先生，这位先生只能住在这儿了。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join conductor 1
+conductor: 都放好了，先生。您住上铺，七号房。
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: 谢谢。
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.0"]
+leave --All--
+narrator: 火车缓缓驶出车站，东方快车开始了为期三天的贯穿欧洲之旅。
+
+# --- Segment: 第三章：孤独的旅程 ---
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 第二天，波洛独自一人在餐车用餐。没有布克先生的陪伴，他感觉旅程有些单调。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （心想）虽然少了布克的陪伴有些遗憾，但这样我也能专心阅读案件文件。卡斯纳案件的进展确实令人兴奋。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 波洛观察着餐车里的其他旅客，但他没有特别注意任何人。因为没有布克的引荐，雷切特也没有机会接近波洛。
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.0"]
+leave --All--
+narrator: 旅途在平静中继续。波洛专注于他的案件文件，偶尔抬头看看窗外的风景。
+
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.0"]
+leave --All--
+narrator: 东方快车继续在风雪中前行，没有谋杀案，没有复杂的调查，只有一位侦探在思考着即将结束的案件。
+
+# --- Segment: 旅程结束 ---
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+narrator: 三天后，火车平安抵达巴黎。波洛带着他对卡斯纳案件的思考下了车，准备回到伦敦继续他的工作。
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.0"]
+leave --All--
+join poirot 1
+poirot: （自言自语）一次平静的旅程。有时，没有谋杀案的世界也挺好。
+
+# --- Segment: 故事结束 ---
