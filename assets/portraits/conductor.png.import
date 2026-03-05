@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duswmntguculn"
-valid=false
+uid="uid://dc5518v3ntf5o"
+path="res://.godot/imported/conductor.png-ffd5c63960fa838b7dcc3c071dc376ae.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/portraits/conductor.png"
+dest_files=["res://.godot/imported/conductor.png-ffd5c63960fa838b7dcc3c071dc376ae.ctex"]
 
 [params]
 

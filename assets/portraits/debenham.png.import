@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csowa6d0gclrx"
-valid=false
+uid="uid://dal7jg3slufub"
+path="res://.godot/imported/debenham.png-779ecfc3b35029cb15477bc3a61f8ce6.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/portraits/debenham.png"
+dest_files=["res://.godot/imported/debenham.png-779ecfc3b35029cb15477bc3a61f8ce6.ctex"]
 
 [params]
 

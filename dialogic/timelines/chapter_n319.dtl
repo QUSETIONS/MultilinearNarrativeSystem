@@ -1,0 +1,277 @@
+# --- Chapter: 第五章（平行线）：沉睡的代价 ---
+# --- ChapterId: n319 ---
+# --- ChapterOrder: 8 ---
+
+label n319
+# --- Segment: 第五章（平行线）：沉睡的代价 ---
+
+label n320
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 为了应对旅途的疲惫，波洛将柔软的隔音耳塞塞入耳中。车厢里的些许嘈杂、过道上的脚步声，乃至隔壁可能发出的任何惊呼，都被彻底隔绝在了这个寂静的世界之外。
+
+label n321
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 赫尔克里·波洛陷入了深沉的睡眠。在这个风雪交加的夜晚，东方快车上悄然发生了一场血腥的杀戮，而名侦探对此一无所知。
+
+label n322
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 第二天上午，波洛悠然转醒。他拿下耳塞，看了看表，已经是上午十点了。火车静止不动，窗外是高高堆起的积雪。
+
+label n323
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （自言自语）看来我们被大雪困住了。这可真是不幸。不知道餐厅里是否还有热咖啡。
+
+label n324
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+narrator: 波洛洗漱完毕，穿戴整齐后推开房门。过道上的气氛异常凝重，几名乘客聚在一起窃窃私语，脸色苍白。
+
+label n325
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: （突然从一间房里冲出来，抓住波洛的胳膊）波洛！谢天谢地你终于醒了！出大事了！
+
+label n326
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 冷静点，我的老朋友，发生什么了？
+
+label n327
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 谋杀！那个叫雷切特的美国人，死在了他的包厢里！被刺了十几刀！
+
+label n328
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （眉头紧锁）带我去看看。
+
+label n329
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 波洛跟着布克来到了雷切特的房间。希腊医生康斯坦丁正在检查尸体。房间里冷风阵阵，因为窗户是大敞着的。
+
+label n330
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: 波洛先生。如您所见，死者身中数刀，场面极其残忍。死亡时间大概在昨晚午夜到凌晨两点之间。
+
+label n331
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 午夜到凌晨两点……跨度有两个小时。医生，难道无法再精确一些吗？比如根据尸僵的程度？
+
+label n332
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: （摇了摇头）很难。窗户一直开着，房间里的低温极大程度地干扰了我的判断。如果有人能在昨晚听到任何异响，哪怕是一声惨叫，都能帮我锁定时间。
+
+label n333
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 波洛，你的房间就在隔壁！昨晚你难道什么都没听到吗？
+
+label n334
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （感到一丝懊恼）十分抱歉，我的朋友。昨晚风雪声太大，我佩戴了耳塞。我什么都没听到。
+
+label n335
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 上帝啊！连你也没有线索！列车员米歇尔说他整晚都在走廊尽头，没有任何人进出。难道凶手真的是从这扇开着的窗户逃进雪地里的？
+
+label n336
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 不可能。雪地上没有脚印。这是一起密室杀人案，凶手此刻就在这节车厢里。我需要询问所有乘客。
+
+label n337
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 接下来的几个小时里，波洛将餐车征用为审讯室，开始逐一盘问十二名乘客。
+
+label n338
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 然而，事情的进展却出乎意料的艰难。因为波洛错失了昨晚的声音线索，他完全无法找到突破口。
+
+label n339
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （严厉地）麦奎因先生，昨晚一点到两点之间你在哪里？
+
+label n340
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 我和阿巴思诺特上校在我的包厢里聊天，我们一直聊到了凌晨两点多。您可以去问上校。
+
+label n341
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （对阿巴思诺特）上校，麦奎因说的是真的吗？
+
+label n342
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 确实如此，先生。我们一直在谈论印度的局势，直到两点一刻我才回房。他整晚都没有离开过我的视线。
+
+label n343
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛皱起眉头。他没有在半夜醒来，也没有听到什么别的动静，自然无法用其他乘客的行动轨迹来反驳这两人的不在场证明。
+
+label n344
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: （激动地挥舞着手绢）哦，波洛先生！昨晚我的包厢里进了一个男人！我发誓！我一直按铃，可那个列车员好半天才来！
+
+label n345
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 那是几点的事，哈巴特太太？
+
+label n346
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: 我不知道！当时黑漆漆的，我吓得要死，哪有心情看表！你们应该去查那个列车员，他肯定有问题！
+
+label n347
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛感到深深的无力。如果他昨晚醒着，哪怕只是听到哈巴特太太按铃的时间，他也能确定嫌疑人的行动时间线。但现在，一切都成了糊涂账。
+
+label n348
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （询问列车员）米歇尔，昨晚你看到了什么？有没有人走动？
+
+label n349
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 长官，我发誓，除了去回应哈巴特太太的铃声，我一直坐在走廊尽头的椅子上。绝对没有外人上车，也没有人穿着奇怪的衣服在走廊晃悠。
+
+label n350
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 如果波洛昨晚看到了那个穿着猩红色睡衣的女人，他就能立刻戳穿米歇尔的谎言。然而，缺乏这一关键证据，他只能接受米歇尔的证词。
+
+label n351
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （疲惫地揉了揉太阳穴）十二名乘客。每个人都有另一个人提供的不在场证明。这就像是一张严丝合缝的网，找不到任何突破口。
+
+label n352
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 波洛，难道你也没有办法了吗？南斯拉夫的救援队已经在清理铁路了，警察最快明天就会登车！
+
+label n353
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我的朋友，我需要动机。我去搜查了所有人的行李，试图寻找凶器或者血衣，但一无所获。真凶显然有充足的时间将证据处理掉。
+
+label n354
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 波洛再次回到案发现场。现场被破坏得很严重，除了满地的血迹，他只在烟灰缸里找到了一张烧焦的纸片，隐约能拼凑出‘黛西·阿姆斯特朗’的字样。
+
+label n355
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （看着纸片）雷切特就是那个绑架案的主犯卡塞蒂。但这又如何呢？这十二个人中，谁是阿姆斯特朗家的人？似乎每个人都像，又似乎每个人都不是。
+
+label n356
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 因为错失了审讯中用来施压的关键矛盾点（比如半夜1点15分的假按铃），波洛无法让任何一个嫌疑人露出破绽。每个人都戴着完美的面具。
+
+label n357
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.5"]
+leave --All--
+narrator: 第三天清晨。积雪终于被挖通。随着一声长鸣，火车缓缓驶入了最近的南斯拉夫车站。大批武装警察包围了列车。
+
+label n358
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: （绝望地）完了。警方登车了。波洛，你有什么结论可以交给他们吗？
+
+label n359
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （缓缓摇头）没有，我的朋友。这是一场完美的谋杀。每个人都无懈可击。
+
+label n360
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+narrator: 南斯拉夫警长粗暴地接管了现场。在简短而粗糙的搜查后，他们似乎只想要一个能用来结案的替罪羊。
+
+label n361
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+narrator: 几个小时后，站台上爆发出一阵吵闹。警察们强行将那个嗓门很大的意大利推销员按在了雪地上，并从他的行李深处搜出了一把带血的匕首。
+
+label n362
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join italian 1
+italian: 不！你们这是栽赃！那是谁塞进我箱子里的！放开我！我是无辜的！
+
+label n363
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+narrator: 没有人理会他的哀嚎。警方迅速锁定了嫌疑人，宣布破案。真正的策划者们在人群的后方，隐秘地交换着如释重负的眼神。
+
+label n364
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.5"]
+leave --All--
+narrator: 火车再次启动，向着加来驶去。波洛独自坐在包厢里，看着窗外倒退的风景，手里捏着那副隔音耳塞。
+
+label n365
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （长叹一声）赫尔克里·波洛的灰色脑细胞，竟然被这小小的橡胶塞给击败了。我错过了一场交响乐，也就错过了揪出指挥者的机会。
+
+label n366
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.5"]
+leave --All--
+narrator: 无辜者将替人受过，而在暗夜中执行了私人审判的十二人，将永远带着他们的秘密隐匿于茫茫人海。
+
+label n367
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.5"]
+leave --All--
+narrator: 这不再是名侦探的辉煌胜利，而是一场无声的挫败。
+	[signal arg="next_chapter:chapter_n368"]
+	[end_timeline]

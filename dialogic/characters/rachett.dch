@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "rachett",
 "description": "",
 "display_name": "雷切特",
 "mirror": false,
 "nicknames": ["雷切特"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"rachett": {
+"export_overrides": {
+"image": "res://assets/portraits/rachett.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

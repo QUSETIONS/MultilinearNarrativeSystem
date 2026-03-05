@@ -1,0 +1,718 @@
+# --- Chapter: 第五章：罪行 ---
+# --- ChapterId: n369 ---
+# --- ChapterOrder: 10 ---
+
+label n369
+# --- Segment: 第五章：罪行 ---
+
+label n370
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 波洛觉得一时之间难以入睡。首先是没有了火车的晃动。如果外面是个车站，也实在太安静了。相比之下，火车里的声音倒是异常响亮。他能听见窗边铃铛的碰撞声——走动声、按水龙头的咔嗒声、自来水流动的声音、水溅出来的声音，然后水龙头又咔嗒一声关上了。外面过道上的脚步声，有人跟着卧室的拖鞋走了过去。
+
+label n371
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 赫尔克里·波洛躺在床上盯着天花板。外面的车站怎么这么安静？他喉咙发干——忘记要一瓶矿泉水了。他看了看手表。才一点十五分。他想按铃向列车员要一瓶矿泉水，手指刚要伸向电铃，但又停下了。在寂静中，他听见‘叮’的一声。列车员不可能同时照顾到每个铃声。
+
+label n372
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 叮……叮……叮……铃声响了又响。列车员在哪儿？有人不耐烦了。叮……无论是谁，仍在固执地按着按钮。突然，过道上响起了一阵急促的脚步声，列车员来了，敲了敲波洛房间不远处的门。
+
+label n373
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+narrator: 然后传来了说话声——列车员的声音，恭敬而抱歉。还有一个女人的声音，一再坚持且喋喋不休。哈巴特太太！波洛暗自发笑。
+
+label n374
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+narrator: 这场口角——如果是的话——持续了一阵子，哈巴特太太和列车员的说话比刚是九比一！最终，事情似乎是解决了。波洛清楚地听见‘晚安，太太’，还有关门声。
+
+label n375
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 他的手指按了按电铃。列车员立刻出现了。满头大汗又闷闷不乐。
+
+label n376
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 请帮我拿瓶矿泉水吧。
+
+label n377
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 好的，先生。
+
+label n378
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+narrator: 大概是因为波洛冲他眨了眨眼睛，列车员诉起委屈来：
+
+label n379
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 那个美国老太太——您想想我跟她在一块的时候！她坚持说——死活坚持——她房间里有个男人！您想想，先生，这么小的地方，他能藏在哪儿？我跟她争辩了一下，我说这是不可能的。可她还是坚持说，她醒了发现有个男人在那儿。于是我问，那个女人怎么能出去后还能把门闩上。可她就是听不进去，好像还嫌我们不够麻烦似的，这大雪——
+
+label n380
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 大雪？
+
+label n381
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 是啊，先生，您没注意到吗？火车停了。我们困在雪堆里了，天知道我们还得在这儿待多久。我记得有一次我们待了七天。
+
+label n382
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我们这会儿在哪儿？
+
+label n383
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 在温科夫齐和布罗德之间。
+
+label n384
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 唉，唉。
+
+label n385
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 列车员退了出去，回来时带来了矿泉水。
+
+label n386
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 晚安，先生。
+
+label n387
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 波洛喝了一杯水，好让自己安静地睡着。快要睡着的时候，他再次被惊醒了。这一次，好像是什么重的东西砰的一声撞在了他的门上。
+
+label n388
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 他跳起来打开门向外看，什么也没看到。可是在右边，离他有段距离的过道上，有个裹着一件猩红色和服式睡衣的女人走开了。在另一端，列车员坐在小椅子上，正在一大张纸上填写什么。周围都是死一般的寂静。
+
+label n389
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （心想）我肯定是发神经了。
+
+label n390
+[background arg="res://assets/backgrounds/train_compartment_night.png" fade="1.5"]
+leave --All--
+narrator: 波洛说着又回到了床上。这次他一觉睡到了早上。醒来时火车仍然停滞不前。他拉开窗帘向外看，只见火车周围堆满了厚厚的积雪。他看了一眼手表，已经九点多了。
+
+label n391
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 九点四十五分，他和平时一样一身整洁而时髦的打扮，向餐车走去，里面一片唉声叹气。旅客们之前可能存在的任何隔阂已经完全打破了，所有人被一个共同的不幸联系在了一起。
+
+label n392
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: 我女儿还说这是世界上最简单的方式，坐上火车就直接到帕鲁斯了。现在我们可能要在这儿困上好几天，而且我的船后天就要开了，我还能赶上吗？我甚至都不能打个电报去退票！我气得都不想再说这个了！
+
+label n393
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join italian 1
+italian: 我在米兰还有要紧的事！
+
+label n394
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join american_gentleman 1
+american_gentleman: 真是太糟糕了，太太。
+
+label n395
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 大块头美国人安慰性地说火车还是有希望把时间补上的。
+
+label n396
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join swedish_lady 1
+swedish_lady: 我姐姐，还有她的孩子们都在等着我，也没办法通知他们，他们会怎么想啊？肯定会认为我出事了。
+
+label n397
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join debenham 1
+debenham: 我们要在这儿待多久？没人知道吗？
+
+label n398
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 玛丽·德贝纳姆的声音里有种不耐烦，但波洛注意到，托罗斯快车停车检查时她的那种近乎疯狂的焦虑已经消失不见了。
+
+label n399
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: 这火车上没人了解情况，也没人想要做点事。只是一群没用的外国人。哼，要是在我们国家，至少有人会想办法做点什么的！
+
+label n400
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 你是铁路公司的董事吧，先生？你能说一下——
+
+label n401
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 不不，你把我和我的朋友布克先生弄混了。
+
+label n402
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 哦，对不起。
+
+label n403
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 没关系，这很正常。我现在住在他之前的房间里。
+
+label n404
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 布克先生不在餐车里。波洛四处看看还有谁不在。德拉戈米罗夫公主和那对匈牙利情侣都不在。还有雷切特和他的仆人，以及那个德国女仆也不在。
+
+label n405
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join swedish_lady 1
+swedish_lady: 我真傻，这么不争气地回鼻子。不管发生什么事，都会好起来的。
+
+label n406
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 这的确很好，我们会在这儿待上好几天的。
+
+label n407
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: 这里究竟是哪个国家啊？
+
+label n408
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 得知这里是南斯拉夫后，哈巴特太太说：
+
+label n409
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: 哦，一个巴尔干国家，还能指望什么？
+
+label n410
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你是最有耐心的一个了，小姐。
+
+label n411
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join debenham 1
+debenham: 一个人能做什么？
+
+label n412
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你真像个哲学家，小姐。
+
+label n413
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join debenham 1
+debenham: 那意味着一种超然而置身事外的态度。我觉得我的态度更为自私。我已经学会如何不浪费感情了。
+
+label n414
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 她的回答更像是在自言自语，因为她甚至都没看他一眼。她的目光越过波洛，停在窗外厚重的积雪上。
+
+label n415
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你很坚强，小姐。我觉得你比我们所有人都坚强。
+
+label n416
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join debenham 1
+debenham: 哦，不，不，真的。我知道有个人比我坚强得多。
+
+label n417
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 这个人是？
+
+label n418
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 她好像突然醒悟过来，意识到自己在跟一个陌生人、一个外国人说话。可直到今天早上，她也就跟他说了几句话而已。
+
+label n419
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join debenham 1
+debenham: 呃，比如那个老太太，瑟——哈巴特太太，可很有吸引力。她只要举起个小指头，客气地说一句话，全车人都得为她奔走。
+
+label n420
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 但那是因为她是这条线路的董事的朋友布克先生，而不是性格坚强。也许你也注意到他了。
+
+label n421
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join debenham 1
+debenham: （笑了）
+
+label n422
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 波洛正在听那位瑞典太太述说她的传教宗旨时，一位列车员——不是他所在车厢的列车员，而是个瘦削的高个子——走进餐车，来到他身旁。
+
+label n423
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 布克先生问您是否愿意劳驾去他那里坐一会儿。
+
+label n424
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 当然。
+
+label n425
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 波洛站起来，向瑞典太太道了歉，跟着向导走出餐车。此人正是波洛自己车厢的列车员米歇尔。
+
+label n426
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+narrator: 波洛跟着向导穿过自己车厢的过道，来到下一节车厢的过道上。那人敲了敲门，然后站在一旁请波洛进去。
+
+label n427
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 这不是布克先生自己的那个房间，面积更大一些。不过仍然给人以拥挤的感觉。布克先生坐在对面角落的一个小座位上。对面还有一个黑皮肤的小个子男人，正在望着窗外的雪。一个身材高大、穿蓝色制服的男人（列车长）站在那儿，还有波洛自己车厢的列车员，两人站在那儿，几乎堵住了波洛的去路。
+
+label n428
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 啊，我的好朋友，进来吧，我们需要你。
+
+label n429
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 列车长挪了挪身子，波洛才得以从另外两个人中间挤过去，坐到他朋友对面。布克先生脸上带着一种平静而绝望的语气。
+
+label n430
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 出什么事了？
+
+label n431
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 问得好！首先是这场雪——这次堵塞。现在又——
+
+label n432
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 他顿住了。列车员发出了压抑的喘息声。
+
+label n433
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 现在有一个旅客死在卧铺上——被刺死。
+
+label n434
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 一个旅客？哪个旅客？
+
+label n435
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 一个美国人，姓——姓——
+
+label n436
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 布克翻查了一下眼前的笔记。
+
+label n437
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 雷切特。不错，是姓雷切特吧？
+
+label n438
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 是的，先生。
+
+label n439
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 列车员米歇尔深吸了一口气说道，波洛看看他，对方面如死灰。
+
+label n440
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你还是让他坐下吧，不然他要晕了。
+
+label n441
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 列车长挪了挪身子，列车员跌坐在角落里，把脸埋进了双手之中。
+
+label n442
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 事情很严重！
+
+label n443
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 确实非常严重。首先，谋杀本身就是最严重的灾难。然而不仅如此。我们被堵在这里，可能会待上几个小时——不是几小时，而是几天！还有一个情况，我们每经过一个国家，几乎都有该国的警察在车上，但是南斯拉夫没有。你明白了吗？
+
+label n444
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 处境确实很艰难。
+
+label n445
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 还有更糟的。康斯坦丁医生——我忘记介绍了。康斯坦丁医生，波洛先生。
+
+label n446
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 黑皮肤的小个子男人欠了欠身，波洛也回了礼。
+
+label n447
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: 康斯坦丁医生认为死者的死亡时间大约是凌晨一点钟。在这个问题上很难做精确的判断，不过我想我能断定死亡时间是在半夜十二点到凌晨两点之间。
+
+label n448
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 最后一次看见雷切特先生活着，是什么时间？
+
+label n449
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 据说一点二十分的时候他还跟列车员说过话。
+
+label n450
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 没错，我听见了。这是已知的最后一个消息吗？
+
+label n451
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 是的。
+
+label n452
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 波洛转向医生，医生继续说道：
+
+label n453
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: 雷切特房间的窗户是大敞着的，这不由得让人猜测凶手是从窗户逃走的。但我认为开窗是个假象，任何人跳窗逃走都会在雪地上留下明显的脚印。但是并没有。
+
+label n454
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 谋杀是何时被发现的？
+
+label n455
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 这位雷切特先生的仆人今早敲了几次门都没有动静。后来，就在半小时之前，餐车服务员过来了，想问问先生是否需要吃午饭。这是十一点时的事。
+
+label n456
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 我用自己的钥匙给他开了门，可里面还有链条，打不开。没有人应门，里面静静的，很冷——冷极了。窗户是开着的，雪花飘了进来。我想先生也许生病了，便叫来了列车长。我们弄断锁链进屋一看，他——啊，太可怕了！
+
+label n457
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 他又把脸埋进了双手之中。
+
+label n458
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 门是锁上的，里面也有锁链锁着，不是自杀？
+
+label n459
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 一个人会朝自己身上刺十刀、十二刀甚至十五刀自杀吗？
+
+label n460
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （睁大了双眼）太残忍了。
+
+label n461
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 是个女人，看样子肯定是个女人，只有女人才会那样刺。
+
+label n462
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 康斯坦丁医生陷入了沉思，脸也皱成一团。
+
+label n463
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: 那得是个强壮的女人。我不愿意说复杂的技术性问题，那只会更加混乱，但我可以肯定地说，有一两刀刺得很深，连肌肉上坚硬的韧带都刺穿了。
+
+label n464
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 很明显，作案手法很不科学。
+
+label n465
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: 还有更不科学的。这么多刀都是随意乱刺的，有几刀只是划了一下，几乎没造成什么损伤。看起来就像是有人闭着眼睛，盲目而疯狂地乱刺一气。
+
+label n466
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 是个女人，
+
+label n467
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 列车长郑重地点点头，大家都不说话了。
+
+label n468
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我有件事可供大家参考。雷切特先生昨天跟我说过，他正处于危险之中。据我的理解，他说‘他们’要干掉他。
+
+label n469
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 那‘他们’就不是女人了，而是个歹徒或匪帮。如果这样的话，寻仇的手法似乎太业余了。
+
+label n470
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 列车长一脸痛苦。
+
+label n471
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 火车上有个美国人——嚼着口香糖的那个——你知道我说的是谁吗？
+
+label n472
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 他问的是波洛车厢的列车员。米歇尔点点头。
+
+label n473
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 他会不会……我是说，你看见他进出房间了吗？
+
+label n474
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 不，先生，我没看到他进出雷切特先生的房间。当然，也许我没注意到。
+
+label n475
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 啊，我的朋友，你能理解我请你做的事情了吧。你来指挥这次调查！我知道你的名气，也了解你的做事方式。对你来说，这是个理想的案子。查查所有这些人的背景，这些都需要时间。你看，对我们而言这非常严重。等到南斯拉夫警察过来的时候，如果我们能够向他们提供解决方案，那问题就简单了！不然就会麻烦重重。无辜的人也会被牵连其中，谁知道呢！然而，如果你解开了这个谜题！我们就可以说：‘发生了一起凶杀案件，这就是凶手。’不，不，别拒绝我。
+
+label n476
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+- 接受布克的委托，亲自破案（原著线）
+	set {poirot_takes_case} = "yes"
+	jump n477
+- 委婉拒绝，让南斯拉夫警方处理（平行线：傲慢的制服）
+	set {poirot_takes_case} = "no"
+	jump n477
+
+label n477
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我的老朋友，这可是越俎代庖。既然案件发生在南斯拉夫境内，我们还是应该遵守法律，等待当地警方的介入吧。
+
+label n478
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: （绝望地抱住头）哦，天哪！我的东方快车完蛋了，可怜的国际客车公司名誉扫地了！
+
+label n479
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （颇为激动）你的信任打动了我，我的朋友。就像你说的，这案子并不难。昨天我还在想，现在我们被堵在这儿，将要度过很长一段无聊的时间。而现在——我已经有事可做了。
+
+label n480
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 这么说，你是答应了？
+
+label n481
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 是的，你就把案子交给我吧。
+
+label n482
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 太好了——我们都听你的调配。
+
+label n483
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 不过我们现在先不说这些。我需要一个斯坦布尔－加来车厢的平面图，标注着每个人所在的房间。我还要看看他们的护照和车票。
+
+label n484
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 米歇尔会给你这些的。
+
+label n485
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 列车员米歇尔离开了房间。
+
+label n486
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 车上还有哪些旅客？
+
+label n487
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 在这节车厢，只有康斯坦丁医生和我。从布加勒斯特过来的车厢里，只有一位跛脚的老先生。他跟列车员很熟。除此之外就是普通车厢了，但跟我们关系不大，因为昨天晚饭之后它们就被锁上了。斯坦布尔－加来车厢前面，就只有餐车了。
+
+label n488
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我们好像得在斯坦布尔－加来车厢里寻找凶手了。
+
+label n489
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 他转向希腊人，后者点了点头。
+
+label n490
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join constantine 1
+constantine: 晚上十二点半时，我们冲进了雪堆里。从那以后，没人能离开火车。
+
+label n491
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 凶手就在我们身边——现在还在这列火车上。
+
+label n492
+# --- Segment: 第五章结束 ---
+
+if {poirot_takes_case} == "yes":
+	[signal arg="next_chapter:chapter_n493"]
+	[end_timeline]
+elif {poirot_takes_case} == "no":
+	[signal arg="next_chapter:chapter_n493"]
+	[end_timeline]
+else:
+	[signal arg="next_chapter:chapter_n493"]
+	[end_timeline]

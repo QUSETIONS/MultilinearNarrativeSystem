@@ -1,0 +1,17 @@
+{
+"class_name": "DialogicCharacter",
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+},
+"default_portrait": "",
+"description": "",
+"display_name": "雅典车厢列车员",
+"mirror": false,
+"nicknames": ["雅典车厢列车员"],
+"offset": Vector2(0, 0),
+"portraits": {},
+"scale": 1.0
+}

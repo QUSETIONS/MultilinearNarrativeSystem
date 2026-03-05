@@ -15,6 +15,20 @@ ASSETS_DIR_PORTRAITS = Path("assets/portraits")
 CHAPTER_PREFIX = "chapter_"
 ALLOWED_NODE_TYPES = {"segment", "chapter", "dialogue", "choice", "branch"}
 
+BACKGROUND_ALIASES = {
+    "Aleppo Station Night": "station_night.png",
+    "Taurus Express Inside": "train_compartment.png",
+    "Taurus Express Window": "train_window.png",
+    "Marmara Hotel Lobby": "hotel_lobby.png",
+    "Marmara Hotel Restaurant": "hotel_restaurant.png",
+    "Bosphorus View": "hotel_lounge.png",
+    "Train Station SNCP": "train_station_night.png",
+    "Orient Express Corridor": "train_corridor.png",
+    "Orient Express Dining Car": "train_dining_car.png",
+    "Orient Express Compartment": "train_compartment_night.png",
+    "Snowy Landscape": "mountain_scenery.png",
+}
+
 
 class ParserError(Exception):
     def __init__(self, code: str, message: str):
@@ -667,19 +681,22 @@ def build_chapter_graph(
                 choice_text=str(edge.get("choice_text", "")),
             )
 
-    entry_chapter_id = ""
-    if isinstance(entry_points, dict):
-        for value in entry_points.values():
-            entry_node_id = str(value).strip()
-            if entry_node_id and entry_node_id in node_to_chapter:
-                entry_chapter_id = node_to_chapter[entry_node_id]
-                break
-    if not entry_chapter_id:
-        entry_chapter_id = str(chapters[0]["id"]) if chapters else ""
+    has_incoming = {str(edge.get("to_chapter_id", "")).strip() for edge in all_edges}
+    detected_entries = [str(chapter["id"]) for chapter in chapters if str(chapter["id"]) not in has_incoming]
+    
+    # Fallback to chapters[0] if somehow everything has incoming edges
+    if not detected_entries and chapters:
+        detected_entries = [str(chapters[0]["id"])]
+
+    # We keep entry_chapter_id as the first one for backwards compatibility,
+    # but introduce "entry_points" array for multiple parallel roots.
+    primary_entry = detected_entries[0] if detected_entries else ""
+
     return {
-        "version": "1.0",
-        "entry_chapter_id": entry_chapter_id,
-        "entry_timeline_id": f"{CHAPTER_PREFIX}{entry_chapter_id}" if entry_chapter_id else "",
+        "version": "1.1",
+        "entry_chapter_id": primary_entry,
+        "entry_timeline_id": f"{CHAPTER_PREFIX}{primary_entry}" if primary_entry else "",
+        "entry_points": detected_entries,
         "nodes": chapter_nodes,
         "edges": all_edges,
     }
@@ -759,12 +776,46 @@ def collect_jump_targets(nodes: List[dict]) -> Set[str]:
     return jump_targets
 
 
-def background_line(bg_file: str) -> str:
-    clean_bg = _clean_inline(str(bg_file))
-    if (ASSETS_DIR_BG / clean_bg).exists():
-        return f"[background arg=\"res://assets/backgrounds/{clean_bg}\" fade=\"1.0\"]"
-    return f"# [background arg=\"{clean_bg}\"]"
+def background_line(bg_ref: str) -> str:
+    clean_bg = _clean_inline(str(bg_ref)).strip()
+    if not clean_bg:
+        return ""
 
+    if clean_bg.startswith("assets/backgrounds/"):
+        clean_bg = clean_bg[len("assets/backgrounds/"):]
+    elif clean_bg.startswith("res://assets/backgrounds/"):
+        clean_bg = clean_bg[len("res://assets/backgrounds/"):]
+
+    # Try common extensions if missing
+    exts = ["", ".png", ".PNG", ".jpg", ".JPG", ".jpeg"]
+    for ext in exts:
+        test_file = clean_bg + ext
+        if (Path(".") / "assets" / "backgrounds" / test_file).exists():
+            return f'[background arg="res://assets/backgrounds/{test_file}" fade="1.5"]'
+    
+    # Check aliases for descriptive names
+    alias = BACKGROUND_ALIASES.get(clean_bg)
+    if alias and (Path(".") / "assets" / "backgrounds" / alias).exists():
+        return f'[background arg="res://assets/backgrounds/{alias}" fade="1.5"]'
+    
+    # Fallback to direct arg if it looks like a path
+    if "." in clean_bg:
+        return f'[background arg="res://assets/backgrounds/{clean_bg}" fade="1.5"]'
+        
+    return f'# [background missing="{clean_bg}"]'
+
+def music_line(music_ref: str) -> str:
+    clean_music = _clean_inline(str(music_ref)).strip()
+    if not clean_music:
+        return ""
+        
+    if clean_music.startswith("assets/bgm/"):
+        clean_music = clean_music[len("assets/bgm/"):]
+    elif clean_music.startswith("res://assets/bgm/"):
+        clean_music = clean_music[len("res://assets/bgm/"):]
+        
+    # We'll just emit a music command, Godot will handle the path logic
+    return f'[music arg="res://assets/bgm/{clean_music}" fade="1.0"]'
 
 def resolve_next_target(
     next_id: str,
@@ -858,6 +909,10 @@ def render_chapter_timeline(
             bg = node.get("bg")
             if bg:
                 lines.append(background_line(str(bg)))
+            
+            music = node.get("music")
+            if music:
+                lines.append(music_line(str(music)))
 
             text = sanitize_for_timeline(str(node.get("text", "")), text_policy=text_policy)
             speaker = _clean_inline(str(node.get("speaker", ""))).strip()
@@ -893,6 +948,13 @@ def render_chapter_timeline(
             bg = node.get("bg")
             if bg:
                 lines.append(background_line(str(bg)))
+            
+            music = node.get("music")
+            if music:
+                lines.append(music_line(str(music)))
+
+            if str(chapter_id) == "32":
+                lines.append('[wait time="1.0"]')
 
             for choice in node.get("choices", []):
                 choice_text = sanitize_for_timeline(str(choice.get("text", "")), text_policy=text_policy)
@@ -980,6 +1042,10 @@ def render_legacy_timeline(
             bg = node.get("bg")
             if bg:
                 lines.append(background_line(str(bg)))
+            
+            music = node.get("music")
+            if music:
+                lines.append(music_line(str(music)))
 
             text = sanitize_for_timeline(str(node.get("text", "")), text_policy=text_policy)
             speaker = _clean_inline(str(node.get("speaker", ""))).strip()

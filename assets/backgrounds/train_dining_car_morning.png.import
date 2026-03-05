@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8iu23ohjjkwn"
-valid=false
+uid="uid://b01sglmw53a1p"
+path="res://.godot/imported/train_dining_car_morning.png-fbb4ab65107db0fdc89d53a840c4364e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/backgrounds/train_dining_car_morning.png"
+dest_files=["res://.godot/imported/train_dining_car_morning.png-fbb4ab65107db0fdc89d53a840c4364e.ctex"]
 
 [params]
 

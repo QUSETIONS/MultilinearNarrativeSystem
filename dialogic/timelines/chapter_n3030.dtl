@@ -1,0 +1,279 @@
+# --- Chapter: 第二十九章：第二次会见上校 ---
+# --- ChapterId: n3030 ---
+# --- ChapterOrder: 49 ---
+
+# --- Segment: 第二十九章：第二次会见上校 ---
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 显然，再次被叫进餐车问话令阿巴思诺特上校十分恼怒。他面色冷峻地坐了下来，说道：
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 怎么了？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 很抱歉还要麻烦您一次，但是我想您还能给我们提供一些信息。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 真的吗？我不这么认为。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 首先，您见过这根烟斗通条吗？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 见过。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 是您的吗？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 不知道。你知道，我又没在上面做私人标记。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您知道吗，阿巴思诺特上校，在斯坦布尔－加来车厢的旅客中，您是唯一抽烟斗的人。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 这么说，可能是我的。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您知道是在哪里发现它的吗？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 不知道。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 在被害人的尸体旁边发现的。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 阿巴思诺特上校扬了扬眉毛。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您能否告诉我们，阿巴思诺特上校，东西怎么会在那里出现？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 如果你是问是不是我扔在那里的，那么，不是我。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您有没有进过雷切特的房间？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 我甚至都没跟这人说过话。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您从未跟他说过话，也没有谋杀他？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 如果是我杀了他，我不可能对你说真话。事实上，我确实没有谋杀这家伙。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 啊，好吧，这不重要。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 你说什么？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我说这不重要。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 哦！
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 阿巴思诺特一脸惊讶，不安地盯着波洛。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 因为，你瞧，烟斗通条，无关紧要。我自己还能想出十一种完美的理由来解释它的出现。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我想见您，其实是为了另外一件事。也许，德贝纳姆小姐已经告诉您了，我在科尼亚车站上无意中听到了她对你说的几句话？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 阿巴思诺特没有回答。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 她说：'不是现在。等一切都结束了，等事情过去了。'您知道这几句话是什么意思吗？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 很抱歉，波洛先生，但是我必须拒绝回答这个问题。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 为什么？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 我建议你还是问德贝纳姆小姐本人这些话是什么意思吧。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我问过了。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 结果呢，她拒绝告诉你？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 是的。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 那么我想这再明显不过了——即便对你——我会守口如瓶的。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你不会泄露那个女孩的秘密？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 可以这么理解，如果你愿意。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 德贝纳姆小姐告诉我，这些话说的是她的私事。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 那你为什么不接受这个解释呢？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 因为，阿巴思诺特上校，德贝纳姆小姐在这起案件中可以说是非常可疑。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 胡说！
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 这并非胡说。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 你没有任何理由怀疑她。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 在小黛西·阿姆斯特朗被绑架的那段时间，德贝纳姆小姐是他们家的家庭教师，难道这个理由也不算吗？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 死一般的沉默。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您瞧，我们知道的比您想的更多。如果德贝纳姆小姐是清白的，她为什么要隐瞒这个事实？她为什么告诉我她从未去过美国？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 也许你弄错了？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我没弄错。德贝纳姆小姐为什么要对我撒谎？
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join arbuthnot 1
+arbuthnot: 你最好去问她。我还是认为你弄错了。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛抬高了声音叫人。一个服务员从餐车另一端走进来。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 问问十一号房间的英国小姐，可否愿意来一下。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join waiter 1
+waiter: 好的，先生。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 服务员走了。四个人沉默地坐着。阿巴思诺特上校的脸像是木刻的一般，僵硬且没有表情。服务员回来了。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join waiter 1
+waiter: 那位小姐就来了，先生。
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 一两分钟后，玛丽·德贝纳姆走进餐车。
+
+# --- Segment: 第二十九章结束 ---

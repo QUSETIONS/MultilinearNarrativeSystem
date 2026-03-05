@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bii5gn087uyg3"
-valid=false
+uid="uid://dqkwod8nv6ofu"
+path="res://.godot/imported/station_night.png-e9dcc9947af8cfb47c720d4eb7b51bb9.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/backgrounds/station_night.png"
+dest_files=["res://.godot/imported/station_night.png-e9dcc9947af8cfb47c720d4eb7b51bb9.ctex"]
 
 [params]
 

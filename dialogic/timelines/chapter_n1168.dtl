@@ -1,0 +1,638 @@
+# --- Chapter: 第六章：一个女人 ---
+# --- ChapterId: n1168 ---
+# --- ChapterOrder: 26 ---
+
+# --- Segment: 第六章：一个女人 ---
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 首先，我得和那位年轻的麦奎因先生谈谈。他也许能给我们提供有价值的信息。
+	[signal arg="next_chapter:chapter_n537/n539"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 当然。
+	[signal arg="next_chapter:chapter_n537/n540"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 布克先生转向列车长，吩咐他去请麦奎因先生。列车长离开了车厢。
+	[signal arg="next_chapter:chapter_n537/n541"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 列车员带着一沓护照和车票回到房间。布克先生接了过去。
+	[signal arg="next_chapter:chapter_n537/n542"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 谢谢你，米歇尔。我想，你最好还是回自己的岗位上去吧。稍后我们会正式听取你的证词。
+	[signal arg="next_chapter:chapter_n537/n543"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 米歇尔也离开了车厢。
+	[signal arg="next_chapter:chapter_n537/n544"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 见过年轻的麦奎因之后，也许得请医生和我去一趟死者的房间。
+	[signal arg="next_chapter:chapter_n537/n545"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 当然。
+	[signal arg="next_chapter:chapter_n537/n546"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 就在这时，列车长带着赫克托·麦奎因回来了。
+	[signal arg="next_chapter:chapter_n537/n547"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 这里有点挤。坐我这儿吧，麦奎因先生。波洛先生坐对面——就是这样。
+	[signal arg="next_chapter:chapter_n537/n548"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 布克先生转向列车长。
+	[signal arg="next_chapter:chapter_n537/n549"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 把餐车里的人全部都请出去。空出来给波洛先生用。你在那里跟旅客谈话可以吧，亲爱的？
+	[signal arg="next_chapter:chapter_n537/n550"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 好的，那里再合适不过了。
+	[signal arg="next_chapter:chapter_n537/n551"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因站在那儿，瞧瞧这个，看看那个，他听不太懂连珠炮似的法语。
+	[signal arg="next_chapter:chapter_n537/n552"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: （吃力地用法语）出什么事了？为什么——
+	[signal arg="next_chapter:chapter_n537/n553"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛做了一个有力的手势，示意他坐在角落那儿。麦奎因坐了下来。
+	[signal arg="next_chapter:chapter_n537/n554"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: （换回英语）车上发生什么事了？出什么事了吗？
+	[signal arg="next_chapter:chapter_n537/n555"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因又看了一眼房间里的人。
+	[signal arg="next_chapter:chapter_n537/n556"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 没错，出事了。你对这个打击要做好思想准备。你的主人，雷切特先生，死了。
+	[signal arg="next_chapter:chapter_n537/n557"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因握着嘴吹了声口哨。他眼睛一亮，除此以外，脸上没有任何震惊和痛苦的表情。
+	[signal arg="next_chapter:chapter_n537/n558"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 这么说他们还是干掉了。
+	[signal arg="next_chapter:chapter_n537/n559"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你这话究竟是什么意思，麦奎因先生？
+	[signal arg="next_chapter:chapter_n537/n560"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因犹豫着。
+	[signal arg="next_chapter:chapter_n537/n561"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你是在假定雷切特先生是被谋杀的吗？
+	[signal arg="next_chapter:chapter_n537/n562"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 不是吗？
+	[signal arg="next_chapter:chapter_n537/n563"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 这次麦奎因倒是惊讶了。
+	[signal arg="next_chapter:chapter_n537/n564"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 啊，是的。你是说他只是死在睡梦中吗？啊，这老头很强壮啊——很强壮——
+	[signal arg="next_chapter:chapter_n537/n565"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 他停住了，为自己的直言不讳而茫然无措。
+	[signal arg="next_chapter:chapter_n537/n566"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 不，不，你的假设非常正确。雷切特先生是被谋杀的，被刺死的。但我想知道你为什么这么肯定这是一起谋杀，而不是正常死亡。
+	[signal arg="next_chapter:chapter_n537/n567"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因又犹豫了。
+	[signal arg="next_chapter:chapter_n537/n568"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 我得搞清楚，你到底是谁？从哪儿来的？
+	[signal arg="next_chapter:chapter_n537/n569"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我是受国际客车公司委托。
+	[signal arg="next_chapter:chapter_n537/n570"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我是个侦探，叫赫尔克里·波洛。
+	[signal arg="next_chapter:chapter_n537/n571"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 哦，是吗。
+	[signal arg="next_chapter:chapter_n537/n572"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因打量着波洛的衣服。
+	[signal arg="next_chapter:chapter_n537/n573"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你也许听过这个名字。
+	[signal arg="next_chapter:chapter_n537/n574"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 嗯，好像有点儿印象，不过我一直以为是个做女装的裁缝。
+	[signal arg="next_chapter:chapter_n537/n575"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （嫌恶地）太不可思议了！
+	[signal arg="next_chapter:chapter_n537/n576"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 什么不可思议？
+	[signal arg="next_chapter:chapter_n537/n577"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 没什么。我们先说说眼前这件事吧。我要告诉你，麦奎因先生，你知道的关于死者的一切。你是他的亲戚吗？
+	[signal arg="next_chapter:chapter_n537/n578"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 不，我——以前是——他的秘书。
+	[signal arg="next_chapter:chapter_n537/n579"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 这份工作你做多久？
+	[signal arg="next_chapter:chapter_n537/n580"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 只有一年多。
+	[signal arg="next_chapter:chapter_n537/n581"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 请告诉我你知道的所有事情。
+	[signal arg="next_chapter:chapter_n537/n582"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 呃，一年多以前我在波斯遇到了雷切特先生——
+	[signal arg="next_chapter:chapter_n537/n583"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 在你那儿做什么？
+	[signal arg="next_chapter:chapter_n537/n584"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 我从纽约到那儿调查石油特许权。我想你也不愿意听我说这方面的详情吧。我和我的朋友们处境很糟。雷切特先生也在同一家旅馆——
+	[signal arg="next_chapter:chapter_n537/n585"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛拿起桌上的恐吓信。
+	[signal arg="next_chapter:chapter_n537/n586"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 麦奎因先生，你见过这些信吗？
+	[signal arg="next_chapter:chapter_n537/n587"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 是的。这是我们离开君士坦丁堡那天早上收到的。
+	[signal arg="next_chapter:chapter_n537/n588"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 雷切特先生收到第一封信时有什么反应？
+	[signal arg="next_chapter:chapter_n537/n589"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因迟疑了。
+	[signal arg="next_chapter:chapter_n537/n590"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 很难说。他——他——笑着把信放在了一边，很镇静。但，不知怎么，我总觉得他在这平静之下隐藏了很多情绪。
+	[signal arg="next_chapter:chapter_n537/n591"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因微微颤抖了一下。
+	[signal arg="next_chapter:chapter_n537/n592"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你知不知道，雷切特先生曾经请我帮助他？
+	[signal arg="next_chapter:chapter_n537/n593"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 请你？
+	[signal arg="next_chapter:chapter_n537/n594"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 麦奎因惊讶的语气明确地告诉波洛，这个年轻人对此事一无所知。
+	[signal arg="next_chapter:chapter_n537/n595"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 是的，他很惶恐。告诉我，他收到第一封信时有什么反应？
+	[signal arg="next_chapter:chapter_n537/n596"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 已经说过了，他把信放在一边，笑着——但是——
+	[signal arg="next_chapter:chapter_n537/n597"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 但是什么？
+	[signal arg="next_chapter:chapter_n537/n598"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+- 追问麦奎因对雷切特的真实看法
+	[signal arg="next_chapter:chapter_n537/n599"]
+	[end_timeline]
+- 继续询问恐吓信的细节
+	[signal arg="next_chapter:chapter_n537/n603"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 麦奎因先生，你可否诚实地告诉我，你对你的老板有何评价？你喜欢他吗？
+	[signal arg="next_chapter:chapter_n537/n600"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 赫克托·麦奎因想了一会儿。
+	[signal arg="next_chapter:chapter_n537/n601"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 不，我不喜欢他。
+	[signal arg="next_chapter:chapter_n537/n602"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 我说不清，虽然他一直对人很和气。但是说实话，波洛先生，我既不喜欢也不信任他。我敢肯定，他是个残忍而危险的人。虽然我得承认我并没有任何理由能证明这个观点。
+	[signal arg="next_chapter:chapter_n537/n603"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 谢谢你，麦奎因先生。还有个问题：你最后见到活着的雷切特先生是什么时候？
+	[signal arg="next_chapter:chapter_n537/n604"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 大概是昨天晚上……应该是十点钟。我去他房间记一些备忘的事情。
+	[signal arg="next_chapter:chapter_n537/n605"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 关于什么的？
+	[signal arg="next_chapter:chapter_n537/n606"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 他在波斯买的一些瓷砖和古式陶器。收到时发现货不对版。双方已经通信纠缠很久了。
+	[signal arg="next_chapter:chapter_n537/n607"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 那是你最后一次见雷切特先生活着的时间吗？
+	[signal arg="next_chapter:chapter_n537/n608"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 是，应该是。
+	[signal arg="next_chapter:chapter_n537/n609"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你知道雷切特先生收到最后一封恐吓信是什么时候吗？
+	[signal arg="next_chapter:chapter_n537/n610"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 我们离开君士坦丁堡的那天早上。
+	[signal arg="next_chapter:chapter_n537/n611"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我还要问你个问题，麦奎因先生。你跟你的老板相处得好吗？
+	[signal arg="next_chapter:chapter_n537/n612"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 年轻人忽然神情一肃。
+	[signal arg="next_chapter:chapter_n537/n613"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 这下我肯定要起鸡皮疙瘩了。借用一本畅销书上的话，‘你抓不住我的把柄’。雷切特和我相处得不错。
+	[signal arg="next_chapter:chapter_n537/n614"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 麦奎因先生，可否告诉我你的全名和你在美国的住址？
+	[signal arg="next_chapter:chapter_n537/n615"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 赫克托·威拉德·麦奎因，纽约。
+	[signal arg="next_chapter:chapter_n537/n616"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 先谈到这里吧，麦奎因先生。如果你能对雷切特先生的死讯暂时保密，我将不胜感激。
+	[signal arg="next_chapter:chapter_n537/n617"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 他的仆人，马斯特曼，肯定会知道的。
+	[signal arg="next_chapter:chapter_n537/n618"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 没准他已经知道了。如果是这样，请他管住自己的舌头吧。
+	[signal arg="next_chapter:chapter_n537/n619"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 那应该不难，他是个英国人，宣称自己‘不与人交往’。他看不上美国人，更看不上其他国家的人。
+	[signal arg="next_chapter:chapter_n537/n620"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 谢谢你，麦奎因先生。
+	[signal arg="next_chapter:chapter_n537/n621"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 美国人离开了车厢。
+	[signal arg="next_chapter:chapter_n537/n622"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 怎么样？你相信他说的吗，那个年轻人？
+	[signal arg="next_chapter:chapter_n537/n623"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+- 评价麦奎因诚实坦率
+	[signal arg="next_chapter:chapter_n537/n624"]
+	[end_timeline]
+- 认为麦奎因有所隐瞒
+	[signal arg="next_chapter:chapter_n537/n625"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 他看起来倒是诚实坦率，并没有因为自己可能会有重大嫌疑而假装对自己的老板有好感。他说雷切特先生并没有将曾经找过他是请求被拒的事告诉他，这应该是真的，不过我不认为这情况有什么可疑。我认为雷切特先生是那种在任何场合都守口如瓶的人。
+	[signal arg="next_chapter:chapter_n537/n626"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 他说的基本都是实话，但仍需谨慎。雷切特先生守口如瓶，这件事他确实不知道。
+	[signal arg="next_chapter:chapter_n537/n626"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 那么你认为在这场谋杀中，至少有一个人是清白的人了。
+	[signal arg="next_chapter:chapter_n537/n627"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 布克先生快活地说。波洛责备地看了他一眼。
+	[signal arg="next_chapter:chapter_n537/n628"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我嘛，不到最后一分钟，每个人都有嫌疑。
+	[signal arg="next_chapter:chapter_n537/n629"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 不过我得承认，我并不觉得这个清醒而冷静的麦奎因会失去理智，朝受害人刺上十二或十四刀。这不符合他的心理——完全不符。
+	[signal arg="next_chapter:chapter_n537/n630"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 没错，只有怀着近乎疯狂的仇恨的人才干得出——具有那种拉门风格的人。否则，就像我们列车长所说——是个女人。
+	[signal arg="next_chapter:chapter_n537/n631"]
+	[end_timeline]
+
+# --- Segment: 第六章结束 ---

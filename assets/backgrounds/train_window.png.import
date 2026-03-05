@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d6dbs4f0tmgo"
-valid=false
+uid="uid://cnoca442pgdgf"
+path="res://.godot/imported/train_window.png-3925ef80885289bcb54323a7c53a12b0.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/backgrounds/train_window.png"
+dest_files=["res://.godot/imported/train_window.png-3925ef80885289bcb54323a7c53a12b0.ctex"]
 
 [params]
 

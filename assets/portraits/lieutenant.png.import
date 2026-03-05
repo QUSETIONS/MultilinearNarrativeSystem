@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c27kdxpstsg1v"
-valid=false
+uid="uid://ds86m4227mtwr"
+path="res://.godot/imported/lieutenant.png-1f965f1f50d9c77fa739344d29d31c7e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/portraits/lieutenant.png"
+dest_files=["res://.godot/imported/lieutenant.png-1f965f1f50d9c77fa739344d29d31c7e.ctex"]
 
 [params]
 

@@ -1,10 +1,16 @@
 {
   "version": "1.1",
-  "entry_chapter_id": "b1",
-  "entry_timeline_id": "chapter_b1",
+  "entry_chapter_id": "n950",
+  "entry_timeline_id": "chapter_n950",
   "entry_points": [
-    "b1",
-    "n1"
+    "n950",
+    "n999",
+    "n1124",
+    "n1167",
+    "n1168",
+    "n2054",
+    "n2445",
+    "n2885"
   ],
   "nodes": [
     {
@@ -44,54 +50,546 @@
       "order": 6
     },
     {
-      "chapter_id": "n4_001",
-      "timeline_id": "chapter_n4_001",
+      "chapter_id": "n252",
+      "timeline_id": "chapter_n252",
       "title": "第四章：暗夜惊叫",
       "order": 7
     },
     {
-      "chapter_id": "n5_001",
-      "timeline_id": "chapter_n5_001",
-      "title": "第五章：罪行",
+      "chapter_id": "n319",
+      "timeline_id": "chapter_n319",
+      "title": "第五章（平行线）：沉睡的代价",
       "order": 8
     },
     {
-      "chapter_id": "n6_001",
-      "timeline_id": "chapter_n6_001",
-      "title": "第六章：一个女人",
+      "chapter_id": "n368",
+      "timeline_id": "chapter_n368",
+      "title": "坏结局：沉默的包庇",
       "order": 9
+    },
+    {
+      "chapter_id": "n369",
+      "timeline_id": "chapter_n369",
+      "title": "第五章：罪行",
+      "order": 10
+    },
+    {
+      "chapter_id": "n493",
+      "timeline_id": "chapter_n493",
+      "title": "第六章（平行线）：傲慢的制服",
+      "order": 11
+    },
+    {
+      "chapter_id": "n536",
+      "timeline_id": "chapter_n536",
+      "title": "坏结局：盲目的正义与替罪羊",
+      "order": 12
+    },
+    {
+      "chapter_id": "n537",
+      "timeline_id": "chapter_n537",
+      "title": "第六章：一个女人",
+      "order": 13
+    },
+    {
+      "chapter_id": "b10",
+      "timeline_id": "chapter_b10",
+      "title": "布克的日常",
+      "order": 14
+    },
+    {
+      "chapter_id": "n632",
+      "timeline_id": "chapter_n632",
+      "title": "第一章：叙利亚到斯坦布尔",
+      "order": 15
+    },
+    {
+      "chapter_id": "chapter2_with_bouc",
+      "timeline_id": "chapter_chapter2_with_bouc",
+      "title": "第二章：与布克相遇",
+      "order": 16
+    },
+    {
+      "chapter_id": "chapter3_with_bouc",
+      "timeline_id": "chapter_chapter3_with_bouc",
+      "title": "第三章：与布克同行的旅程继续",
+      "order": 17
+    },
+    {
+      "chapter_id": "chapter2_without_bouc",
+      "timeline_id": "chapter_chapter2_without_bouc",
+      "title": "第二章：独自旅行的开始",
+      "order": 18
+    },
+    {
+      "chapter_id": "chapter3_without_bouc",
+      "timeline_id": "chapter_chapter3_without_bouc",
+      "title": "第三章：孤独的旅程",
+      "order": 19
+    },
+    {
+      "chapter_id": "n883",
+      "timeline_id": "chapter_n883",
+      "title": "第四章：暗夜惊叫",
+      "order": 20
+    },
+    {
+      "chapter_id": "n950",
+      "timeline_id": "chapter_n950",
+      "title": "第五章（平行线）：沉睡的代价",
+      "order": 21
+    },
+    {
+      "chapter_id": "n999",
+      "timeline_id": "chapter_n999",
+      "title": "坏结局：沉默的包庇",
+      "order": 22
+    },
+    {
+      "chapter_id": "n1000",
+      "timeline_id": "chapter_n1000",
+      "title": "第五章：罪行",
+      "order": 23
+    },
+    {
+      "chapter_id": "n1124",
+      "timeline_id": "chapter_n1124",
+      "title": "第六章（平行线）：傲慢的制服",
+      "order": 24
+    },
+    {
+      "chapter_id": "n1167",
+      "timeline_id": "chapter_n1167",
+      "title": "坏结局：盲目的正义与替罪羊",
+      "order": 25
+    },
+    {
+      "chapter_id": "n1168",
+      "timeline_id": "chapter_n1168",
+      "title": "第六章：一个女人",
+      "order": 26
+    },
+    {
+      "chapter_id": "n1263",
+      "timeline_id": "chapter_n1263",
+      "title": "第七章：死者的尸体",
+      "order": 27
+    },
+    {
+      "chapter_id": "n1387",
+      "timeline_id": "chapter_n1387",
+      "title": "第八章：阿姆斯特朗绑架案",
+      "order": 28
+    },
+    {
+      "chapter_id": "n1429",
+      "timeline_id": "chapter_n1429",
+      "title": "第九章：列车员的证词",
+      "order": 29
+    },
+    {
+      "chapter_id": "n1526",
+      "timeline_id": "chapter_n1526",
+      "title": "第十章：秘书的证词",
+      "order": 30
+    },
+    {
+      "chapter_id": "n1594",
+      "timeline_id": "chapter_n1594",
+      "title": "第十一章：男仆的证词",
+      "order": 31
+    },
+    {
+      "chapter_id": "n1708",
+      "timeline_id": "chapter_n1708",
+      "title": "第十二章：美国太太的证词",
+      "order": 32
+    },
+    {
+      "chapter_id": "n1813",
+      "timeline_id": "chapter_n1813",
+      "title": "第十三章：瑞典太太的证词",
+      "order": 33
+    },
+    {
+      "chapter_id": "n1892",
+      "timeline_id": "chapter_n1892",
+      "title": "第十四章：俄国公主的证词",
+      "order": 34
+    },
+    {
+      "chapter_id": "n1984",
+      "timeline_id": "chapter_n1984",
+      "title": "第十五章：伯爵夫妇的证词",
+      "order": 35
+    },
+    {
+      "chapter_id": "n2054",
+      "timeline_id": "chapter_n2054",
+      "title": "第十六章：阿巴思诺特上校的证词",
+      "order": 36
+    },
+    {
+      "chapter_id": "n2147",
+      "timeline_id": "chapter_n2147",
+      "title": "第十七章：哈德曼先生的证词",
+      "order": 37
+    },
+    {
+      "chapter_id": "n2230",
+      "timeline_id": "chapter_n2230",
+      "title": "第十八章：意大利人的证词",
+      "order": 38
+    },
+    {
+      "chapter_id": "n2280",
+      "timeline_id": "chapter_n2280",
+      "title": "第十九章：德贝纳姆小姐的证词",
+      "order": 39
+    },
+    {
+      "chapter_id": "n2360",
+      "timeline_id": "chapter_n2360",
+      "title": "第二十章：德国女仆的证词",
+      "order": 40
+    },
+    {
+      "chapter_id": "n2445",
+      "timeline_id": "chapter_n2445",
+      "title": "第二十一章：旅客证词小结",
+      "order": 41
+    },
+    {
+      "chapter_id": "n2512",
+      "timeline_id": "chapter_n2512",
+      "title": "第二十二章：凶器",
+      "order": 42
+    },
+    {
+      "chapter_id": "n2591",
+      "timeline_id": "chapter_n2591",
+      "title": "第二十三章：旅客的行李",
+      "order": 43
+    },
+    {
+      "chapter_id": "n2752",
+      "timeline_id": "chapter_n2752",
+      "title": "第二十四章：是谁？",
+      "order": 44
+    },
+    {
+      "chapter_id": "n2790",
+      "timeline_id": "chapter_n2790",
+      "title": "第二十五章：十个问题",
+      "order": 45
+    },
+    {
+      "chapter_id": "n2836",
+      "timeline_id": "chapter_n2836",
+      "title": "第二十六章：启发性的几点",
+      "order": 46
+    },
+    {
+      "chapter_id": "n2885",
+      "timeline_id": "chapter_n2885",
+      "title": "第二十七章：匈牙利护照上的油渍",
+      "order": 47
+    },
+    {
+      "chapter_id": "n2965",
+      "timeline_id": "chapter_n2965",
+      "title": "第二十八章：德拉戈米罗夫公主的教名",
+      "order": 48
+    },
+    {
+      "chapter_id": "n3030",
+      "timeline_id": "chapter_n3030",
+      "title": "第二十九章：第二次会见上校",
+      "order": 49
+    },
+    {
+      "chapter_id": "n3088",
+      "timeline_id": "chapter_n3088",
+      "title": "第三十章：玛丽·德贝纳姆的身份",
+      "order": 50
+    },
+    {
+      "chapter_id": "n3149",
+      "timeline_id": "chapter_n3149",
+      "title": "第三十一章：更多惊人内幕",
+      "order": 51
+    },
+    {
+      "chapter_id": "n3236",
+      "timeline_id": "chapter_n3236",
+      "title": "第三十二章：波洛提出两个结论",
+      "order": 52
     }
   ],
   "edges": [
     {
-      "from_chapter_id": "n1",
+      "from_chapter_id": "n632",
       "to_chapter_id": "chapter2_with_bouc",
       "via_node_id": "chapter2_branch",
       "choice_text": "bouc_decision=go"
     },
     {
-      "from_chapter_id": "n1",
+      "from_chapter_id": "n632",
       "to_chapter_id": "chapter2_without_bouc",
       "via_node_id": "chapter2_branch",
       "choice_text": "bouc_decision=stay"
     },
     {
+      "from_chapter_id": "n252",
+      "to_chapter_id": "n369",
+      "via_node_id": "chapter5_branch",
+      "choice_text": "poirot_alert=yes"
+    },
+    {
+      "from_chapter_id": "n252",
+      "to_chapter_id": "n319",
+      "via_node_id": "chapter5_branch",
+      "choice_text": "poirot_alert=no"
+    },
+    {
+      "from_chapter_id": "n369",
+      "to_chapter_id": "n537",
+      "via_node_id": "chapter6_branch",
+      "choice_text": "poirot_takes_case=yes"
+    },
+    {
+      "from_chapter_id": "n369",
+      "to_chapter_id": "n493",
+      "via_node_id": "chapter6_branch",
+      "choice_text": "poirot_takes_case=no"
+    },
+    {
+      "from_chapter_id": "n883",
+      "to_chapter_id": "n369",
+      "via_node_id": "chapter5_branch",
+      "choice_text": "poirot_alert=yes"
+    },
+    {
+      "from_chapter_id": "n883",
+      "to_chapter_id": "n319",
+      "via_node_id": "chapter5_branch",
+      "choice_text": "poirot_alert=no"
+    },
+    {
+      "from_chapter_id": "n1000",
+      "to_chapter_id": "n537",
+      "via_node_id": "chapter6_branch",
+      "choice_text": "poirot_takes_case=yes"
+    },
+    {
+      "from_chapter_id": "n1000",
+      "to_chapter_id": "n493",
+      "via_node_id": "chapter6_branch",
+      "choice_text": "poirot_takes_case=no"
+    },
+    {
+      "from_chapter_id": "n1387",
+      "to_chapter_id": "n1429",
+      "via_node_id": "chapter9_branch",
+      "choice_text": "poirot_takes_case=yes"
+    },
+    {
       "from_chapter_id": "chapter3_with_bouc",
-      "to_chapter_id": "n4_001",
+      "to_chapter_id": "n252",
       "via_node_id": "end_game_with_bouc",
       "choice_text": "chapter.next"
     },
     {
-      "from_chapter_id": "n4_001",
-      "to_chapter_id": "n5_001",
-      "via_node_id": "n4_066",
+      "from_chapter_id": "n252",
+      "to_chapter_id": "n883",
+      "via_node_id": "n318",
       "choice_text": "chapter.next"
     },
     {
-      "from_chapter_id": "n5_001",
-      "to_chapter_id": "n6_001",
-      "via_node_id": "n5_121",
+      "from_chapter_id": "n369",
+      "to_chapter_id": "n1000",
+      "via_node_id": "n492",
       "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "b10",
+      "to_chapter_id": "b1",
+      "via_node_id": "b10",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n632",
+      "to_chapter_id": "n1",
+      "via_node_id": "n632",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n883",
+      "to_chapter_id": "n252",
+      "via_node_id": "n883",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n950",
+      "to_chapter_id": "n319",
+      "via_node_id": "n950",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1000",
+      "to_chapter_id": "n369",
+      "via_node_id": "n1000",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1124",
+      "to_chapter_id": "n493",
+      "via_node_id": "n1124",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1168",
+      "to_chapter_id": "n537",
+      "via_node_id": "n1168",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1168",
+      "to_chapter_id": "n1263",
+      "via_node_id": "n1262",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1263",
+      "to_chapter_id": "n1387",
+      "via_node_id": "n1386",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1429",
+      "to_chapter_id": "n1526",
+      "via_node_id": "n1525",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1526",
+      "to_chapter_id": "n1594",
+      "via_node_id": "n1593",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1594",
+      "to_chapter_id": "n1708",
+      "via_node_id": "n1707",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1708",
+      "to_chapter_id": "n1813",
+      "via_node_id": "n1812",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1813",
+      "to_chapter_id": "n1892",
+      "via_node_id": "n1891",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n1892",
+      "to_chapter_id": "n1984",
+      "via_node_id": "n1983",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2054",
+      "to_chapter_id": "n2147",
+      "via_node_id": "n2146",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2147",
+      "to_chapter_id": "n2230",
+      "via_node_id": "n2229",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2230",
+      "to_chapter_id": "n2280",
+      "via_node_id": "n2279",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2280",
+      "to_chapter_id": "n2360",
+      "via_node_id": "n2359",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2445",
+      "to_chapter_id": "n2512",
+      "via_node_id": "n2511",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2512",
+      "to_chapter_id": "n2591",
+      "via_node_id": "n2590",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2591",
+      "to_chapter_id": "n2752",
+      "via_node_id": "n2751",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2752",
+      "to_chapter_id": "n2790",
+      "via_node_id": "n2789",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2790",
+      "to_chapter_id": "n2836",
+      "via_node_id": "n2835",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2885",
+      "to_chapter_id": "n2965",
+      "via_node_id": "n2964",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n2965",
+      "to_chapter_id": "n3030",
+      "via_node_id": "n3029",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n3030",
+      "to_chapter_id": "n3088",
+      "via_node_id": "n3087",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n3088",
+      "to_chapter_id": "n3149",
+      "via_node_id": "n3148",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "n3149",
+      "to_chapter_id": "n3236",
+      "via_node_id": "n3235",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "b1",
+      "to_chapter_id": "b10",
+      "via_node_id": "b8",
+      "choice_text": "dialogue.next"
     },
     {
       "from_chapter_id": "chapter2_with_bouc",
@@ -104,6 +602,36 @@
       "to_chapter_id": "chapter3_without_bouc",
       "via_node_id": "n244",
       "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "n319",
+      "to_chapter_id": "n368",
+      "via_node_id": "n367",
+      "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "n493",
+      "to_chapter_id": "n536",
+      "via_node_id": "n535",
+      "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "n950",
+      "to_chapter_id": "n368",
+      "via_node_id": "n998",
+      "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "n1124",
+      "to_chapter_id": "n536",
+      "via_node_id": "n1166",
+      "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "n1",
+      "to_chapter_id": "n632",
+      "via_node_id": "n15",
+      "choice_text": "继续默默观察"
     }
   ]
 }

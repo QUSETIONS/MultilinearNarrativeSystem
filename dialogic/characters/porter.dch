@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "porter",
 "description": "",
 "display_name": "门房",
 "mirror": false,
 "nicknames": ["门房"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"porter": {
+"export_overrides": {
+"image": "res://assets/portraits/porter.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

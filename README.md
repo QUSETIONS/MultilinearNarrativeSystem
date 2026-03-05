@@ -53,6 +53,89 @@ Dialogic uses [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) to ensure
 
 To get started, take a look at the existing files in the path and read the documentation to [create your first test](https://mikeschulze.github.io/gdUnit4/first_steps/firstTest/).
 
+## Chapterized Workflow
+This project includes a chapterized timeline pipeline based on JSON nodes with `segment` boundaries.
+
+### Generate timelines
+Use strict mode for best diagnostics:
+
+```powershell
+python import_orient_express.py --input "东方快车谋杀案.json" --strict
+```
+
+Optional flags:
+- `--no-legacy`: skip generating `dialogic/timelines/orient_express.dtl`
+- omit `--input` only when there is exactly one valid JSON candidate in the working directory
+
+### Validate outputs
+```powershell
+python scripts/validate_chapter_outputs.py --input "东方快车谋杀案.json"
+```
+
+Optional flags:
+- `--no-legacy`: skip legacy file check
+- `--timelines-dir <path>`: validate a custom output directory
+- `--json`: print machine-readable JSON report to stdout
+- `--json-out <path>`: write JSON report to a file
+
+### One-command pipeline check
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/check_chapter_pipeline.ps1 -InputJson "东方快车谋杀案.json"
+```
+
+Optional flags:
+- `-NoLegacy`: run pipeline in no-legacy mode
+- `-LogFile <path>`: custom transcript log path (default under `logs/`)
+
+### Common issues
+- `INPUT_AMBIGUOUS`: multiple JSON files found. Pass `--input` explicitly.
+- `REF_NEXT_MISSING` / `REF_CHOICE_NEXT_MISSING`: invalid node references in source JSON.
+- validator `R001`: chapter file count mismatch between JSON segments and generated outputs.
+
+### Failure dictionary
+| Code / Rule | Meaning | Suggested fix |
+|---|---|---|
+| `INPUT_NOT_FOUND` | Discovery found no usable JSON with `characters` + `nodes`. | Pass `--input <file>` or place a valid JSON in workspace root. |
+| `INPUT_AMBIGUOUS` | Discovery found multiple usable JSON files. | Pass `--input <file>` explicitly (or narrow with `--input-glob`). |
+| `INPUT_FILE_NOT_FOUND` | Explicit input path does not exist. | Check path spelling and working directory. |
+| `SCHEMA_*` | JSON structure/fields are invalid. | Fix required fields/types according to schema checks. |
+| `REF_NEXT_MISSING` | Node `next` points to a non-existent node id. | Repair `next` reference in source JSON. |
+| `REF_CHOICE_NEXT_MISSING` | Choice branch points to a non-existent node id. | Repair `choice.next` reference in source JSON. |
+| `REF_RESOLVE_NEXT` | Runtime chapter mapping could not resolve jump target. | Ensure all referenced node ids belong to a valid segment block. |
+| `R001` | Chapter file count mismatch. | Re-run generator and ensure segment count matches chapter outputs. |
+| `R002` | Chapter metadata header invalid/missing. | Regenerate timelines; check first 3 header lines in chapter files. |
+| `R003` | Invalid `jump chapter_*` target. | Regenerate and inspect reported file/line target mapping. |
+| `R004` | Legacy file missing when required. | Re-run without `--no-legacy` to regenerate `orient_express.dtl`. |
+| `R999` | Final validation success marker. | No action needed. |
+
+### Minimal reproducible JSON template
+Use this to quickly reproduce parser/validator behavior:
+
+```json
+{
+  "characters": [
+    { "id": "narrator", "name": "Narrator" }
+  ],
+  "nodes": [
+    { "id": "seg_1", "type": "segment", "title": "Demo Chapter" },
+    { "id": "n1", "type": "dialogue", "speaker": "narrator", "text": "Hello", "next": "c1" },
+    {
+      "id": "c1",
+      "type": "choice",
+      "choices": [
+        { "id": "opt1", "text": "Continue", "next": "n2" }
+      ]
+    },
+    { "id": "n2", "type": "dialogue", "speaker": "narrator", "text": "Done" }
+  ]
+}
+```
+
+### Fallback behavior
+- Runtime attempts to open chapter selection first.
+- If chapter selection scene fails to load, startup falls back to legacy timeline `orient_express`.
+- If legacy timeline is missing, regenerate timelines with `import_orient_express.py`.
+
 ## Interacting with the Source Code
 All methods and variables in the Dialogic 2 source **code prefixed with an underscore (`_`)** are considered *private*, for instance: `_remove_character()`.
 

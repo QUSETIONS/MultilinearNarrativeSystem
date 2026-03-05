@@ -1,0 +1,242 @@
+# --- Chapter: 第六章（平行线）：傲慢的制服 ---
+# --- ChapterId: n493 ---
+# --- ChapterOrder: 11 ---
+
+label n493
+# --- Segment: 第六章（平行线）：傲慢的制服 ---
+
+label n494
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 波洛委婉但坚决地拒绝了布克先生的请求。他以自己不在管辖区为由，退出了这场调查。
+
+label n495
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: （颓废地坐在椅子上）完了，国际客车公司的名誉全完了。我们将面临无休止的诉讼和丑闻。
+
+label n496
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 放宽心，我的朋友。南斯拉夫的警方也许没有你想的那么糟，他们有完备的刑侦手段。
+
+label n497
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.5"]
+leave --All--
+narrator: 接下来的十几个小时异常煎熬。车厢里冷得像冰窖，雷切特的尸体依然躺在隔壁房间，没有人敢去触碰。乘客们的恐惧和焦躁达到了顶点。
+
+label n498
+[background arg="res://assets/backgrounds/train_stopped_day.png" fade="1.5"]
+leave --All--
+narrator: 直到第三天清晨，远处传来了沉闷的挖掘声和哨子声。南斯拉夫军方的扫雪车终于打通了被大雪掩埋的铁轨。
+
+label n499
+[background arg="res://assets/backgrounds/train_moving_day.png" fade="1.5"]
+leave --All--
+narrator: 随着一阵剧烈的颠簸，东方快车艰难地重新启动，并在半小时后，缓缓驶入了最近的布罗德车站。
+
+label n500
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+narrator: 站台上早已被全副武装的南斯拉夫警察和军队封锁。几乎在列车停稳的瞬间，一阵沉重的军靴声就踏上了车厢走廊。
+
+label n501
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: （粗暴地用带口音的法语大喊）所有乘客！立刻带上你们所有的行李，到餐车集合！立刻！
+
+label n502
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join hubbard 1
+hubbard: （尖叫）天哪！你们在干什么！你们弄疼我了！我要向美国大使馆投诉你们！
+
+label n503
+[background arg="res://assets/backgrounds/train_corridor_day.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: 闭嘴，女士！这里发生了凶杀案，你们所有人现在都是谋杀嫌疑犯！
+
+label n504
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛混在人群中，安静地走进餐车。他选择了一个不起眼的角落坐下。领头的南斯拉夫警长满脸横肉，目光凶狠地扫视着这些衣着光鲜的外国人。
+
+label n505
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: （试图交涉）警长先生，我是国际客车公司的董事布克。这里有公爵夫人，还有英国的军官，请你们的调查务必……
+
+label n506
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: （粗暴地打断）这里是南斯拉夫的领土！在这里，没有什么公爵夫人，只有死人和凶手！
+
+label n507
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 警长的傲慢让整个餐车陷入了死寂。他挥了挥手，几名警察立刻冲进了雷切特的包厢，开始进行所谓的“现场勘查”。
+
+label n508
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 波洛注意到，警察们并没有戴手套。他们粗鲁地翻动着尸体、烟灰缸和水杯。任何可能存在的指纹或细微的线索，都在这种野蛮的搜查中被彻底毁掉了。
+
+label n509
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （暗自叹息）他们把案发现场变成了一个屠宰场。真相正在离我们远去。
+
+label n510
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: （走回餐车，手里拿着一张烧焦的纸片）阿姆斯特朗……这上面写着阿姆斯特朗。谁能告诉我这是什么意思？
+
+label n511
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: （脸色苍白）那是……那是指雷切特先生的真实身份。他就是多年前策划了阿姆斯特朗绑架案的主犯，卡塞蒂。
+
+label n512
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: （冷笑）哈！原来是个美国的杀人犯！这种人死有余辜。但不管怎样，凶手不能在我的地盘上杀人！
+
+label n513
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: 现在，把你们的行李全部打开！一件一件搜！凶器绝对还在这辆车上！
+
+label n514
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 搜查变成了单方面的洗劫。精致的丝绸衣物被扔在地上，化妆品洒落一地。瑞典太太被吓得瑟瑟发抖，公爵夫人则在一旁愤怒地抗议。
+
+label n515
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （敏锐地观察着众人）这十二个人面对警方的搜查，表现出了极大的愤慨。但在这愤慨之下，波洛却隐隐察觉到一丝……如释重负？
+
+label n516
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 尤其是玛丽·德贝纳姆和阿巴思诺特上校，他们偷偷交换了一个眼神。那是一种看着猎犬跑错方向时的笃定。
+
+label n517
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 突然，一名警察从堆放行李的角落里大喊了一声，举起了一个包裹在破布里的东西。
+
+label n518
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: （一把抓过来扯开破布）哈！看看这是什么！一把带血的匕首！这箱子是谁的？！
+
+label n519
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join italian 1
+italian: （脸色煞白）那是……那是我的箱子，长官。但那匕首不是我的！我向上帝发誓！
+
+label n520
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: （恶狠狠地走过去，一把揪住意大利人的领子）意大利人。黑手党最喜欢用刀了，是吧？你觉得我们南斯拉夫警察是瞎子吗！
+
+label n521
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join italian 1
+italian: 不！我甚至不认识那个美国人！我是个正经的福特汽车推销员！有人在陷害我！玛利亚圣母啊，救救我！
+
+label n522
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 警长根本不听他的辩解。他需要一个完美的替罪羊来向上级交差。一个吵闹的、身份底层的意大利推销员，简直是再合适不过的嫌疑人了。
+
+label n523
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join police_inspector 1
+police_inspector: 把他带下去！手铐铐紧点！通知火车站，案子破了，我们十分钟后撤退！
+
+label n524
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+narrator: 不管福斯卡雷利如何哭喊挣扎，两名强壮的警察还是把他拖下了火车，像拖着一条死狗一样拖进了风雪中。
+
+label n525
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+narrator: 餐车里的其余十一个人保持着诡异的沉默。没有人站出来为意大利人说话。波洛静静地看着他们，从他们的眼中，他看到了复杂的怜悯，但更多的是——庆幸。
+
+label n526
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （用极低的声音自言自语）真是一出精妙的戏剧。这把凶器本不该出现在那里，但为了保护集体的安全，它必须出现在某个‘最容易被警察认定为凶手’的人的箱子里。
+
+label n527
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: （擦着冷汗走到波洛身边）波洛，这……这案子就算结了吗？是不是太草率了？
+
+label n528
+[background arg="res://assets/backgrounds/dining_car_interview.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 法律已经做出了它的裁决，布克先生。尽管它是瞎眼的。
+
+label n529
+[background arg="res://assets/backgrounds/train_moving_day.png" fade="1.5"]
+leave --All--
+narrator: 哨声再次响起，警长带着他的战利品离开了。东方快车重新起航，向着最终的目的地巴黎驶去。
+
+label n530
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 波洛独自坐在包厢里。案件的全部真相在他脑海中已经拼凑出了大半：这不是一个人的谋杀，而是一个由十二名陪审员组成的法庭，执行的私人死刑。
+
+label n531
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （凝视着窗外）那个可怜的意大利人，他或许也是这十二人法庭的一员。他为了集体的秘密，成为了祭坛上的替罪羊。他们成功地利用了警方的偏见和愚蠢。
+
+label n532
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 而我，赫尔克里·波洛，因为选择了明哲保身，让这种扭曲的‘正义’以牺牲另一名无辜者为代价完成了闭环。
+
+label n533
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 走廊里传来了微弱的笑声和举杯的碰撞声。其余的十一名乘客正在庆祝他们完美的脱罪，庆祝阿姆斯特朗家小黛西的大仇得报。
+
+label n534
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+narrator: 但这笑声在波洛听来，却显得无比刺耳。没有了侦探的制衡，私人审判最终沦为了另一种罪恶。
+
+label n535
+[background arg="res://assets/backgrounds/train_window_moving.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 这是一场没有赢家的惨胜。正义的女神，在东方快车上彻底蒙上了双眼。
+	[signal arg="next_chapter:chapter_n536"]
+	[end_timeline]

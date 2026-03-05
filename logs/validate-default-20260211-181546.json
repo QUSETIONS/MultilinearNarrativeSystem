@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "exit_code": 0,
+  "timestamp": "2026-02-11T10:15:46.495792+00:00",
+  "version": "1.2.0",
+  "input": "东方快车谋杀案.json",
+  "timelines_dir": "dialogic\\timelines",
+  "no_legacy": false,
+  "rules_executed": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R999"
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5
+  },
+  "checks": [
+    {
+      "rule_id": "R001",
+      "status": "ok",
+      "message": "Chapter file count matched: 7"
+    },
+    {
+      "rule_id": "R002",
+      "status": "ok",
+      "message": "Chapter metadata headers are valid"
+    },
+    {
+      "rule_id": "R003",
+      "status": "ok",
+      "message": "All chapter jump targets are valid"
+    },
+    {
+      "rule_id": "R004",
+      "status": "ok",
+      "message": "Legacy timeline exists"
+    },
+    {
+      "rule_id": "R999",
+      "status": "ok",
+      "message": "Validation passed"
+    }
+  ]
+}

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btjxpucbyc7tq"
-valid=false
+uid="uid://c7vso36iudqr6"
+path="res://.godot/imported/poirot.png-c5ad38b93c284f90d549a31731c1ad9e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/portraits/poirot.png"
+dest_files=["res://.godot/imported/poirot.png-c5ad38b93c284f90d549a31731c1ad9e.ctex"]
 
 [params]
 

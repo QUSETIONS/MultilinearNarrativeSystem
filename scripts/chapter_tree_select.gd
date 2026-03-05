@@ -237,6 +237,8 @@ func _rebuild_view() -> void:
 	)
 
 	var root_center := Vector2.ZERO
+	var target_center := Vector2.ZERO
+	var max_unlocked_layer := -1
 	var global_x_offset := maxf((map_width - graph_width) * 0.5, 0.0)
 	for chapter_id in chapter_ids:
 		var node_data: Dictionary = nodes_by_id[chapter_id]
@@ -253,12 +255,31 @@ func _rebuild_view() -> void:
 		node_layer.add_child(card)
 
 		centers[chapter_id] = Vector2(x + NODE_WIDTH * 0.5, y + NODE_HEIGHT * 0.5)
+		
+		if is_instance_valid(progress) and progress.is_chapter_unlocked(chapter_id):
+			if layer > max_unlocked_layer:
+				max_unlocked_layer = layer
+				target_center = centers[chapter_id]
+				
 		if entry_points.has(chapter_id) and root_center == Vector2.ZERO:
 			root_center = centers[chapter_id]
 
 	line_layer.call("set_graph_edges", edges_for_view, centers)
-	map_scroll.scroll_horizontal = int(maxf(root_center.x - viewport_width * 0.5, 0.0))
-	map_scroll.scroll_vertical = int(maxf(root_center.y - 220.0, 0.0))
+	if target_center != Vector2.ZERO:
+		root_center = target_center
+		
+	var target_h = int(maxf(root_center.x - viewport_width * 0.5, 0.0))
+	var target_v = int(maxf(root_center.y - map_scroll.size.y * 0.5, 0.0))
+	
+	map_scroll.scroll_horizontal = target_h
+	map_scroll.scroll_vertical = target_v
+	
+	get_tree().create_timer(0.05).timeout.connect(func():
+		var tween = create_tween()
+		tween.tween_property(map_scroll, "scroll_horizontal", target_h, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		tween.parallel().tween_property(map_scroll, "scroll_vertical", target_v, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	)
+	
 	status_label.text = "\u8bf7\u9009\u62e9\u5df2\u89e3\u9501\u7ae0\u8282\u5f00\u59cb\uff0c\u6216\u968f\u65f6\u4fdd\u5b58/\u8bfb\u53d6\u3002"
 	_animate_cards_in()
 
@@ -316,15 +337,25 @@ func _create_chapter_card(chapter_id: String, chapter_title: String, chapter_ord
 	box.add_theme_constant_override("separation", 10)
 	card.add_child(box)
 
+	var unlocked := true
+	var visited := false
+	var progress := _progress()
+	if is_instance_valid(progress):
+		unlocked = progress.is_unlocked(chapter_id)
+		visited = progress.is_visited(chapter_id)
+
+	var display_title = chapter_title if unlocked else "???"
+	var display_id = chapter_id if unlocked else "???"
+
 	var title = Label.new()
-	title.text = "%d. %s" % [chapter_order, chapter_title]
+	title.text = "%d. %s" % [chapter_order, display_title]
 	title.add_theme_font_size_override("font_size", 20)
 	title.add_theme_color_override("font_color", Color(0.97, 0.92, 0.83, 1.0))
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(title)
 
 	var id_label = Label.new()
-	id_label.text = chapter_id
+	id_label.text = display_id
 	id_label.add_theme_font_size_override("font_size", 12)
 	id_label.add_theme_color_override("font_color", Color(0.78, 0.71, 0.58, 0.9))
 	box.add_child(id_label)
@@ -346,12 +377,6 @@ func _create_chapter_card(chapter_id: String, chapter_title: String, chapter_ord
 	start_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	start_button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 
-	var unlocked := true
-	var visited := false
-	var progress := _progress()
-	if is_instance_valid(progress):
-		unlocked = progress.is_unlocked(chapter_id)
-		visited = progress.is_visited(chapter_id)
 	start_button.disabled = not unlocked
 	start_button.pressed.connect(_on_start_chapter_pressed.bind(chapter_id))
 	box.add_child(start_button)

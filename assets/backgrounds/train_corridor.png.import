@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brutl3854jjuy"
-valid=false
+uid="uid://7jete1a02cwy"
+path="res://.godot/imported/train_corridor.png-3233be93743d3b51cdf55cc1ff07f718.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/backgrounds/train_corridor.png"
+dest_files=["res://.godot/imported/train_corridor.png-3233be93743d3b51cdf55cc1ff07f718.ctex"]
 
 [params]
 
