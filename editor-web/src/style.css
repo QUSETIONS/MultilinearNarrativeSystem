@@ -1,0 +1,352 @@
+/* 
+  Premium Editor Design System
+  Theme: Dark Glassmorphism with Vivid Gradients
+  Font: Inter
+*/
+
+:root {
+  --bg-deep: #030712;
+  --bg-surface: #111827;
+  --bg-card: rgba(31, 41, 55, 0.7);
+  --bg-active: rgba(55, 65, 81, 0.8);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent: #6366f1;
+  /* Indigo 500 */
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gold: #fde047;
+  --header-height: 60px;
+  --glass: blur(12px) saturate(180%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Layout Grid */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+.premium-header {
+  height: var(--header-height);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: var(--glass);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.view-toggle {
+  display: flex;
+  background: var(--bg-deep);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.toggle-item {
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-secondary);
+}
+
+.toggle-item.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Page Containers */
+.page-view {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Overview Mode Styles */
+.overview-scroll {
+  padding: 40px 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.section-card:hover {
+  border-color: var(--border-hover);
+}
+
+.card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Editor View (IDE Layout) */
+.editor-layout {
+  display: flex;
+  height: 100%;
+}
+
+.editor-sidebar {
+  width: 280px;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-canvas-area {
+  flex: 1;
+  position: relative;
+  background: var(--bg-deep);
+}
+
+/* Component Overrides - Element Plus */
+.el-button {
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.el-button--primary {
+  background: var(--accent-gradient);
+  border: none;
+}
+
+.el-button--primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Node Cards Visuals */
+.premium-node {
+  background: var(--bg-card) !important;
+  backdrop-filter: var(--glass);
+  border: 1.5px solid var(--border) !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  width: 280px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s !important;
+}
+
+.premium-node:hover {
+  border-color: var(--accent) !important;
+  transform: scale(1.02);
+}
+
+.premium-node.selected {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px var(--accent-gradient);
+}
+
+.node-top-bar {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px 12px 0 0;
+}
+
+.node-content {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.node-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  gap: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes breatheNode {
+  0% {
+    box-shadow: 0 0 0 0px rgba(99, 102, 241, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0px rgba(99, 102, 241, 0.4);
+  }
+}
+
+/* Context Menu */
+.canvas-context-menu {
+  position: fixed;
+  z-index: 1000;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  backdrop-filter: var(--glass);
+  min-width: 180px;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.menu-header {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.menu-item:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Handle Enhancements (Magnetic Feel) */
+.vue-flow__handle {
+  width: 14px !important;
+  height: 14px !important;
+  border: 3px solid var(--bg-surface) !important;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.vue-flow__handle:hover {
+  transform: scale(1.4);
+  background: var(--accent-gradient) !important;
+}
+
+.vue-flow__handle.connecting {
+  background: var(--gold) !important;
+  transform: scale(1.2);
+}

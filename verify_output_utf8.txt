@@ -1,0 +1,25 @@
+python : C:\Users\ques
+tion\anaconda3\python.
+exe: can't open file '
+D:\\Desktop\\workk\\im
+port_orient_express.py
+': [Errno 2] No such f
+ile or directory
+所在位置 行:1 字符: 1
++ python import_orient
+_express.py > verify_o
+utput.txt 2>&1 ; Get-C
+onten ...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (C:\Users\q   
+ uesti...le or dir    
+ectory:String) []    ,
+ RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 

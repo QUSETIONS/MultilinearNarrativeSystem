@@ -1,9 +1,35 @@
-# Godot 4+ specific ignores
-.godot/
+# Dependencies
+node_modules/
+.npm/
+package-lock.json
+yarn.lock
 
-# Imported translations (automatically generated from CSV files)
-*.translation
+# Build outputs
+dist/
+dist-ssr/
+*.local
 
-# Mono-specific ignores
-.mono/
-data_*/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Project Specific
+*.zip
+asset_audit_report.md
+editor-web/public/audit_results.json
+C:\Users\question\.gemini\antigravity\brain\
+.system_generated/
+logs/
+.gemini/
+/tmp/
