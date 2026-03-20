@@ -1,65 +1,68 @@
-import json
-import os
 from typing import Dict, List, Optional, Any
+
 
 class AttentionManager:
     """
     Manages the 'Narrative Attention' of the platform.
-    Extracts and stores global context and entity-specific traits.
+    
+    Computes weighted focus tokens for AI generation based on:
+    - Global context (theme, era, art style)
+    - Scene mood detection
+    - Entity canonical IDs
+    - Character state memory
+    - DPO rejection-based weight decay
+    
+    Does NOT read from JSON files. All data is registered via API calls or config dicts.
     """
     
-    def __init__(self, json_path: str):
-        self.json_path = json_path
-        self.global_context = {
+    def __init__(self, global_config: Optional[Dict[str, str]] = None):
+        self.global_context = global_config or {
             "theme": "1930s Detective Mystery",
             "era": "1930s",
             "setting": "Orient Express, luxury train, snowy mountains",
             "art_style": "High-fidelity cinematic digital painting",
             "negative_prompt": "modern, electronic gadget, messy, low resolution, ugly, blurry"
         }
-        self.state_memory: Dict[str, str] = {} # Tracks character state over scenes
-        self.resonance_cache: Dict[str, str] = {} # Tracks visual vibe for BGM
-        self.entities: Dict[str, str] = {}
-        self.canonical_ids: Dict[str, str] = {
-            "poirot": "[HERO-POIROT-CONSISTENT]",
-            "princess": "[NOBLE-DRAGOMIROFF-STYLIZED]",
-            "bouc": "[MANAGER-BOUC-AUTHORITY]"
-        }
-        self.load_metadata()
+        self.state_memory: Dict[str, str] = {}    # Tracks character state over scenes
+        self.resonance_cache: Dict[str, str] = {}  # Tracks visual vibe for BGM
+        self.entities: Dict[str, str] = {}         # asset_path → description
+        self.canonical_ids: Dict[str, str] = {}    # character key → consistency tag
 
-    def load_metadata(self):
-        if not os.path.exists(self.json_path):
-            return
-            
-        try:
-            with open(self.json_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                
-            # Extract characters
-            for char in data.get('characters', []):
-                char_id = char.get('id')
-                char_name = char.get('name')
-                self.entities[char_id] = f"{char_name} (Character from Murder on the Orient Express)"
-                
-            # Asset-specific hints from original JSON
-            assets = data.get('assets', {})
-            for cat, items in assets.items():
-                for path, desc in items.items():
-                    # Use the path as a key to store original hints
-                    self.entities[path] = desc
-                    
-        except Exception as e:
-            print(f"Error loading attention metadata: {e}")
+    def register_assets(self, assets: List[Dict[str, str]]):
+        """
+        Register a list of parsed assets into the attention entity store.
+        
+        Args:
+            assets: Output from AssetExtractor.parse_outline()
+                    [{"type": "人物立绘", "name": "波洛", "description": "...", "path": "..."}, ...]
+        """
+        for asset in assets:
+            path = asset["path"]
+            desc = asset.get("description", asset.get("name", ""))
+            self.entities[path] = desc
+
+            # Auto-generate canonical consistency IDs for characters
+            if asset["type"] == "人物立绘":
+                name = asset["name"]
+                safe_key = name.lower()
+                self.canonical_ids[safe_key] = f"[CHARACTER-{name}-CONSISTENT]"
+
+    def register_characters(self, characters: Dict[str, str]):
+        """
+        Register character canonical IDs manually.
+        
+        Args:
+            characters: {"poirot": "[HERO-POIROT-CONSISTENT]", ...}
+        """
+        self.canonical_ids.update(characters)
 
     def get_scene_mood(self, description: str) -> str:
-        """
-        Simple NLP inference to detect mood from raw description.
-        """
+        """Simple NLP inference to detect mood from raw description."""
         mood_map = {
-            "cold": ["snow", "frost", "night", "winter"],
-            "tense": ["murder", "blood", "scream", "dark", "crime", "suspense"],
-            "luxury": ["gold", "silk", "princess", "dining", "elegant"],
-            "mystery": ["shadow", "whisper", "clue", "hidden"]
+            "cold": ["snow", "frost", "night", "winter", "寒冷", "冰", "雪"],
+            "tense": ["murder", "blood", "scream", "dark", "crime", "suspense", "紧张", "谋杀", "血"],
+            "luxury": ["gold", "silk", "princess", "dining", "elegant", "华丽", "优雅", "丝绸"],
+            "mystery": ["shadow", "whisper", "clue", "hidden", "悬疑", "暗影", "线索"]
         }
         
         detected = []
@@ -71,9 +74,7 @@ class AttentionManager:
         return ", ".join(detected) if detected else "standard"
 
     def get_focus_tokens(self, asset_path: str, description: str = "", rejected_reasons: Optional[List[str]] = None) -> Dict[str, Any]:
-        """
-        Returns a dictionary of categorized positive and negative tokens.
-        """
+        """Returns a dictionary of categorized positive and negative tokens."""
         global_weight = 1.2
         era_weight = 1.1
         if rejected_reasons and len(rejected_reasons) > 0:
@@ -94,7 +95,7 @@ class AttentionManager:
             if mood != "standard":
                 categorized["mood"].append(f"({mood} mood:1.25)")
         
-        # 2. Canonical ID Anchoring & Global Entity hints
+        # 2. Canonical ID Anchoring & Entity hints
         asset_lower = asset_path.lower()
         for key, cid in self.canonical_ids.items():
             if key in asset_lower:
@@ -124,26 +125,26 @@ class AttentionManager:
             "negative": [self.global_context["negative_prompt"]]
         }
 
-    def update_global_config(self, theme: Optional[str] = None, era: Optional[str] = None):
+    def update_global_config(self, theme: Optional[str] = None, era: Optional[str] = None, 
+                             negative_prompt: Optional[str] = None):
         """Dynamic update for global focus."""
         if theme: self.global_context["theme"] = theme
         if era: self.global_context["era"] = era
+        if negative_prompt: self.global_context["negative_prompt"] = negative_prompt
 
     def update_resonance(self, asset_path: str, visual_vibe: str):
-        """
-        Saves the visual mood for later BGM resonance.
-        """
+        """Saves the visual mood for later BGM resonance."""
         self.resonance_cache[asset_path] = visual_vibe
 
     def update_state(self, entity_id: str, trait: str):
-        """
-        Updates the character memory (e.g. 'poirot', 'holding a silver glass').
-        """
+        """Updates the character memory (e.g. 'poirot', 'holding a silver glass')."""
         self.state_memory[entity_id] = trait
+
 
 class MockAttentionManager(AttentionManager):
     def get_focus_tokens(self, asset_path: str, description: str = "", rejected_reasons: Optional[List[str]] = None) -> Dict[str, Any]:
         return {
+            "structured": {"global": [], "mood": [], "entity": [], "consistency": []},
             "positive": ["(Orient Express:1.2)", "(Cinematic Lighting:1.1)"],
             "negative": ["modern, blurry"]
         }

@@ -6,13 +6,13 @@ from fastapi import FastAPI, BackgroundTasks, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-# New encapsulated imports
+# Core imports (no JSON dependency)
 from foundation_platform.core.generator import GeneratorRegistry, BaseGenerator
 from foundation_platform.core.extractor import AssetExtractor
 from foundation_platform.core.refiner import PromptRefiner
 from foundation_platform.core.attention import AttentionManager
 
-app = FastAPI(title="Foundation Platform API v5.0 [RESONANCE ENABLED]")
+app = FastAPI(title="Foundation Platform API v6.0 [TEXT-INPUT]")
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,25 +21,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global Narrative Path
+# Global Config
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-NARRATIVE_JSON = os.path.join(PROJECT_ROOT, "东方快车谋杀案修复版.json")
 
-# In-Memory Store
+# In-Memory Stores
 tasks_kv: Dict[str, Dict] = {}
 task_logs: Dict[str, List[str]] = {}
+asset_registry: Dict[str, Dict[str, str]] = {}  # {type: {path: description}}
 
+# Core engines (no JSON paths)
+extractor = AssetExtractor()
 refiner = PromptRefiner()
-attention_mgr = AttentionManager(NARRATIVE_JSON)
+attention_mgr = AttentionManager()
+
+# ──────────────── Request Models ────────────────
+
+class AssetRegistrationRequest(BaseModel):
+    outline: str  # 纯文字大纲
 
 class GenerationRequest(BaseModel):
     asset_path: str
     description: str
     asset_type: str
     provider: str = "mock"
-    entropy: float = 0.5 # Creative freedom
-    relationships: Optional[Dict[str, Any]] = None # {speaker, listener, graph}
-    refinement_passes: int = 1 # Recursive polish
+    entropy: float = 0.5
+    relationships: Optional[Dict[str, Any]] = None
+    refinement_passes: int = 1
 
 class NarrativeConfigRequest(BaseModel):
     theme: Optional[str] = None
@@ -49,7 +56,7 @@ class NarrativeConfigRequest(BaseModel):
 
 class FeedbackRequest(BaseModel):
     asset_path: str
-    status: str # 'LIKED' or 'DISLIKED'
+    status: str  # 'LIKED' or 'DISLIKED'
     reason: Optional[str] = None
     prompt: str
     context: Dict[str, Any]
@@ -58,47 +65,49 @@ class StateUpdateRequest(BaseModel):
     entity_id: str
     trait: str
 
-@app.post("/state")
-async def update_state(req: StateUpdateRequest):
-    attention_mgr.update_state(req.entity_id, req.trait)
-    return {"message": "State updated", "entity": req.entity_id, "trait": req.trait}
+# ──────────────── Asset Registration ────────────────
 
-@app.get("/narrative/config")
-async def get_narrative_config():
+@app.post("/assets/register")
+async def register_assets(req: AssetRegistrationRequest):
+    """
+    接收纯文字大纲，提取素材需求并注册到内存。
+    
+    输入格式：
+        角色：波洛（灰色胡须的比利时侦探）、公主（高贵的俄国老妇人）
+        场景：车站夜景（寒冷，蒸汽弥漫）、餐车（温暖的灯光）
+        BGM：紧张悬疑（弦乐为主）
+    """
+    global asset_registry
+    
+    parsed = extractor.parse_outline(req.outline)
+    if not parsed:
+        raise HTTPException(status_code=400, detail="无法从大纲中提取任何素材需求")
+    
+    # Convert to registry format and merge
+    new_registry = extractor.to_registry_dict(parsed)
+    for atype, items in new_registry.items():
+        if atype not in asset_registry:
+            asset_registry[atype] = {}
+        asset_registry[atype].update(items)
+    
+    # Register into attention engine
+    attention_mgr.register_assets(parsed)
+    
     return {
-        "global_context": attention_mgr.global_context,
-        "social_graph": refiner.relationships if hasattr(refiner, 'relationships') else {} # Fallback
+        "message": f"已注册 {len(parsed)} 个素材需求",
+        "assets": parsed,
+        "total_registered": sum(len(v) for v in asset_registry.values())
     }
 
-@app.post("/narrative/config")
-async def update_narrative_config(req: NarrativeConfigRequest):
-    attention_mgr.update_global_config(theme=req.theme, era=req.era, negative_prompt=req.negative_prompt)
-    if req.social_graph:
-        # Assuming RelationshipManager integration or similar
-        pass
-    return {"message": "Global configuration updated"}
-
-@app.post("/narrative/feedback")
-async def process_feedback(req: FeedbackRequest):
-    feedback_file = os.path.join(PROJECT_ROOT, "feedback.jsonl")
-    with open(feedback_file, "a", encoding="utf-8") as f:
-        f.write(json.dumps(req.dict(), ensure_ascii=False) + "\n")
-    
-    # Logic for dynamic weight decay or ICL integration would go here
-    if req.status == 'DISLIKED':
-        print(f"Negative feedback received for {req.asset_path}: {req.reason}")
-        
-    return {"message": "Feedback collected", "status": "ok"}
+# ──────────────── Status ────────────────
 
 @app.get("/status")
 async def get_status():
-    extractor = AssetExtractor(NARRATIVE_JSON, PROJECT_ROOT)
-    data = extractor.extract_all()
-    
+    """返回所有已注册素材的状态（从内存读取，不读 JSON）。"""
     summary = {"total": 0, "found": 0, "missing": 0}
     details = []
     
-    for asset_type, items in data.items():
+    for asset_type, items in asset_registry.items():
         for path, desc in items.items():
             full_path = os.path.join(PROJECT_ROOT, path.replace('/', os.sep))
             exists = os.path.exists(full_path)
@@ -128,6 +137,8 @@ async def get_status():
             })
             
     return {"summary": summary, "details": details, "providers": GeneratorRegistry.list_providers()}
+
+# ──────────────── Generation ────────────────
 
 @app.post("/generate")
 async def generate_asset(req: GenerationRequest, background_tasks: BackgroundTasks):
@@ -203,6 +214,40 @@ async def run_generation_v5(provider_name: str, path: str, description: str, ass
     except Exception as e:
         tasks_kv[path]["status"] = "FAILED"
         logs.append(f"Critical System Error: {str(e)}")
+
+# ──────────────── Narrative Control ────────────────
+
+@app.post("/state")
+async def update_state(req: StateUpdateRequest):
+    attention_mgr.update_state(req.entity_id, req.trait)
+    return {"message": "State updated", "entity": req.entity_id, "trait": req.trait}
+
+@app.get("/narrative/config")
+async def get_narrative_config():
+    return {
+        "global_context": attention_mgr.global_context,
+        "social_graph": refiner.relationships if hasattr(refiner, 'relationships') else {}
+    }
+
+@app.post("/narrative/config")
+async def update_narrative_config(req: NarrativeConfigRequest):
+    attention_mgr.update_global_config(theme=req.theme, era=req.era, negative_prompt=req.negative_prompt)
+    if req.social_graph:
+        pass  # Future: RelationshipManager integration
+    return {"message": "Global configuration updated"}
+
+@app.post("/narrative/feedback")
+async def process_feedback(req: FeedbackRequest):
+    feedback_file = os.path.join(PROJECT_ROOT, "feedback.jsonl")
+    with open(feedback_file, "a", encoding="utf-8") as f:
+        f.write(json.dumps(req.dict(), ensure_ascii=False) + "\n")
+    
+    if req.status == 'DISLIKED':
+        print(f"Negative feedback received for {req.asset_path}: {req.reason}")
+        
+    return {"message": "Feedback collected", "status": "ok"}
+
+# ──────────────── Main ────────────────
 
 if __name__ == "__main__":
     import uvicorn
