@@ -2,8 +2,9 @@ import json
 import os
 
 class AssetExtractor:
-    def __init__(self, json_path):
+    def __init__(self, json_path, project_root=None):
         self.json_path = json_path
+        self.project_root = project_root
         self.data = {}
         self.load_data()
 
@@ -11,7 +12,7 @@ class AssetExtractor:
         with open(self.json_path, 'r', encoding='utf-8') as f:
             self.data = json.load(f)
 
-    def extract_assets(self):
+    def extract_all(self):
         """
         Extracts asset definitions from the 'assets' field.
         Returns a dict: {type: {path: description}}

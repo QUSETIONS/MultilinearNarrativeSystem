@@ -107,32 +107,32 @@
       "start_node_id": "n632"
     },
     {
-      "chapter_id": "chapter2_with_bouc",
-      "timeline_id": "chapter_chapter2_with_bouc",
+      "chapter_id": "chapter2_with_bouc_start_dup1",
+      "timeline_id": "chapter_chapter2_with_bouc_start_dup1",
       "title": "第二章：与布克相遇",
       "order": 16,
-      "start_node_id": "chapter2_with_bouc_start"
+      "start_node_id": "chapter2_with_bouc_start_dup1"
     },
     {
-      "chapter_id": "chapter3_with_bouc",
-      "timeline_id": "chapter_chapter3_with_bouc",
+      "chapter_id": "chapter3_with_bouc_start_dup1",
+      "timeline_id": "chapter_chapter3_with_bouc_start_dup1",
       "title": "第三章：与布克同行的旅程继续",
       "order": 17,
-      "start_node_id": "chapter3_with_bouc_start"
+      "start_node_id": "chapter3_with_bouc_start_dup1"
     },
     {
-      "chapter_id": "chapter2_without_bouc",
-      "timeline_id": "chapter_chapter2_without_bouc",
+      "chapter_id": "chapter2_without_bouc_start_dup1",
+      "timeline_id": "chapter_chapter2_without_bouc_start_dup1",
       "title": "第二章：独自旅行的开始",
       "order": 18,
-      "start_node_id": "chapter2_without_bouc_start"
+      "start_node_id": "chapter2_without_bouc_start_dup1"
     },
     {
-      "chapter_id": "chapter3_without_bouc",
-      "timeline_id": "chapter_chapter3_without_bouc",
+      "chapter_id": "chapter3_without_bouc_start_dup1",
+      "timeline_id": "chapter_chapter3_without_bouc_start_dup1",
       "title": "第三章：孤独的旅程",
       "order": 19,
-      "start_node_id": "chapter3_without_bouc_start"
+      "start_node_id": "chapter3_without_bouc_start_dup1"
     },
     {
       "chapter_id": "n883",

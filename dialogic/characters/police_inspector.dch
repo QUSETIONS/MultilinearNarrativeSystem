@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "police_inspector",
 "description": "",
 "display_name": "南斯拉夫警长",
 "mirror": false,
 "nicknames": ["南斯拉夫警长"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"police_inspector": {
+"export_overrides": {
+"image": "res://assets/portraits/police_inspector.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

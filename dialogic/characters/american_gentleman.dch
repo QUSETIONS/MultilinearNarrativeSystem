@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "american_gentleman",
 "description": "",
 "display_name": "哈德曼",
 "mirror": false,
 "nicknames": ["哈德曼"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"american_gentleman": {
+"export_overrides": {
+"image": "res://assets/portraits/american_gentleman.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

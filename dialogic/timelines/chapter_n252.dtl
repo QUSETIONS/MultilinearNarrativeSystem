@@ -374,6 +374,7 @@ label n317
 label n318
 # --- Segment: 第四章结束 ---
 
+label chapter5_branch
 if {poirot_alert} == "yes":
 	[signal arg="next_chapter:chapter_n319"]
 	[end_timeline]

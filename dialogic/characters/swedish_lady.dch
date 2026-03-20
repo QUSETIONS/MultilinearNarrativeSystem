@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "swedish_lady",
 "description": "",
 "display_name": "奥尔森",
 "mirror": false,
 "nicknames": ["奥尔森"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"swedish_lady": {
+"export_overrides": {
+"image": "res://assets/portraits/swedish_lady.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

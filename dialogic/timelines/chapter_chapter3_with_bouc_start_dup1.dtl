@@ -1,0 +1,186 @@
+# --- Chapter: 第三章：与布克同行的旅程继续 ---
+# --- ChapterId: chapter3_with_bouc_start_dup1 ---
+# --- ChapterOrder: 17 ---
+
+# --- Segment: 第三章：与布克同行的旅程继续 ---
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 第二天，波洛稍晚了一些才去餐车吃午饭。他起得很早，一个人吃了早饭，整个上午都在阅读那些让他回伦敦办案的文件，没怎么见过他的旅伴。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n193"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 布克先生已经坐在了桌边，招呼波洛坐在对面的空位上。波洛坐了下来，马上发现自己正坐在最佳的位置上——头一个享受餐点，而且种类丰富，味道出奇的好。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n194"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 如果我有巴尔扎克的文笔，就能好好描述一下这番景象了。我们周围的人，不同的阶层、不同的国籍、不同的年龄段，三天的旅程把这些互不相识的人聚集在一起……
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n195"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 除非发生什么事故……那么，这儿的所有人没准就被死亡联系在一起了。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n196"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 你太吓人了，我的朋友！也许是消化不良了。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n197"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 波洛观察餐车里的旅客：意大利商人、英国男仆、美国推销员、俄国德拉戈米罗夫公主、瑞典太太、玛丽·德贝纳姆、阿巴思诺特上校、德国女仆、匈牙利情侣、麦奎因和雷切特。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n198"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 午餐后，雷切特出乎意料地坐在了波洛对面。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n199"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: 能借个火吗？我姓雷切特。我想我有幸跟赫赫有名的赫尔克里·波洛先生说话，对吗？
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n200"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 您所知正确，先生。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n201"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: 在我们国家，人们说话一向开门见山。波洛先生，我希望你能接受我的一个委托。这可是一大笔钱。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n202"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 先生，如今我的顾客十分有限，我很少接案子了。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n203"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: 波洛先生，我是个有钱人，非常有钱。高处不胜寒啊。我有个敌人。我的生命受到了威胁。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n204"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 只有一个敌人吗？
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n205"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: 你这话是什么意思？
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n206"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 先生，以我的经验来看，如果一个人到了你说的那个地位，往往不止有一个敌人。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n207"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: （掏出手枪）我认为自己还不至于遭人暗算，但我要保证自己的安全万无一失。请记住，这可是一大笔钱。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n208"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+- 接受委托，保护雷切特
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n209"]
+	[end_timeline]
+- 拒绝委托，离开餐车
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n209"]
+	[end_timeline]
+- 要求更多信息再做决定
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n209"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: 两万美元能打动你吗？
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n210"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 不能。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n211"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join rachett 1
+rachett: 如果你还想多要，那可不成，我是个识货的人。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n212"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 我也是，雷切特先生。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n213"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （站起身）容我说句不客气的话——我不喜欢你那张脸，雷切特先生。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n214"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_dining_car.png" fade="1.5"]
+leave --All--
+narrator: 波洛离开了餐车。雷切特看着他离开，脸上露出阴郁的表情。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n215"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.5"]
+leave --All--
+narrator: 当晚，火车抵达贝尔格莱德。由于大雪，火车加挂了车厢。布克先生搬到雅典车厢，波洛则搬到斯坦布尔－加来车厢的一号房。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n216"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.5"]
+leave --All--
+join bouc 1
+bouc: 但愿我们不会被大雪堵在路上，我跟你说，我可受不了！
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/n217"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_night.png" fade="1.5"]
+leave --All--
+narrator: 九点十五分，火车准时驶出车站，驶入风雪交加的夜晚。
+	[signal arg="next_chapter:chapter_chapter3_with_bouc/end_game_with_bouc"]
+	[end_timeline]
+
+# --- Segment: 旅程继续（原著剧情） ---

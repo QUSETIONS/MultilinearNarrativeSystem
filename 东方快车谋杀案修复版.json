@@ -6361,7 +6361,7 @@
       "next": "end_bouc_story"
     },
     {
-      "id": "end_bouc_story",
+      "id": "end_bouc_story_dup1",
       "type": "chapter",
       "title": "布克的故事结束",
       "perspective": "bouc",
@@ -6515,7 +6515,7 @@
       ]
     },
     {
-      "id": "segment_observation_start",
+      "id": "segment_observation_start_dup1",
       "type": "segment",
       "title": "观察上校与小姐的对话",
       "perspective": "poirot",
@@ -6986,7 +6986,7 @@
       ]
     },
     {
-      "id": "segment_train_stop_start",
+      "id": "segment_train_stop_start_dup1",
       "type": "segment",
       "title": "火车停车",
       "perspective": "poirot",
@@ -7169,14 +7169,14 @@
       ]
     },
     {
-      "id": "chapter1_end",
+      "id": "chapter1_end_dup1",
       "type": "chapter",
       "title": "第一章结束",
       "perspective": "poirot",
       "next": "chapter2_branch"
     },
     {
-      "id": "chapter2_branch",
+      "id": "chapter2_branch_dup1",
       "type": "branch",
       "perspective": "poirot",
       "conditions": [
@@ -7194,7 +7194,7 @@
       "default": "chapter2_with_bouc_start"
     },
     {
-      "id": "chapter2_with_bouc_start",
+      "id": "chapter2_with_bouc_start_dup1",
       "type": "chapter",
       "title": "第二章：与布克相遇",
       "perspective": "poirot",
@@ -7548,7 +7548,7 @@
       ]
     },
     {
-      "id": "segment_housing_argument_start",
+      "id": "segment_housing_argument_start_dup1",
       "type": "segment",
       "title": "住房争吵",
       "perspective": "poirot",
@@ -8109,7 +8109,7 @@
       ]
     },
     {
-      "id": "segment_train_start_start",
+      "id": "segment_train_start_start_dup1",
       "type": "segment",
       "title": "火车启动",
       "perspective": "poirot",
@@ -8215,7 +8215,7 @@
       "next": "chapter3_with_bouc_start"
     },
     {
-      "id": "chapter3_with_bouc_start",
+      "id": "chapter3_with_bouc_start_dup1",
       "type": "chapter",
       "title": "第三章：与布克同行的旅程继续",
       "perspective": "poirot",
@@ -8470,14 +8470,14 @@
       "next": "end_game_with_bouc"
     },
     {
-      "id": "end_game_with_bouc",
+      "id": "end_game_with_bouc_dup1",
       "type": "chapter",
       "title": "旅程继续（原著剧情）",
       "perspective": "poirot",
       "next": "n252"
     },
     {
-      "id": "chapter2_without_bouc_start",
+      "id": "chapter2_without_bouc_start_dup1",
       "type": "chapter",
       "title": "第二章：独自旅行的开始",
       "perspective": "poirot",
@@ -8727,7 +8727,7 @@
       "next": "chapter3_without_bouc_start"
     },
     {
-      "id": "chapter3_without_bouc_start",
+      "id": "chapter3_without_bouc_start_dup1",
       "type": "chapter",
       "title": "第三章：孤独的旅程",
       "perspective": "poirot",
@@ -8779,7 +8779,7 @@
       "next": "end_game_without_murder"
     },
     {
-      "id": "end_game_without_murder",
+      "id": "end_game_without_murder_dup1",
       "type": "chapter",
       "title": "旅程结束",
       "perspective": "poirot",
@@ -8804,7 +8804,7 @@
       "next": "end_of_story"
     },
     {
-      "id": "end_of_story",
+      "id": "end_of_story_dup1",
       "type": "chapter",
       "title": "故事结束",
       "perspective": "poirot",
@@ -9425,7 +9425,7 @@
       "next": "chapter5_branch"
     },
     {
-      "id": "chapter5_branch",
+      "id": "chapter5_branch_dup1",
       "type": "branch",
       "perspective": "poirot",
       "conditions": [
@@ -11016,7 +11016,7 @@
       "next": "chapter6_branch"
     },
     {
-      "id": "chapter6_branch",
+      "id": "chapter6_branch_dup1",
       "type": "branch",
       "perspective": "poirot",
       "conditions": [

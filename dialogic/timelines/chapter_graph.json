@@ -1,10 +1,18 @@
 {
   "version": "1.1",
-  "entry_chapter_id": "n950",
-  "entry_timeline_id": "chapter_n950",
+  "entry_chapter_id": "b10",
+  "entry_timeline_id": "chapter_b10",
   "entry_points": [
+    "b10",
+    "n632",
+    "chapter2_with_bouc_start_dup1",
+    "chapter3_with_bouc_start_dup1",
+    "chapter2_without_bouc_start_dup1",
+    "chapter3_without_bouc_start_dup1",
+    "n883",
     "n950",
     "n999",
+    "n1000",
     "n1124",
     "n1167",
     "n1168",
@@ -104,26 +112,26 @@
       "order": 15
     },
     {
-      "chapter_id": "chapter2_with_bouc",
-      "timeline_id": "chapter_chapter2_with_bouc",
+      "chapter_id": "chapter2_with_bouc_start_dup1",
+      "timeline_id": "chapter_chapter2_with_bouc_start_dup1",
       "title": "第二章：与布克相遇",
       "order": 16
     },
     {
-      "chapter_id": "chapter3_with_bouc",
-      "timeline_id": "chapter_chapter3_with_bouc",
+      "chapter_id": "chapter3_with_bouc_start_dup1",
+      "timeline_id": "chapter_chapter3_with_bouc_start_dup1",
       "title": "第三章：与布克同行的旅程继续",
       "order": 17
     },
     {
-      "chapter_id": "chapter2_without_bouc",
-      "timeline_id": "chapter_chapter2_without_bouc",
+      "chapter_id": "chapter2_without_bouc_start_dup1",
+      "timeline_id": "chapter_chapter2_without_bouc_start_dup1",
       "title": "第二章：独自旅行的开始",
       "order": 18
     },
     {
-      "chapter_id": "chapter3_without_bouc",
-      "timeline_id": "chapter_chapter3_without_bouc",
+      "chapter_id": "chapter3_without_bouc_start_dup1",
+      "timeline_id": "chapter_chapter3_without_bouc_start_dup1",
       "title": "第三章：孤独的旅程",
       "order": 19
     },
@@ -328,6 +336,30 @@
   ],
   "edges": [
     {
+      "from_chapter_id": "n1",
+      "to_chapter_id": "chapter2_with_bouc",
+      "via_node_id": "chapter2_branch",
+      "choice_text": "bouc_decision=go"
+    },
+    {
+      "from_chapter_id": "n1",
+      "to_chapter_id": "chapter2_without_bouc",
+      "via_node_id": "chapter2_branch",
+      "choice_text": "bouc_decision=stay"
+    },
+    {
+      "from_chapter_id": "n252",
+      "to_chapter_id": "n319",
+      "via_node_id": "chapter5_branch",
+      "choice_text": "poirot_alert=yes"
+    },
+    {
+      "from_chapter_id": "n369",
+      "to_chapter_id": "n493",
+      "via_node_id": "chapter6_branch",
+      "choice_text": "poirot_takes_case=yes"
+    },
+    {
       "from_chapter_id": "n632",
       "to_chapter_id": "chapter2_with_bouc",
       "via_node_id": "chapter2_branch",
@@ -340,52 +372,16 @@
       "choice_text": "bouc_decision=stay"
     },
     {
-      "from_chapter_id": "n252",
-      "to_chapter_id": "n369",
-      "via_node_id": "chapter5_branch",
-      "choice_text": "poirot_alert=yes"
-    },
-    {
-      "from_chapter_id": "n252",
-      "to_chapter_id": "n319",
-      "via_node_id": "chapter5_branch",
-      "choice_text": "poirot_alert=no"
-    },
-    {
-      "from_chapter_id": "n369",
-      "to_chapter_id": "n537",
-      "via_node_id": "chapter6_branch",
-      "choice_text": "poirot_takes_case=yes"
-    },
-    {
-      "from_chapter_id": "n369",
-      "to_chapter_id": "n493",
-      "via_node_id": "chapter6_branch",
-      "choice_text": "poirot_takes_case=no"
-    },
-    {
-      "from_chapter_id": "n883",
-      "to_chapter_id": "n369",
-      "via_node_id": "chapter5_branch",
-      "choice_text": "poirot_alert=yes"
-    },
-    {
       "from_chapter_id": "n883",
       "to_chapter_id": "n319",
       "via_node_id": "chapter5_branch",
-      "choice_text": "poirot_alert=no"
-    },
-    {
-      "from_chapter_id": "n1000",
-      "to_chapter_id": "n537",
-      "via_node_id": "chapter6_branch",
-      "choice_text": "poirot_takes_case=yes"
+      "choice_text": "poirot_alert=yes"
     },
     {
       "from_chapter_id": "n1000",
       "to_chapter_id": "n493",
       "via_node_id": "chapter6_branch",
-      "choice_text": "poirot_takes_case=no"
+      "choice_text": "poirot_takes_case=yes"
     },
     {
       "from_chapter_id": "n1387",
@@ -400,18 +396,6 @@
       "choice_text": "chapter.next"
     },
     {
-      "from_chapter_id": "n252",
-      "to_chapter_id": "n883",
-      "via_node_id": "n318",
-      "choice_text": "chapter.next"
-    },
-    {
-      "from_chapter_id": "n369",
-      "to_chapter_id": "n1000",
-      "via_node_id": "n492",
-      "choice_text": "chapter.next"
-    },
-    {
       "from_chapter_id": "b10",
       "to_chapter_id": "b1",
       "via_node_id": "b10",
@@ -421,6 +405,36 @@
       "from_chapter_id": "n632",
       "to_chapter_id": "n1",
       "via_node_id": "n632",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "chapter2_with_bouc_start_dup1",
+      "to_chapter_id": "chapter2_with_bouc",
+      "via_node_id": "chapter2_with_bouc_start_dup1",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "chapter3_with_bouc_start_dup1",
+      "to_chapter_id": "chapter3_with_bouc",
+      "via_node_id": "chapter3_with_bouc_start_dup1",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "chapter3_with_bouc_start_dup1",
+      "to_chapter_id": "n252",
+      "via_node_id": "end_game_with_bouc_dup1",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "chapter2_without_bouc_start_dup1",
+      "to_chapter_id": "chapter2_without_bouc",
+      "via_node_id": "chapter2_without_bouc_start_dup1",
+      "choice_text": "chapter.next"
+    },
+    {
+      "from_chapter_id": "chapter3_without_bouc_start_dup1",
+      "to_chapter_id": "chapter3_without_bouc",
+      "via_node_id": "chapter3_without_bouc_start_dup1",
       "choice_text": "chapter.next"
     },
     {
@@ -586,12 +600,6 @@
       "choice_text": "chapter.next"
     },
     {
-      "from_chapter_id": "b1",
-      "to_chapter_id": "b10",
-      "via_node_id": "b8",
-      "choice_text": "dialogue.next"
-    },
-    {
       "from_chapter_id": "chapter2_with_bouc",
       "to_chapter_id": "chapter3_with_bouc",
       "via_node_id": "n191",
@@ -616,6 +624,18 @@
       "choice_text": "dialogue.next"
     },
     {
+      "from_chapter_id": "chapter2_with_bouc_start_dup1",
+      "to_chapter_id": "chapter3_with_bouc",
+      "via_node_id": "n822",
+      "choice_text": "dialogue.next"
+    },
+    {
+      "from_chapter_id": "chapter2_without_bouc_start_dup1",
+      "to_chapter_id": "chapter3_without_bouc",
+      "via_node_id": "n875",
+      "choice_text": "dialogue.next"
+    },
+    {
       "from_chapter_id": "n950",
       "to_chapter_id": "n368",
       "via_node_id": "n998",
@@ -626,12 +646,6 @@
       "to_chapter_id": "n536",
       "via_node_id": "n1166",
       "choice_text": "dialogue.next"
-    },
-    {
-      "from_chapter_id": "n1",
-      "to_chapter_id": "n632",
-      "via_node_id": "n15",
-      "choice_text": "继续默默观察"
     }
   ]
 }

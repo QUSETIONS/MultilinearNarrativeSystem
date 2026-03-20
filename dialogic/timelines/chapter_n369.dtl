@@ -707,6 +707,7 @@ bouc: 凶手就在我们身边——现在还在这列火车上。
 label n492
 # --- Segment: 第五章结束 ---
 
+label chapter6_branch
 if {poirot_takes_case} == "yes":
 	[signal arg="next_chapter:chapter_n493"]
 	[end_timeline]

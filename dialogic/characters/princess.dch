@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "princess",
 "description": "",
 "display_name": "德拉戈米罗夫公主",
 "mirror": false,
 "nicknames": ["德拉戈米罗夫公主"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"princess": {
+"export_overrides": {
+"image": "res://assets/portraits/princess.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

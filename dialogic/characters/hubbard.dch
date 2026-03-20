@@ -6,12 +6,22 @@
 "color": Color(1, 1, 1, 1),
 "custom_info": {
 },
-"default_portrait": "",
+"default_portrait": "hubbard",
 "description": "",
 "display_name": "哈巴特太太",
 "mirror": false,
 "nicknames": ["哈巴特太太"],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"hubbard": {
+"export_overrides": {
+"image": "res://assets/portraits/hubbard.png"
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

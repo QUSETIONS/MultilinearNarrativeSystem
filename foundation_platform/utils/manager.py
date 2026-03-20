@@ -76,8 +76,8 @@ class AssetManager:
 
 if __name__ == "__main__":
     # Default execution for testing
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    json_name = "东方快车谋杀案合并版.json"
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    json_name = "东方快车谋杀案修复版.json"
     json_path = os.path.join(project_root, json_name)
     
     if not os.path.exists(json_path):

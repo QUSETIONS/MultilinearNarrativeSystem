@@ -79,12 +79,14 @@ porter: 布克先生，您的车已经准备好了，需要我帮您叫行李员
 [background arg="res://assets/backgrounds/hotel_room.png" fade="1.5"]
 leave --All--
 narrator: 布克决定在旅馆多住一晚。他回到房间，舒服地躺在柔软的床上，很快就进入了梦乡。
-	jump end_bouc_story
+	[signal arg="next_chapter:chapter_b1/end_bouc_story"]
+	[end_timeline]
 
 [background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
 leave --All--
 join bouc 1
 bouc: 好的，谢谢。我这就出发去火车站。
+	[signal arg="next_chapter:chapter_b1/end_bouc_story"]
+	[end_timeline]
 
-label end_bouc_story
 # --- Segment: 布克的故事结束 ---

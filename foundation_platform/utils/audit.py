@@ -3,7 +3,7 @@ import sys
 import json
 from datetime import datetime
 from typing import Dict, Any, List
-from core.extractor import AssetExtractor
+from foundation_platform.core.extractor import AssetExtractor
 
 class AssetAuditor:
     def __init__(self, json_path, root_dir):
@@ -88,8 +88,8 @@ class AssetAuditor:
                 f.write(f"\n*...and {len(missing_items) - 20} more.*")
 
 if __name__ == "__main__":
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    json_path = os.path.join(project_root, "东方快车谋杀案合并版.json")
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    json_path = os.path.join(project_root, "东方快车谋杀案修复版.json")
     report_md_path = os.path.join(project_root, "asset_audit_report.md")
     report_json_path = os.path.join(project_root, "editor-web", "public", "audit_results.json")
     

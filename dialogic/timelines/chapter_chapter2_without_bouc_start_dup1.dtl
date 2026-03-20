@@ -1,0 +1,187 @@
+# --- Chapter: 第二章：独自旅行的开始 ---
+# --- ChapterId: chapter2_without_bouc_start_dup1 ---
+# --- ChapterOrder: 18 ---
+
+# --- Segment: 第二章：独自旅行的开始 ---
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
+leave --All--
+narrator: 波洛独自一人来到托卡林旅馆的门房处。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n219"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （走向门房）有没有我的信件？
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n220"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
+leave --All--
+join porter 1
+porter: 有三封信和一封电报，先生。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n221"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （打开电报，皱眉）你预测的卡斯纳案件有了突破进展，请速回。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n222"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （对门房）烦人。我今晚就得走。辛普朗东方快车什么时候开？
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n223"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_lobby.png" fade="1.5"]
+leave --All--
+join porter 1
+porter: 九点，先生。每年这个时候都不难买票。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n224"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.5"]
+leave --All--
+narrator: 波洛在餐厅独自用餐，观察着其他客人。没有遇到老朋友布克先生，让他感到一丝遗憾。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n225"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （心想）布克大概是改了行程，不然应该会在这里遇到他的。也好，这样我能专心阅读案件文件了。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n226"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.5"]
+leave --All--
+narrator: 波洛注意到餐厅另一桌的两个美国人，但没有特别在意他们。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n227"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/hotel_restaurant.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: （心想）没有布克的介绍，那位美国老先生也不会来打扰我了。这样也好，我可以安静地思考案件。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n228"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+narrator: 晚上九点，火车站。波洛独自一人登上辛普朗东方快车。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n229"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 晚上好，先生。您在一号房间。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n230"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 谢谢。今天车上的旅客多吗？
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n231"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 太不可思议了，先生，全世界的人都选择在今晚出行！车里已经满满的了。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n232"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 哦？那我的行李……
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n233"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 已经给您安排好了，先生。二等卧铺的七号房，有位哈里斯先生还没来。如果他不来，您就住那里。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n234"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_station_day.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 这名字是个好兆头，根据我的狄更斯小说，这位哈里斯先生不会来了。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n235"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+narrator: 波洛缓缓地沿着过道走过去，大部分旅客在自己房间外面站着。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n236"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 最里面倒数第二间，先生。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n237"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+narrator: 波洛走到指定的房间，里面有人正伸手拿行李，是个年轻的高个子的美国人。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n238"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 对不起，我想你弄错了。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n239"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 你是哈里斯先生吗？
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n240"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join mcdonald 1
+mcdonald: 不，我叫麦奎因。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n241"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_corridor.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 火车上没有别的卧铺了，先生，这位先生只能住在这儿了。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n242"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join conductor 1
+conductor: 都放好了，先生。您住上铺，七号房。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n243"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_compartment.png" fade="1.5"]
+leave --All--
+join poirot 1
+poirot: 谢谢。
+	[signal arg="next_chapter:chapter_chapter2_without_bouc/n244"]
+	[end_timeline]
+
+[background arg="res://assets/backgrounds/train_window_departing.png" fade="1.5"]
+leave --All--
+narrator: 火车缓缓驶出车站，东方快车开始了为期三天的贯穿欧洲之旅。
+	[signal arg="next_chapter:chapter_chapter3_without_bouc"]
+	[end_timeline]

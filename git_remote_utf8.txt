@@ -1,0 +1,2 @@
+﻿origin	https://github.com/haom1ng7/MultilinearNarrativeSystem (fetch)
+origin	https://github.com/haom1ng7/MultilinearNarrativeSystem (push)

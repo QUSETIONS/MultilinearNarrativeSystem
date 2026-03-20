@@ -30,6 +30,13 @@
         >
           素材工作站
         </div>
+        <div 
+          class="toggle-item" 
+          :class="{ active: currentView === 'narrative' }" 
+          @click="currentView = 'narrative'"
+        >
+          叙事控制
+        </div>
       </div>
 
       <div class="action-area" style="display: flex; gap: 12px; align-items: center;">
@@ -61,6 +68,9 @@
       <AssetWorkstation 
         v-if="currentView === 'assets'" 
       />
+      <NarrativeControl 
+        v-if="currentView === 'narrative'" 
+      />
     </div>
 
     <!-- Hidden Input for File -->
@@ -76,6 +86,7 @@ import { useEditorStore } from './stores/editor.js'
 import OverviewPage from './components/OverviewPage.vue'
 import EditorPage from './components/EditorPage.vue'
 import AssetWorkstation from './components/AssetWorkstation.vue'
+import NarrativeControl from './components/NarrativeControl.vue'
 
 const store = useEditorStore()
 const currentView = ref('overview')
