@@ -26,6 +26,8 @@ class AssetExtractor:
         "BGM":   ("BGM",     "assets/bgm",          ".mp3"),
         "音乐":  ("BGM",     "assets/bgm",          ".mp3"),
         "音效":  ("音效",     "assets/sfx",          ".wav"),
+        "道具":  ("道具图",   "assets/items",        ".png"),
+        "CG":    ("剧情CG",   "assets/cgs",          ".png"),
     }
 
     def parse_outline(self, outline: str) -> List[Dict[str, str]]:
@@ -51,13 +53,21 @@ class AssetExtractor:
             mapping = self.CATEGORY_MAP.get(category)
             if not mapping:
                 # 未知类别，用通用映射
-                mapping = ("其他素材", "assets/other", ".png")
-
-            asset_type, sub_dir, ext = mapping
+                asset_type, sub_dir, ext = ("其他素材", "assets/other", ".png")
+            else:
+                asset_type, sub_dir, ext = mapping
 
             for name, description in items:
                 safe_name = self._sanitize_filename(name)
-                path = f"{sub_dir}/{safe_name}{ext}"
+                
+                # Determine path based on asset_type, with specific overrides
+                if asset_type == "BGM":
+                    path = f"assets/bgm/{safe_name}.mp3"
+                elif asset_type == "音效":
+                    path = f"assets/sfx/{safe_name}.wav"
+                else:
+                    path = f"{sub_dir}/{safe_name}{ext}" # Use generic path for other types
+
                 assets.append({
                     "type": asset_type,
                     "name": name,

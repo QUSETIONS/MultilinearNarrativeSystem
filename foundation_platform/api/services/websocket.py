@@ -14,8 +14,12 @@ class ConnectionManager:
             self.active_connections.remove(websocket)
 
     async def broadcast(self, message: dict):
+        dead_connections = []
         for connection in self.active_connections:
             try:
                 await connection.send_json(message)
             except Exception:
-                pass
+                dead_connections.append(connection)
+        # Phase 43: Clean up dead connections to prevent list bloat
+        for dead in dead_connections:
+            self.disconnect(dead)

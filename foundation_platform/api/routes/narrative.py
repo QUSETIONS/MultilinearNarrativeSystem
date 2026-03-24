@@ -3,8 +3,8 @@ import json
 from fastapi import APIRouter, HTTPException
 from foundation_platform.api.models import StateUpdateRequest, NarrativeConfigRequest, FeedbackRequest, DescEnhanceRequest
 from foundation_platform.api.state import attention_mgr, refiner, feedback_lock
-from foundation_platform.core.config import PROJECT_ROOT
-from scripts.deep_enhance import enhance_prompt_via_llm
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from foundation_platform.core.llm_service import enhance_prompt_via_llm
 
 router = APIRouter(tags=["Narrative"])
 

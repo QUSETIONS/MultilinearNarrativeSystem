@@ -1,11 +1,13 @@
 import os
 from fastapi import APIRouter, BackgroundTasks, HTTPException
-from foundation_platform.api.models import GenerationRequest, VariantGenerateRequest
-from foundation_platform.api.state import tasks_kv, task_logs, asset_registry
+from pydantic import BaseModel
+import shutil
+from foundation_platform.api.models import GenerationRequest, VariantGenerateRequest, AssetStatus
 from foundation_platform.core.generator import GeneratorRegistry
-from foundation_platform.core.attention import AssetStatus
-from foundation_platform.core.config import PROJECT_ROOT
+from foundation_platform.api.state import asset_registry, tasks_kv, task_logs
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from foundation_platform.api.services.generation_service import run_generation_v5
+from foundation_platform.api.services.db_service import get_variants_by_node
 
 router = APIRouter(tags=["Generation"])
 
@@ -59,6 +61,29 @@ async def get_tasks():
         }
     return merged_tasks
 
+class RollbackRequest(BaseModel):
+    variant_url: str
+
+@router.post("/assets/{node_id:path}/rollback")
+async def rollback_node_variant(node_id: str, req: RollbackRequest):
+    """Restore a specific variant as the active asset"""
+    canonical_path = os.path.join(PROJECT_ROOT, node_id.replace('/', os.sep))
+    v_url = req.variant_url.replace('/static/', '').lstrip('/')
+    variant_path = os.path.join(PROJECT_ROOT, v_url.replace('/', os.sep))
+    
+    if os.path.exists(variant_path):
+        shutil.copy(variant_path, canonical_path)
+        # Sync simple status
+        tasks_kv[node_id] = {"status": "COMPLETED", "provider": "rollback"}
+        return {"message": "Rollback successful"}
+    raise HTTPException(status_code=404, detail="Variant file not found on disk")
+
+@router.get("/assets/{node_id:path}/variants")
+async def get_node_variants(node_id: str):
+    """Retrieve history of asset generations for a specific node"""
+    variants = get_variants_by_node(node_id)
+    return {"node_id": node_id, "variants": variants}
+
 @router.post("/generate-variants")
 async def generate_variants(req: VariantGenerateRequest, background_tasks: BackgroundTasks):
     if req.provider not in GeneratorRegistry.list_providers():
@@ -78,7 +103,8 @@ async def generate_variants(req: VariantGenerateRequest, background_tasks: Backg
             run_generation_v5, req.provider, variant_path, 
             req.description, req.asset_type, 
             req.base_entropy + (i * 0.2),
-            None, 1
+            None, 1, 
+            req.seed, 7.5, req.negative_prompt
         )
     
     return {
@@ -92,6 +118,9 @@ async def generate_asset(req: GenerationRequest, background_tasks: BackgroundTas
         raise HTTPException(status_code=400, detail="Invalid provider")
     
     tasks_kv[req.asset_path] = {"status": "PROCESSING", "provider": req.provider}
-    task_logs[req.asset_path] = [f"Initial request (Entropy: {req.entropy}) received for {req.asset_path}"]
-    background_tasks.add_task(run_generation_v5, req.provider, req.asset_path, req.description, req.asset_type, req.entropy, req.relationships, req.refinement_passes)
+    task_logs[req.asset_path] = [f"Initial request (Entropy: {req.entropy}, Seed: {req.seed}, Guidance: {req.guidance_scale}) received for {req.asset_path}"]
+    background_tasks.add_task(
+        run_generation_v5, req.provider, req.asset_path, req.description, req.asset_type, 
+        req.entropy, req.relationships, req.refinement_passes, req.seed, req.guidance_scale, req.negative_prompt
+    )
     return {"message": "Task started", "asset": req.asset_path}

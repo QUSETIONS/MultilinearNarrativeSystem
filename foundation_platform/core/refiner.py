@@ -13,7 +13,10 @@ class PromptRefiner:
     STYLE_PRESETS = {
         "背景图": "High-fidelity digital painting, 8k resolution, cinematic lighting, detailed environment, oil on canvas style, concept art.",
         "人物立绘": "Character portrait, high detail, sharp focus, vibrant colors, anime style, clean lines, white background.",
-        "bgm": "High-quality orchestral soundtrack, cinematic atmosphere, 44.1kHz, professional mixing."
+        "bgm": "High-quality orchestral soundtrack, cinematic atmosphere, 44.1kHz, professional mixing.",
+        "道具图": "Item illustration, centered composition, detailed texture, clean background, game asset style, high contrast.",
+        "剧情CG": "Full scene CG illustration, dynamic composition, dramatic lighting, cinematic angle, high detail, emotional atmosphere.",
+        "音效": "Sound effect descriptor, foley reference, immersive spatial audio, high dynamic range."
     }
 
     def get_spatial_hint(self, asset_type: str) -> str:
@@ -21,7 +24,10 @@ class PromptRefiner:
         layouts = {
             "人物立绘": "Composition: Full body portrait, centered, high-key lighting, blank background.",
             "背景图": "Composition: Wide angle, deep depth of field, environmental storytelling, rule of thirds.",
-            "bgm": "Atmosphere: Surround sound, immersive, high dynamic range."
+            "bgm": "Atmosphere: Surround sound, immersive, high dynamic range.",
+            "道具图": "Composition: Centered close-up, white/transparent background, studio lighting, product photography.",
+            "剧情CG": "Composition: Cinematic wide shot, dynamic perspective, key moment capture, rule of thirds.",
+            "音效": "Atmosphere: Mono/stereo positioning, impulse-response, short-decay clarity."
         }
         return layouts.get(asset_type, "Standard centered composition.")
 

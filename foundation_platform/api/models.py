@@ -19,6 +19,9 @@ class GenerationRequest(BaseModel):
     entropy: float = 0.5
     relationships: Optional[Dict[str, Any]] = None
     refinement_passes: int = 1
+    seed: int = -1  # -1 = random
+    guidance_scale: float = 7.5
+    negative_prompt: str = ""
 
 class NarrativeConfigRequest(BaseModel):
     theme: Optional[str] = None
@@ -49,7 +52,12 @@ class VariantGenerateRequest(BaseModel):
     provider: str = "mock"
     count: int = 3
     base_entropy: float = 0.5
+    negative_prompt: str = ""
+    seed: int = -1  # -1 = random, or specific seed to force variations on fixed base
 
 class DescEnhanceRequest(BaseModel):
     asset_type: str
     description: str
+
+class GodotExportRequest(BaseModel):
+    script_json: str  # Full editor store JSON from exportJSON()

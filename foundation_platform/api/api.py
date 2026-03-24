@@ -3,11 +3,20 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from foundation_platform.core.config import PROJECT_ROOT
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from foundation_platform.api.services.db_service import init_db, load_registry
 
 from foundation_platform.api.routes import assets, export, health, ws, narrative, generation
 
-app = FastAPI(title="Foundation Platform API v32.0 [Refactored]")
+app = FastAPI(title="Foundation Platform API v42.0 [Modality Router & Persistence]")
+
+@app.on_event("startup")
+async def startup_event():
+    init_db()
+    # Phase 42: Restore asset_registry from SQLite
+    from foundation_platform.api.state import asset_registry
+    restored = load_registry()
+    asset_registry.update(restored)
 
 app.add_middleware(
     CORSMiddleware,

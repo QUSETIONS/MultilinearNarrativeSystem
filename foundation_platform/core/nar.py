@@ -109,9 +109,10 @@ class NarrativeAttentionResidual:
         
         self.stack = [new_distilled] + keeping
 
-    def get_saliency_score(self) -> float:
+    def get_context_hint(self, query: str, decay: float = 0.9) -> str:
         """
         Computes softmax attention weights with fuzzy similarity and temporal decay.
+        Returns a string summary of the most relevant NAR context items.
         """
         if not self.stack:
             return ""
@@ -272,8 +273,6 @@ class NarrativeAttentionResidual:
         if anchors:
             # Phase 20: Logical Entanglement tagging
             current_prompt = f"{current_prompt} (Logical Entanglement: {', '.join(set(anchors))})"
-        
-        # Style Steering: Inject historical 'LIKED' styles if they don't contradict
         
         # Style Steering: Inject historical 'LIKED' styles if they don't contradict
         style_vec = self.get_style_vector()

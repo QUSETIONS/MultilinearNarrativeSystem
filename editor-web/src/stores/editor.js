@@ -1,66 +1,32 @@
-import { defineStore, storeToRefs } from 'pinia'
-import { ref } from 'vue'
-import { ElMessage } from 'element-plus'
-import { useChaptersStore } from './chapters'
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 import { useAssetsStore } from './assets'
 
 /**
- * Root facade store for the entire JSON document.
- * Phase 32: Split into Chapters and Assets stores to avoid God Object pattern.
- * Provides backwards compatibility for existing Vue components.
+ * Root store for the project JSON document.
+ * Phase 35: Removed chapter/node editing (no longer in scope).
+ * Maintains import/export for the full JSON structure, but the
+ * platform focuses on asset extraction and generation only.
  */
 export const useEditorStore = defineStore('editor', () => {
-    const chaptersStore = useChaptersStore()
     const assetsStore = useAssetsStore()
 
-    const { chapters } = storeToRefs(chaptersStore)
-    const { assets, characterById, backgroundById } = storeToRefs(assetsStore)
-
     const filename = ref('')
-    // History for Undo/Redo
-    const history = ref([])
-    const historyIndex = ref(-1)
-
-    // ---- History Management ----
-    // Make sure we save the unwrapped values into snapshot
-    function saveState() {
-        const snapshot = JSON.stringify({
-            assets: assets.value,
-            chapters: chapters.value
-        })
-
-        // If we are back in history and make a change, branch off
-        if (historyIndex.value < history.value.length - 1) {
-            history.value = history.value.slice(0, historyIndex.value + 1)
-        }
-
-        history.value.push(snapshot)
-        if (history.value.length > 50) {
-            history.value.shift()
-        } else {
-            historyIndex.value++
-        }
-    }
-
-    function undo() {
-        if (historyIndex.value > 0) {
-            historyIndex.value--
-            const state = JSON.parse(history.value[historyIndex.value])
-            assets.value = state.assets
-            chapters.value = state.chapters
-            ElMessage({ message: '已撤销 (Undo)', type: 'info', duration: 1000 })
-        }
-    }
-
-    function redo() {
-        if (historyIndex.value < history.value.length - 1) {
-            historyIndex.value++
-            const state = JSON.parse(history.value[historyIndex.value])
-            assets.value = state.assets
-            chapters.value = state.chapters
-            ElMessage({ message: '已重做 (Redo)', type: 'info', duration: 1000 })
-        }
-    }
+    // chapters are stored for import/export fidelity but not editable in the UI
+    const chapters = ref([])
+    
+    // Proxy assets for backward compat
+    const assets = ref(assetsStore.assets)
+    const characterById = computed(() => {
+        const map = {}
+        for (const ch of assets.value.characters || []) { map[ch.id] = ch }
+        return map
+    })
+    const backgroundById = computed(() => {
+        const map = {}
+        for (const bg of assets.value.backgrounds || []) { map[bg.id] = bg }
+        return map
+    })
 
     // ---- Import ----
     function importJSON(jsonText, fname) {
@@ -92,18 +58,17 @@ export const useEditorStore = defineStore('editor', () => {
         assets.value.backgrounds = bgs
         assets.value.bgm = rawAssets.bgm || {}
 
+        // Parse chapters (stored for export fidelity, not UI-editable)
         const chapterList = []
         if (raw.chapters && Array.isArray(raw.chapters)) {
             for (const ch of raw.chapters) {
-                const nodes = (ch.nodes || []).map(n => chaptersStore.normalizeNode(n))
                 chapterList.push({
                     id: String(ch.id),
                     title: ch.title || '',
                     order: ch.order || 0,
                     start_node_id: String(ch.start_node_id || ''),
                     description: ch.description || '',
-                    nodes,
-                    _editorExpanded: true
+                    nodes: ch.nodes || []
                 })
             }
         } else if (raw.nodes && Array.isArray(raw.nodes)) {
@@ -111,17 +76,11 @@ export const useEditorStore = defineStore('editor', () => {
                 id: 'main', title: '主线', order: 0,
                 start_node_id: raw.start_node_id ? String(raw.start_node_id) : '',
                 description: '',
-                nodes: raw.nodes.map(n => chaptersStore.normalizeNode(n)),
-                _editorExpanded: true
+                nodes: raw.nodes || []
             })
         }
 
         chapters.value = chapterList
-
-        // Init history
-        history.value = []
-        historyIndex.value = -1
-        saveState()
     }
 
     // ---- Export ----
@@ -137,69 +96,83 @@ export const useEditorStore = defineStore('editor', () => {
         for (const b of assets.value.backgrounds) { raw.assets.backgrounds[b.path] = b.name }
         raw.assets.bgm = { ...assets.value.bgm }
 
+        // Pass chapters through unchanged
         raw.chapters = chapters.value.map(ch => ({
             id: ch.id, title: ch.title, order: ch.order,
             start_node_id: ch.start_node_id, description: ch.description,
-            nodes: ch.nodes.map(n => {
-                const out = { id: n.id, type: n.type }
-                if (n.speaker) out.speaker = n.speaker
-                if (n.text) out.text = n.text
-                if (n.bg) out.bg = n.bg
-                if (n.music) out.music = n.music
-                if (n.next) out.next = n.next
-                if (n.choices && n.choices.length) out.choices = n.choices
-                if (n.conditions && n.conditions.length) out.conditions = n.conditions
-                if (n.default) out.default = n.default
-                if (n.title) out.title = n.title
-                if (n._x != null) out._editor_x = n._x
-                if (n._y != null) out._editor_y = n._y
-                return out
-            })
+            nodes: ch.nodes
         }))
         return JSON.stringify(raw, null, 2)
-    }
-
-    // Wrappers for backward compatibility that also call saveState automatically
-    function updateNode(chapterId, nodeId, patch) {
-        chaptersStore.updateNode(chapterId, nodeId, patch)
-        saveState()
-    }
-    function addNode(chapterId, type) {
-        const id = chaptersStore.addNode(chapterId, type)
-        saveState()
-        return id
-    }
-    function deleteNode(chapterId, nodeId) {
-        chaptersStore.deleteNode(chapterId, nodeId)
-        saveState()
-    }
-    function addChapter() {
-        const id = chaptersStore.addChapter()
-        saveState()
-        return id
-    }
-    function deleteChapter(chapterId) {
-        chaptersStore.deleteChapter(chapterId)
-        saveState()
     }
 
     function reset() {
         filename.value = ''
         assets.value = { characters: [], backgrounds: [], bgm: {} }
         chapters.value = []
-        history.value = []
-        historyIndex.value = -1
+    }
+
+    // ---- Script Authoring CRUD ----
+    function addChapter(title = '新章节') {
+        const id = 'ch_' + Date.now()
+        chapters.value.push({
+            id,
+            title,
+            order: chapters.value.length,
+            start_node_id: '',
+            description: '',
+            nodes: []
+        })
+        return id
+    }
+
+    function removeChapter(chapterId) {
+        chapters.value = chapters.value.filter(c => c.id !== chapterId)
+    }
+
+    function addNode(chapterId, nodeData = {}) {
+        const idx = chapters.value.findIndex(c => c.id === chapterId)
+        if (idx !== -1) {
+            const nodeId = 'n_' + Date.now() + Math.floor(Math.random() * 1000)
+            const newNode = {
+                id: nodeId,
+                type: 'dialogue', // default
+                speaker: '',
+                text: '',
+                bg: '',
+                music: '',
+                ...nodeData
+            }
+            chapters.value[idx].nodes.push(newNode)
+            return nodeId
+        }
+        return null
+    }
+
+    function updateNode(chapterId, nodeId, newData) {
+        const cIdx = chapters.value.findIndex(c => c.id === chapterId)
+        if (cIdx !== -1) {
+            const nIdx = chapters.value[cIdx].nodes.findIndex(n => n.id === nodeId)
+            if (nIdx !== -1) {
+                chapters.value[cIdx].nodes[nIdx] = {
+                    ...chapters.value[cIdx].nodes[nIdx],
+                    ...newData
+                }
+            }
+        }
+    }
+
+    function removeNode(chapterId, nodeId) {
+        const cIdx = chapters.value.findIndex(c => c.id === chapterId)
+        if (cIdx !== -1) {
+            chapters.value[cIdx].nodes = chapters.value[cIdx].nodes.filter(n => n.id !== nodeId)
+        }
     }
 
     return {
         // State
-        filename, historyIndex, history,
-        
-        // Proxied State
-        chapters, assets, characterById, backgroundById,
-        
+        filename, chapters, assets, characterById, backgroundById,
         // Methods
-        importJSON, exportJSON, reset, undo, redo, saveState,
-        updateNode, addNode, deleteNode, addChapter, deleteChapter
+        importJSON, exportJSON, reset,
+        addChapter, removeChapter, addNode, updateNode, removeNode
     }
 })

@@ -59,6 +59,13 @@
         </el-tag>
       </div>
 
+      <div v-if="asset.status === 'MISSING'" class="advanced-opts" style="margin-top: 12px; margin-bottom: 8px;">
+        <el-input v-model="asset.negative_prompt" size="small" placeholder="定制反向提示词 (排除模糊、畸形等)" style="margin-bottom: 4px;">
+           <template #prefix><el-icon><Warning /></el-icon></template>
+        </el-input>
+        <el-input-number v-model="asset.seed" size="small" :min="-1" style="width: 100%;" placeholder="Seed (默认 -1 随机)" />
+      </div>
+
       <div class="asset-actions">
         <el-button 
           v-if="asset.status === 'MISSING'" 
@@ -82,6 +89,7 @@
           <el-button type="info" size="small" plain class="preview-btn" @click="onFullPreview">
             <el-icon style="margin-right:4px"><ZoomIn /></el-icon> 预览
           </el-button>
+          <el-button size="small" type="primary" plain @click="fetchVariants" title="查看历史变体">变体</el-button>
           <el-button-group>
             <el-button size="small" type="success" plain @click="emit('feedback', {asset, status: 'LIKED'})" title="采用">👍</el-button>
             <el-button size="small" type="danger" plain @click="promptDislike" title="拒绝">👎</el-button>
@@ -115,14 +123,58 @@
         </el-descriptions>
       </div>
     </el-dialog>
+
+    <!-- History / Variants Dialog (Phase 34) -->
+    <el-dialog v-model="historyDialogVisible" title="生成历史 (变体)" width="650px" custom-class="dark-dialog" append-to-body>
+      <div v-if="variantsLoading" class="p-4 text-center">
+        <el-icon class="is-loading" :size="30"><Loading /></el-icon>
+      </div>
+      <div v-else-if="!variants.length" class="p-4 text-center text-gray-400">
+        暂无生成历史
+      </div>
+      <div v-else class="variants-list">
+        <div v-for="variant in variants" :key="variant.id" class="variant-item">
+          <img :src="getStaticUrl(variant.image_url)" class="variant-img" />
+          <div class="variant-info">
+            <p class="variant-date">{{ new Date(variant.created_at + '+08:00').toLocaleString() }}</p>
+            <p class="variant-prompt">{{ variant.prompt }}</p>
+            <div class="variant-meta">
+              <el-tag size="small" type="info">Seed: {{ variant.seed || 'Auto' }}</el-tag>
+              <el-tag size="small" type="info">Scale: {{ variant.guidance_scale || 7.5 }}</el-tag>
+              <el-tag size="small" :type="variant.status === 'SUCCESS' ? 'success' : 'danger'">{{ variant.status }}</el-tag>
+            </div>
+          </div>
+          <div class="variant-actions">
+            <el-button 
+              type="warning" 
+              size="small" 
+              plain 
+              @click="asset.seed = variant.seed; ElMessage.success(`已锁定种子: ${variant.seed}`)"
+            >
+              锁定种子
+            </el-button>
+            <el-button 
+              v-if="variant.status === 'SUCCESS'"
+              type="primary" 
+              size="small" 
+              plain 
+              @click="rollbackToVariant(variant.image_url)"
+            >
+              回退至此版本
+            </el-button>
+          </div>
+        </div>
+      </div>
+    </el-dialog>
   </el-card>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
-import { Picture, Document, Loading, MagicStick, ZoomIn } from '@element-plus/icons-vue'
-import { ElMessageBox } from 'element-plus'
+import { Picture, Document, Loading, MagicStick, ZoomIn, View, Warning } from '@element-plus/icons-vue'
+import { ElMessageBox, ElMessage } from 'element-plus'
 import { API_BASE } from '../utils/api.config.js'
+import { apiService } from '../services/api.js'
 
 const props = defineProps({
   asset: {
@@ -131,9 +183,48 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['generate', 'view-monitor', 'feedback'])
+const emit = defineEmits(['generate', 'view-monitor', 'feedback', 'generate-variants'])
 const imgError = ref(false)
 const previewDialogVisible = ref(false)
+
+// History / Variants State
+const historyDialogVisible = ref(false)
+const variants = ref([])
+const variantsLoading = ref(false)
+
+function getStaticUrl(relUrl) {
+  if (!relUrl) return ''
+  const cleanPath = relUrl.replace(/^\/?data\/assets\//, '')
+  return `${API_BASE}/static/${cleanPath}`
+}
+
+async function fetchVariants() {
+  historyDialogVisible.value = true
+  variantsLoading.value = true
+  try {
+    const res = await apiService.getAssetVariants(props.asset.path)
+    variants.value = (res.variants || []).sort((a, b) => {
+      // Sort DESC by created_at
+      return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    })
+  } catch (e) {
+    ElMessage.error('获取变体历史失败: ' + e.message)
+  } finally {
+    variantsLoading.value = false
+  }
+}
+
+async function rollbackToVariant(url) {
+  try {
+    await apiService.rollbackAsset(props.asset.path, url)
+    ElMessage.success('回退成功！刷新视图中...')
+    historyDialogVisible.value = false
+    // Trigger image re-load by forcing an update (changing a key or reloading cache-bust is handled by parent polling usually)
+    // Here we can just notify parent or wait for next status poll
+  } catch(e) {
+    ElMessage.error('回退失败: ' + e.message)
+  }
+}
 
 async function promptDislike() {
   try {
@@ -380,5 +471,67 @@ const previewStyle = computed(() => {
 
 .preview-meta {
   margin-top: 8px;
+}
+
+/* Variants List Styles */
+.variants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.variant-item {
+  display: flex;
+  gap: 16px;
+  background: rgba(255,255,255,0.03);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.variant-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #000;
+}
+
+.variant-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.variant-date {
+  font-size: 11px;
+  color: #888;
+  font-family: 'Fira Code', monospace;
+}
+
+.variant-prompt {
+  font-size: 13px;
+  color: #ddd;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.variant-meta {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.variant-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

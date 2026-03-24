@@ -397,6 +397,8 @@ async function confirmGenerate() {
       asset_type: asset.type,
       provider: selectedProvider.value,
       entropy: asset.entropy,
+      seed: asset.seed !== undefined ? asset.seed : -1, // Pass seed
+      negative_prompt: asset.negative_prompt || "", // Pass negative_prompt
       relationships: {
         speaker: asset.speaker,
         listener: asset.listener,
@@ -419,7 +421,9 @@ async function onGenerateVariants(asset) {
       description: asset.description || '',
       asset_type: asset.type || 'auto',
       provider: selectedProvider.value,
-      count: 3
+      count: 3,
+      seed: asset.seed !== undefined ? asset.seed : -1, // Pass seed
+      negative_prompt: asset.negative_prompt || "" // Pass negative_prompt
     })
     ElMessage.success(data.message || '变体生成已启动')
     showTaskQueue.value = true  // Auto-open task queue to see progress
@@ -446,7 +450,9 @@ async function onGenerateAll() {
         asset_path: asset.path,
         description: asset.description,
         asset_type: asset.type,
-        provider: selectedProvider.value
+        provider: selectedProvider.value,
+        seed: asset.seed !== undefined ? asset.seed : -1, // Pass seed
+        negative_prompt: asset.negative_prompt || "" // Pass negative_prompt
       })
     } catch (err) {
       console.error(`Failed to generate ${asset.path}:`, err)

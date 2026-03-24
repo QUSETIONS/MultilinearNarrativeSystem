@@ -7,7 +7,7 @@
         <el-tag type="info" size="small" effect="plain" style="border:1px solid var(--border)">V 25.0 AI-POWERED</el-tag>
       </div>
 
-      <!-- View Switcher -->
+      <!-- View Switcher — 3 Tabs (No Node Editor) -->
       <nav class="view-toggle">
         <div 
           v-for="tab in viewTabs" :key="tab.key"
@@ -31,11 +31,6 @@
         </el-tooltip>
 
         <el-button-group>
-          <el-button size="small" :icon="RefreshLeft" @click="store.undo()" :disabled="store.historyIndex <= 0">撤销</el-button>
-          <el-button size="small" :icon="RefreshRight" @click="store.redo()" :disabled="store.historyIndex >= store.history.length - 1">重做</el-button>
-        </el-button-group>
-        
-        <el-button-group>
           <el-button type="primary" size="small" :icon="FolderOpened" @click="onImport">导入 JSON</el-button>
           <el-button type="success" size="small" :icon="Download" :disabled="!store.filename" @click="onExport">导出 JSON</el-button>
         </el-button-group>
@@ -49,12 +44,10 @@
     <div class="page-view">
       <transition :name="viewTransition" mode="out-in">
         <component :is="currentComponent" :key="currentView"
-          v-bind="currentProps"
-          @jump-to-editor="onJumpToEditor"
           @import-json="onImport"
           @go-assets="switchView('assets')"
-          @go-editor="switchView('editor')"
           @open-wizard="openWizard"
+          @extract="openWizard"
         />
       </transition>
     </div>
@@ -68,29 +61,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed, shallowRef } from 'vue'
-import { FolderOpened, Download, RefreshLeft, RefreshRight } from '@element-plus/icons-vue'
-import { ElMessage, ElNotification } from 'element-plus'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { FolderOpened, Download } from '@element-plus/icons-vue'
+import { ElNotification } from 'element-plus'
 import { useEditorStore } from './stores/editor.js'
 import { apiService } from './services/api'
 import OverviewPage from './components/OverviewPage.vue'
-import EditorPage from './components/EditorPage.vue'
 import AssetWorkstation from './components/AssetWorkstation.vue'
 import NarrativeControl from './components/NarrativeControl.vue'
 import GenerationWizard from './components/GenerationWizard.vue'
+import ScriptEditor from './components/ScriptEditor.vue'
 
 const store = useEditorStore()
 const currentView = ref('overview')
 const fileInputRef = ref(null)
 const wizardRef = ref(null)
-const jumpChapterId = ref(null)
 const backendOnline = ref(false)
 const healthInfo = ref(null)
 let healthTimer = null
 
 const viewTabs = [
   { key: 'overview',  label: '总览',     icon: '📊' },
-  { key: 'editor',    label: '节点编辑器', icon: '🧩' },
+  { key: 'script',    label: '剧本排版',  icon: '📝' },
   { key: 'assets',    label: '素材工作站', icon: '🎨' },
   { key: 'narrative', label: '叙事控制',  icon: '🔮' },
 ]
@@ -99,19 +91,15 @@ const viewTransition = ref('view-fade-slide')
 
 const viewComponents = {
   overview: OverviewPage,
-  editor: EditorPage,
+  script: ScriptEditor,
   assets: AssetWorkstation,
   narrative: NarrativeControl,
 }
 
 const currentComponent = computed(() => viewComponents[currentView.value])
-const currentProps = computed(() => {
-  if (currentView.value === 'editor') return { 'initial-chapter-id': jumpChapterId.value }
-  return {}
-})
 
 // Determine slide direction based on tab order
-const viewOrder = ['overview', 'editor', 'assets', 'narrative']
+const viewOrder = ['overview', 'script', 'assets', 'narrative']
 function switchView(target) {
   if (target === currentView.value) return
   const fromIdx = viewOrder.indexOf(currentView.value)
@@ -199,18 +187,9 @@ function onExport() {
     position: 'bottom-right'
   })
 }
-
-function onJumpToEditor(chapterId) {
-  jumpChapterId.value = chapterId
-  switchView('editor')
-}
 </script>
 
 <style>
-/* ============================================================
-   Phase 33: Premium Transitions & Micro-Animations
-   ============================================================ */
-
 /* ---- View Transition: Directional Slide ---- */
 .view-slide-left-enter-active,
 .view-slide-left-leave-active,
@@ -237,7 +216,7 @@ function onJumpToEditor(chapterId) {
   transform: translateX(40px);
 }
 
-/* ---- Fade slide (for filename badge etc) ---- */
+/* ---- Fade slide ---- */
 .fade-slide-enter-active,
 .fade-slide-leave-active {
   transition: all 0.3s ease;
@@ -251,7 +230,6 @@ function onJumpToEditor(chapterId) {
   transform: translateY(8px);
 }
 
-/* ---- Simple Fade ---- */
 .fade-enter-active, .fade-leave-active { transition: opacity 0.4s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
@@ -264,48 +242,10 @@ function onJumpToEditor(chapterId) {
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.08);
   letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
-/* ---- View Toggle Enhancement ---- */
-.view-toggle {
-  display: flex;
-  gap: 2px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 10px;
-  padding: 3px;
-}
-
-.toggle-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
-  overflow: hidden;
-}
-
-.toggle-item:hover {
-  color: rgba(255,255,255,0.85);
-  background: rgba(255,255,255,0.06);
-}
-
-.toggle-item:active {
-  transform: scale(0.96);
-}
-
-.toggle-item.active {
-  color: #fff;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(139, 92, 246, 0.25));
-  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.2);
-  font-weight: 600;
-}
-
+/* ---- Toggle supplements ---- */
 .toggle-icon {
   font-size: 14px;
   transition: transform 0.2s ease;
@@ -335,14 +275,12 @@ function onJumpToEditor(chapterId) {
 /* ---- Action Area ---- */
 .action-area {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
+  flex-shrink: 0;
 }
 
-/* ---- Button Ripple Effect ---- */
-.el-button {
-  transition: all 0.2s ease !important;
-}
+/* ---- Button Ripple ---- */
 .el-button:active:not(:disabled) {
   transform: scale(0.95) !important;
 }
@@ -352,12 +290,13 @@ function onJumpToEditor(chapterId) {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 600;
   cursor: default;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .health-indicator.online {

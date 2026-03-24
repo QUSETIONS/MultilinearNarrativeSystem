@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException
 from foundation_platform.api.models import AssetRegistrationRequest, ScriptExtractRequest, AssetStatus
 from foundation_platform.api.state import asset_registry, extractor, attention_mgr
 from foundation_platform.core.llm_service import extract_assets_via_llm
+from foundation_platform.api.services.db_service import save_registry
 
 router = APIRouter(prefix="/assets", tags=["Assets"])
 
@@ -26,6 +27,9 @@ async def register_assets(req: AssetRegistrationRequest):
             )
     
     attention_mgr.register_assets(parsed)
+    
+    # Phase 42: Persist registry to disk
+    save_registry(asset_registry)
     
     return {
         "message": f"已注册 {len(parsed)} 个素材需求",

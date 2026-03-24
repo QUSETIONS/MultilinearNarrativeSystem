@@ -20,8 +20,11 @@
         <el-button size="small" @click="toggleByType('背景图')">
           <el-icon><PictureFilled /></el-icon> 选场景
         </el-button>
+        <el-button size="small" type="success" plain @click="addNewAsset">
+          <el-icon><Plus /></el-icon> 手动新增
+        </el-button>
         <el-button type="primary" size="small" :icon="Check" :disabled="selectedCount === 0" @click="onConfirm">
-          确认并注册 ({{ selectedCount }})
+          确认注册 ({{ selectedCount }})
         </el-button>
       </div>
     </div>
@@ -38,6 +41,8 @@
       <div class="group-header" v-if="group.length > 0">
         <el-icon v-if="groupType === '人物立绘'"><UserFilled /></el-icon>
         <el-icon v-else-if="groupType === '背景图'"><PictureFilled /></el-icon>
+        <el-icon v-else-if="groupType === '道具图'"><Goods /></el-icon>
+        <el-icon v-else-if="groupType === '剧情CG'"><VideoCamera /></el-icon>
         <el-icon v-else><Headset /></el-icon>
         <span>{{ groupType }}</span>
         <el-tag size="small" effect="plain">{{ group.length }}</el-tag>
@@ -52,13 +57,24 @@
           <el-checkbox v-model="item.selected" class="candidate-check" />
           
           <div class="candidate-type">
-            <el-icon v-if="item.type === '人物立绘'"><UserFilled /></el-icon>
-            <el-icon v-else-if="item.type === '背景图'"><PictureFilled /></el-icon>
-            <el-icon v-else><Headset /></el-icon>
+            <el-select v-model="item.type" size="small" style="width: 100px" @change="updatePath(item)">
+              <el-option label="人物立绘" value="人物立绘" />
+              <el-option label="背景图" value="背景图" />
+              <el-option label="道具图" value="道具图" />
+              <el-option label="剧情CG" value="剧情CG" />
+              <el-option label="BGM" value="BGM" />
+            </el-select>
           </div>
 
           <div class="candidate-info">
-            <div class="candidate-name">{{ item.name }}</div>
+            <el-input 
+              v-model="item.name" 
+              size="small" 
+              class="candidate-name-input"
+              placeholder="命名 (英文字母/下划线)"
+              @input="updatePath(item)"
+              style="max-width: 160px; margin-bottom: 6px;"
+            />
             <div class="desc-row">
               <el-input 
                 v-model="item.description" 
@@ -96,7 +112,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { Check, List, UserFilled, PictureFilled, Headset, Warning, MagicStick } from '@element-plus/icons-vue'
+import { Check, List, UserFilled, PictureFilled, Headset, Warning, MagicStick, Plus, Goods, VideoCamera } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { API_BASE } from '../utils/api.config.js'
 
@@ -112,7 +128,7 @@ const selectedCount = computed(() => {
 })
 
 const groupedCandidates = computed(() => {
-  const groups = { '人物立绘': [], '背景图': [], 'BGM': [] }
+  const groups = { '人物立绘': [], '背景图': [], '道具图': [], '剧情CG': [], 'BGM': [] }
   for (const c of props.candidates) {
     const key = c.type || 'BGM'
     if (!groups[key]) groups[key] = []
@@ -120,6 +136,33 @@ const groupedCandidates = computed(() => {
   }
   return groups
 })
+
+function addNewAsset() {
+  const ts = Date.now()
+  props.candidates.push({
+    type: '人物立绘',
+    name: `new_asset_${ts}`,
+    description: '',
+    path: `assets/portraits/new_asset_${ts}.png`,
+    selected: true
+  })
+}
+
+function updatePath(item) {
+  const safeName = (item.name || 'unnamed').replace(/ /g, "_").replace(/\//g, "_")
+  if (item.type === "人物立绘") {
+    item.path = `assets/portraits/${safeName}.png`
+  } else if (item.type === "背景图") {
+    item.path = `assets/backgrounds/${safeName}.png`
+  } else if (item.type === "道具图") {
+    item.path = `assets/items/${safeName}.png`
+  } else if (item.type === "剧情CG") {
+    item.path = `assets/cgs/${safeName}.png`
+  } else if (item.type === "BGM") {
+    item.path = `assets/bgm/${safeName}.mp3`
+  }
+}
+
 
 function toggleAll(val) {
   props.candidates.forEach(c => { c.selected = val })

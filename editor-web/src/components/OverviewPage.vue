@@ -65,8 +65,8 @@
 <script setup>
 import { computed } from 'vue'
 import { Collection, Picture, User, FolderOpened, MagicStick, Edit, ChatDotSquare } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 import { useEditorStore } from '../stores/editor.js'
-import ChapterFlow from './ChapterFlow.vue'
 import AssetsPanel from './AssetsPanel.vue'
 
 const store = useEditorStore()

@@ -154,5 +154,23 @@ export const apiService = {
       method: 'POST',
       body: JSON.stringify(payload)
     })
+  },
+
+  /**
+   * @param {string} nodeId 
+   */
+  getAssetVariants(nodeId) {
+    return request(`${API_BASE}/assets/${encodeURIComponent(nodeId)}/variants`)
+  },
+
+  /**
+   * @param {string} nodeId 
+   * @param {string} variantUrl 
+   */
+  rollbackAsset(nodeId, variantUrl) {
+    return request(`${API_BASE}/assets/${encodeURIComponent(nodeId)}/rollback`, {
+      method: 'POST',
+      body: JSON.stringify({ variant_url: variantUrl })
+    })
   }
 }

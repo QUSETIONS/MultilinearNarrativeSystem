@@ -33,28 +33,36 @@ def extract_assets_via_llm(chapters: List[Dict], characters: Optional[List[Dict]
     # Build a compact summary of the script for the LLM
     script_summary = _build_script_summary(chapters, characters)
     
-    system_prompt = """你是一个游戏素材需求分析专家。用户会给你一段视觉小说/互动游戏的剧本摘要。
+    system_prompt = """你是一个游戏素材需求分析专家。用户会给你一段视觉小说/互动游戏的剧本。
+你的任务是从剧本中提取所有需要制作的游戏素材。请仔细阅读全文，不要遗漏任何隐藏的素材需求。
 
-你的任务是从剧本中提取所有需要制作的游戏素材，包括：
-1. **人物立绘** — 每个登场角色都需要。要描述外貌、服装、气质。
-2. **场景背景图** — 每个独特场景都需要。要描述环境、光线、氛围。
-3. **BGM** — 每种独特氛围的场景都需要。要描述风格、情绪、乐器。
+包括：
+1. **人物立绘** — 每个登场角色都需要。提取他们的隐含情绪、外貌、服装特征、气质。如果有换装，作为单独需求提取。
+2. **背景图** — 随着故事发展提到的每个独特场景。详细描述环境、光线、天气和氛围。
+3. **道具图** — 剧情中出现的关键物品（如：匕首、信件、宝石等）。描述其材质、光泽、外观。
+4. **剧情CG** — 剧情中发生的关键动作事件特写（如：两人相拥、主角跳下悬崖）。详细描述画面构图、动作、整体情境。
+5. **BGM** — 提取情绪氛围需要配套的音乐。
+6. **音效** — 提取场景、动作情节中隐含的物理拟真声效（如：开门声、风声、脚步声、打斗声）。
 
 特别注意：
-- 不要遗漏对话中**隐含提到**的场景（如"推开沉重的橡木门"暗示需要一个走廊/门厅场景）
-- 角色描述要包含视觉特征，适合AI绘画使用
-- 场景描述要包含具体的视觉元素和氛围
+- 仔细阅读全文，从开始到结束的所有场景都要提取，切勿只看开头！
+- 不要遗漏对话中**隐含提到**的场景。
+- 角色描述要包含视觉特征，适合FLUX类模型AI绘画使用。
 
 严格按以下JSON格式回复（不要添加其他内容）：
 ```json
 [
-  {"type": "人物立绘", "name": "角色名", "description": "详细外貌描述，适合AI绘画"},
-  {"type": "背景图", "name": "场景名", "description": "详细场景描述，适合AI绘画"},
-  {"type": "BGM", "name": "音乐名", "description": "风格、情绪、乐器描述"}
+  {"type": "人物立绘", "name": "角色名", "description": "详细外貌描述，适合FLUX/AI绘画，包含镜头、发型、服装"},
+  {"type": "背景图", "name": "场景名", "description": "详细场景描述，适合FLUX/AI绘画，包含光照、构图"},
+  {"type": "道具图", "name": "物品名", "description": "详细物品材质及发光设定"},
+  {"type": "剧情CG", "name": "场景动作名", "description": "包含画面镜头构图、人物动态交互的详细画面描述"},
+  {"type": "BGM", "name": "音乐名", "description": "风格、情绪、乐器描述"},
+  {"type": "音效", "name": "声音名", "description": "具体发生的物理声音、环境拟真音描述"}
 ]
 ```"""
 
-    user_prompt = f"以下是剧本摘要，请提取所有素材需求：\n\n{script_summary}"
+    # We send up to 30000 chars safely, instead of short snippets
+    user_prompt = f"以下是剧本内容，请提取全剧本的大量素材需求：\n\n{script_summary[:30000]}"
     
     try:
         response = requests.post(
@@ -96,10 +104,17 @@ def extract_assets_via_llm(chapters: List[Dict], characters: Optional[List[Dict]
             safe_name = asset["name"].replace(" ", "_").replace("/", "_")
             if asset["type"] == "人物立绘":
                 asset["path"] = f"assets/portraits/{safe_name}.png"
-            elif asset["type"] == "背景图":
+            elif asset["type"] in ["场景", "背景图"]:
+                asset["type"] = "背景图"
                 asset["path"] = f"assets/backgrounds/{safe_name}.png"
+            elif asset["type"] == "道具图":
+                asset["path"] = f"assets/items/{safe_name}.png"
+            elif asset["type"] == "剧情CG":
+                asset["path"] = f"assets/cgs/{safe_name}.png"
             elif asset["type"] == "BGM":
                 asset["path"] = f"assets/bgm/{safe_name}.mp3"
+            elif asset["type"] == "音效":
+                asset["path"] = f"assets/sfx/{safe_name}.wav"
             else:
                 asset["path"] = f"assets/other/{safe_name}.png"
         
@@ -123,12 +138,12 @@ def _build_script_summary(chapters: List[Dict], characters: Optional[List[Dict]]
             lines.append(f"- {name}: {desc}")
         lines.append("")
     
-    # Chapter summaries (compact: only first 5 nodes per chapter)
-    for i, ch in enumerate(chapters[:10]):  # Cap at 10 chapters
+    # Chapter summaries (no more harsh limits, allow deep extraction)
+    for i, ch in enumerate(chapters):
         title = ch.get("title", f"第{i+1}章")
         lines.append(f"【{title}】")
         nodes = ch.get("nodes", [])
-        for node in nodes[:8]:  # First 8 nodes per chapter
+        for node in nodes:  # Process all nodes instead of just 8
             speaker = node.get("speaker", "")
             text = node.get("text", "")
             bg = node.get("bg", "")
@@ -140,15 +155,13 @@ def _build_script_summary(chapters: List[Dict], characters: Optional[List[Dict]]
             if music:
                 parts.append(f"[BGM:{music}]")
             if speaker and text:
-                parts.append(f"{speaker}: {text[:80]}")
+                parts.append(f"{speaker}: {text}")
             elif text:
-                parts.append(text[:80])
+                parts.append(text)
             
             if parts:
                 lines.append("  " + " ".join(parts))
         
-        if len(nodes) > 8:
-            lines.append(f"  ... ({len(nodes) - 8} more dialogue nodes)")
         lines.append("")
     
     return "\n".join(lines)
@@ -167,16 +180,53 @@ def enhance_prompt_via_llm(asset_type: str, description: str, nar_context: str =
     if not api_key:
         return description
     
-    if asset_type in ["人物立绘", "背景图"]:
-        system_prompt = """你是一个AI绘画提示词专家。将用户给出的素材描述转化为高质量的英文Stable Diffusion提示词。
+    if asset_type in ["人物立绘", "背景图", "道具图", "剧情CG"]:
+        if asset_type == "人物立绘":
+            system_prompt = """你是一个AI绘画提示词专家，专精于 FLUX 和 SDXL 等前沿模型。将用户给出的角色描述转化为极高品质的英文生成提示词。
 
 要求：
-- 输出纯英文提示词，用逗号分隔
-- 包含：主体描述、风格(anime/realistic)、光照、构图、品质词(masterpiece, best quality等)
-- 对于人物：描述面部特征、服装、姿态、表情
-- 对于场景：描述环境细节、光线、氛围、透视
+- 仅输出纯英文提示词，用逗号分隔，按重要性排序。
+- 必须包含极高品质触发词：masterpiece, best quality, ultra-detailed, highly detailed illustration, 8k resolution, perfect anatomy
+- 必须包含主体描述：1girl/1boy/man/woman, 面部特征, 发型, 瞳色, 详细服装。
+- 必须包含姿态/视角：standing, looking at viewer, expression details (e.g., slight smile, serious)。
+- 必须包含风格要求：anime visual novel style, clean crisp lineart, soft cel shading, beautiful gorgeous colors, professional lighting。
+- 背景必须干净：simple background, solid white background（立绘必须有纯色干净背景方便抠图）。
+- 绝不要混入：NSFW, simple colors, lowres, bad hands, missing fingers 等负面情况。
 
-只输出提示词本身，不要有其他文字。"""
+只输出最终的英文正向提示词，不要包含任何前缀、中文字符或解释。"""
+        elif asset_type == "背景图":
+            system_prompt = """你是一个AI绘画提示词专家，专精于 FLUX 和 SDXL 等前沿模型。将场景描述转化为极高品质的英文生成提示词。
+
+要求：
+- 仅输出纯英文提示词，用逗号分隔，按重要性排序。
+- 必须包含极高品质触发词：masterpiece, best quality, ultra-detailed scenery, breathtaking illustration, 8k resolution, award-winning landscape
+- 必须包含场景特征：建筑、环境、道具、材质（如 reflections, glowing, detailed texture）。
+- 必须包含光照与氛围：dramatic lighting, cinematic composition, volumetric lighting, god rays (若合适), beautiful lighting。
+- 必须包含风格要求：anime visual novel background, concept art, stunning scenery, expansive view, no characters, nobody。
+- 绝不要混入人物（no humans, empty scene），确保是纯净场景图。
+
+只输出最终的英文正向提示词，不要包含任何前缀、中文字符或解释。"""
+        elif asset_type == "道具图":
+            system_prompt = """你是一个AI绘画提示词专家，专精于 FLUX 和 SDXL 等前沿模型。将道具/物品描述转化为极高品质的英文生成提示词。
+
+要求：
+- 仅输出纯英文提示词，用逗号分隔。
+- 必须包含极高品质触发词：masterpiece, best quality, highly detailed, ultra-detailed item, 8k resolution, photorealistic
+- 必须包含主体描述：1 object, solo, detailed macro shot, depth of field。
+- 材质和光泽表现：(如 metallic, glowing, rough texture, sparkling)。
+- 背景必须干净：simple background, solid black background 或者 solid white background（道具必须有纯色干净背景方便提取轮廓）。
+
+只输出最终的英文正向提示词，不要包含任何前缀、中文字符或解释。"""
+        else:
+            system_prompt = """你是一个AI绘画提示词专家，专精于 FLUX 和 SDXL 等前沿模型。将动作及互动场景描述转化为极高品质的英文Event CG提示词。
+
+要求：
+- 仅输出纯英文提示词，用逗号分隔。
+- 必须包含极高品质触发词：masterpiece, best quality, breathtaking illustration, highly detailed, official art, cinematic angle
+- 镜头和动作：dynamic angle, action shot, close-up, expression, interacting。
+- 多人描述：说明人物的数量及特征（如 2girls/1boy 1girl, hugging, fighting 等）。
+
+只输出最终的英文正向提示词，不要包含任何前缀、中文字符或解释。"""
     else:
         return description  # BGM doesn't need SD prompts
     

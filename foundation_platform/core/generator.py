@@ -62,14 +62,17 @@ class MockGenerator(BaseGenerator):
 
 class SiliconFlowGenerator(BaseGenerator):
     """
-    Phase 24: Real image generation via SiliconFlow (硅基流动) free SDXL API.
-    Endpoint: https://api.siliconflow.cn/v1/images/generations
+    Phase 24+36: Real image generation via SiliconFlow (硅基流动).
+    Supports: negative_prompt, seed, guidance_scale for quality control.
     """
-    def generate(self, description: str, output_path: str) -> bool:
+    def generate(self, description: str, output_path: str, *,
+                 negative_prompt: str = "",
+                 seed: int = -1,
+                 guidance_scale: float = 7.5) -> bool:
         config = _load_model_config().get("siliconflow", {})
         api_key = config.get("api_key", "")
         base_url = config.get("base_url", "https://api.siliconflow.cn/v1")
-        model = config.get("model", "stabilityai/stable-diffusion-xl-base-1.0")
+        model = config.get("model", "Kwai-Kolors/Kolors")
         image_size = config.get("image_size", "1024x1024")
         
         if not api_key:
@@ -79,21 +82,35 @@ class SiliconFlowGenerator(BaseGenerator):
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
         try:
-            print(f"[SiliconFlow] Generating: {description[:80]}...")
+            print(f"[SiliconFlow] Generating ({model}): {description[:80]}...")
+            
+            payload = {
+                "model": model,
+                "prompt": description,
+                "image_size": image_size,
+                "batch_size": 1,
+                "num_inference_steps": 30,
+                "guidance_scale": guidance_scale,
+            }
+            
+            # Add negative prompt if provided
+            if negative_prompt:
+                payload["negative_prompt"] = negative_prompt
+                print(f"[SiliconFlow] Negative: {negative_prompt[:60]}...")
+            
+            # Add seed for reproducibility (-1 means random)
+            if seed >= 0:
+                payload["seed"] = seed
+                print(f"[SiliconFlow] Seed: {seed}")
+            
             response = requests.post(
                 f"{base_url}/images/generations",
                 headers={
                     "Authorization": f"Bearer {api_key}",
                     "Content-Type": "application/json"
                 },
-                json={
-                    "model": model,
-                    "prompt": description,
-                    "image_size": image_size,
-                    "batch_size": 1,
-                    "num_inference_steps": 30
-                },
-                timeout=60
+                json=payload,
+                timeout=90
             )
             
             if response.status_code != 200:
@@ -119,7 +136,6 @@ class SiliconFlowGenerator(BaseGenerator):
                     print(f"[SiliconFlow] Unknown response format: {list(img_data.keys())}")
                     return False
             elif isinstance(img_data, str):
-                # Direct base64
                 img_bytes = base64.b64decode(img_data)
             else:
                 return False

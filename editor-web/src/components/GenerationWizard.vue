@@ -104,6 +104,9 @@ import { ArrowRight, Check, MagicStick, Download } from '@element-plus/icons-vue
 import { ElMessage } from 'element-plus'
 import { API } from '../utils/api.config.js'
 import { apiService } from '../services/api'
+import { useEditorStore } from '../stores/editor'
+
+const store = useEditorStore()
 
 const visible = ref(false)
 const currentStep = ref(0)
@@ -119,7 +122,15 @@ const genStatusText = ref('')
 
 function open() {
   currentStep.value = 0
-  scriptInput.value = ''
+  
+  // Try taking active script from the editor memory
+  const memoryScript = store.exportJSON()
+  if (memoryScript && memoryScript !== '[]' && memoryScript !== 'null') {
+    scriptInput.value = memoryScript
+  } else {
+    scriptInput.value = ''
+  }
+  
   extractedAssets.value = []
   genProgress.value = 0
   genStatusText.value = ''
@@ -200,10 +211,11 @@ async function handleStartGeneration() {
         asset_path: asset.path,
         description: asset.description,
         asset_type: asset.type,
-        provider: 'siliconflow'  // Default to primary provider
+        provider: 'siliconflow',  // Default to primary provider
+        seed: asset.seed !== undefined ? asset.seed : -1,
+        negative_prompt: asset.negative_prompt || ""
       })
     } catch (err) {
-      console.error(`Failed to generate ${asset.path}:`, err)
     }
   }
   
@@ -213,9 +225,28 @@ async function handleStartGeneration() {
   ElMessage.success('批量生成指令已发送')
 }
 
-function handleExportGodot() {
-  window.open(API.EXPORT_GODOT, '_blank')
-  ElMessage.success('正在下载 Godot 资产包...')
+async function handleExportGodot() {
+  try {
+    const scriptJson = store.exportJSON()
+    const res = await fetch(API.EXPORT_GODOT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ script_json: scriptJson })
+    })
+    if (!res.ok) throw new Error(`Export failed: ${res.status}`)
+    const blob = await res.blob()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'godot_assets.zip'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+    ElMessage.success('Godot 资产包下载完成（含剧本数据）')
+  } catch (err) {
+    ElMessage.error('导出失败: ' + err.message)
+  }
 }
 </script>
 
