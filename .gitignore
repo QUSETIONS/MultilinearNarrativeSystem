@@ -44,3 +44,7 @@ nar_architecture_analysis.md
 logs/
 .gemini/
 /tmp/
+
+# Generated Assets
+assets/*
+!assets/.gitkeep
