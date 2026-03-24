@@ -26,9 +26,20 @@ Thumbs.db
 
 # Project Specific
 *.zip
+*.pdf
 asset_audit_report.md
+asset_integrity_report.txt
 editor-web/public/audit_results.json
-C:\Users\question\.gemini\antigravity\brain\
+feedback.jsonl
+test_output/
+stress/
+*.db
+
+# Temp / debug artifacts
+gh_*.txt
+git_*.txt
+nar_architecture_analysis.md
+.copilot/
 .system_generated/
 logs/
 .gemini/
