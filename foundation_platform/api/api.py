@@ -35,3 +35,7 @@ app.include_router(narrative.router)
 app.include_router(assets.router)
 app.include_router(generation.router)
 app.include_router(export.router)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8095)
