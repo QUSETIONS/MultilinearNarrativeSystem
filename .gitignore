@@ -48,3 +48,22 @@ logs/
 # Generated Assets
 assets/*
 !assets/.gitkeep
+
+# Legacy Godot Runtime (not part of asset generation platform)
+addons/
+characters/
+chars/
+dialogic/
+docs/
+scenes/
+scripts/
+.godot/
+.github/
+asset_pipeline/
+main.tscn
+project.godot
+*.gd
+*.gd.uid
+*.tscn
+*.import
+东方快车谋杀案*.json
