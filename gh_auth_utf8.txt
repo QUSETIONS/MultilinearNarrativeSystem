@@ -1,0 +1,11 @@
+﻿github.com
+  鉁?Logged in to github.com account QUSETIONS (GITHUB_TOKEN)
+  - Active account: true
+  - Git operations protocol: https
+  - Token: github_pat_11BL4YGTQ07UXYPSIM4BZQ_***********************************************************
+
+  鉁?Logged in to github.com account QUSETIONS (keyring)
+  - Active account: false
+  - Git operations protocol: https
+  - Token: gho_************************************
+  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'

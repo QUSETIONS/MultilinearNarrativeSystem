@@ -1,38 +1,28 @@
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { defineStore, storeToRefs } from 'pinia'
+import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import { useChaptersStore } from './chapters'
+import { useAssetsStore } from './assets'
 
 /**
- * Root store for the entire JSON document.
+ * Root facade store for the entire JSON document.
+ * Phase 32: Split into Chapters and Assets stores to avoid God Object pattern.
+ * Provides backwards compatibility for existing Vue components.
  */
 export const useEditorStore = defineStore('editor', () => {
-    // ---- Raw state ----
-    const filename = ref('')
-    const assets = ref({
-        characters: [],   // [{ id, name, description, portraits: [{path, label}] }]
-        backgrounds: [],  // [{ id, name, path }]
-        bgm: {}           // { key: description }
-    })
-    const chapters = ref([]) // normalized from JSON
+    const chaptersStore = useChaptersStore()
+    const assetsStore = useAssetsStore()
 
+    const { chapters } = storeToRefs(chaptersStore)
+    const { assets, characterById, backgroundById } = storeToRefs(assetsStore)
+
+    const filename = ref('')
     // History for Undo/Redo
     const history = ref([])
     const historyIndex = ref(-1)
 
-    // ---- Computed helpers ----
-    const characterById = computed(() => {
-        const map = {}
-        assets.value.characters.forEach(c => { map[c.id] = c })
-        return map
-    })
-
-    const backgroundById = computed(() => {
-        const map = {}
-        assets.value.backgrounds.forEach(b => { map[b.id] = b })
-        return map
-    })
-
     // ---- History Management ----
+    // Make sure we save the unwrapped values into snapshot
     function saveState() {
         const snapshot = JSON.stringify({
             assets: assets.value,
@@ -105,7 +95,7 @@ export const useEditorStore = defineStore('editor', () => {
         const chapterList = []
         if (raw.chapters && Array.isArray(raw.chapters)) {
             for (const ch of raw.chapters) {
-                const nodes = (ch.nodes || []).map(n => normalizeNode(n))
+                const nodes = (ch.nodes || []).map(n => chaptersStore.normalizeNode(n))
                 chapterList.push({
                     id: String(ch.id),
                     title: ch.title || '',
@@ -121,7 +111,7 @@ export const useEditorStore = defineStore('editor', () => {
                 id: 'main', title: '主线', order: 0,
                 start_node_id: raw.start_node_id ? String(raw.start_node_id) : '',
                 description: '',
-                nodes: raw.nodes.map(n => normalizeNode(n)),
+                nodes: raw.nodes.map(n => chaptersStore.normalizeNode(n)),
                 _editorExpanded: true
             })
         }
@@ -132,32 +122,6 @@ export const useEditorStore = defineStore('editor', () => {
         history.value = []
         historyIndex.value = -1
         saveState()
-    }
-
-    function normalizeNode(n) {
-        return {
-            id: String(n.id),
-            type: n.type || 'dialogue',
-            speaker: n.speaker || '',
-            text: n.text || '',
-            bg: n.bg || '',
-            music: n.music || '',
-            next: n.next ? String(n.next) : null,
-            choices: (n.choices || []).map(c => ({
-                text: c.text || '',
-                next: c.next ? String(c.next) : null,
-                set_variable: c.set_variable || null
-            })),
-            conditions: (n.conditions || []).map(c => ({
-                variable: c.variable || '',
-                value: c.value,
-                next: c.next ? String(c.next) : null
-            })),
-            default: n.default ? String(n.default) : null,
-            title: n.title || '',
-            _x: n._editor_x ?? null,
-            _y: n._editor_y ?? null
-        }
     }
 
     // ---- Export ----
@@ -195,51 +159,27 @@ export const useEditorStore = defineStore('editor', () => {
         return JSON.stringify(raw, null, 2)
     }
 
-    // ---- Mutation helpers ----
+    // Wrappers for backward compatibility that also call saveState automatically
     function updateNode(chapterId, nodeId, patch) {
-        const ch = chapters.value.find(c => c.id === chapterId)
-        if (!ch) return
-        const node = ch.nodes.find(n => n.id === nodeId)
-        if (!node) return
-        Object.assign(node, patch)
+        chaptersStore.updateNode(chapterId, nodeId, patch)
         saveState()
     }
-
-    function addNode(chapterId, type = 'dialogue') {
-        const ch = chapters.value.find(c => c.id === chapterId)
-        if (!ch) return
-        const newId = `n_${Date.now()}`
-        ch.nodes.push(normalizeNode({ id: newId, type }))
+    function addNode(chapterId, type) {
+        const id = chaptersStore.addNode(chapterId, type)
         saveState()
-        return newId
+        return id
     }
-
     function deleteNode(chapterId, nodeId) {
-        const ch = chapters.value.find(c => c.id === chapterId)
-        if (!ch) return
-        ch.nodes = ch.nodes.filter(n => n.id !== nodeId)
-        // Remove dangling refs
-        for (const n of ch.nodes) {
-            if (n.next === nodeId) n.next = null
-            for (const c of n.choices) { if (c.next === nodeId) c.next = null }
-            for (const c of n.conditions) { if (c.next === nodeId) c.next = null }
-            if (n.default === nodeId) n.default = null
-        }
+        chaptersStore.deleteNode(chapterId, nodeId)
         saveState()
     }
-
     function addChapter() {
-        const newId = `ch_${Date.now()}`
-        chapters.value.push({
-            id: newId, title: '新章节', order: chapters.value.length,
-            start_node_id: '', description: '', nodes: [], _editorExpanded: true
-        })
+        const id = chaptersStore.addChapter()
         saveState()
-        return newId
+        return id
     }
-
     function deleteChapter(chapterId) {
-        chapters.value = chapters.value.filter(c => c.id !== chapterId)
+        chaptersStore.deleteChapter(chapterId)
         saveState()
     }
 
@@ -252,12 +192,14 @@ export const useEditorStore = defineStore('editor', () => {
     }
 
     return {
-        filename, assets, chapters,
-        historyIndex, history,
-        characterById, backgroundById,
-        importJSON, exportJSON,
-        updateNode, addNode, deleteNode,
-        addChapter, deleteChapter, reset,
-        undo, redo, saveState
+        // State
+        filename, historyIndex, history,
+        
+        // Proxied State
+        chapters, assets, characterById, backgroundById,
+        
+        // Methods
+        importJSON, exportJSON, reset, undo, redo, saveState,
+        updateNode, addNode, deleteNode, addChapter, deleteChapter
     }
 })

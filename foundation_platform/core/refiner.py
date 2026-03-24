@@ -1,10 +1,13 @@
 from typing import Dict, List, Optional, Any
 from .relationships import RelationshipManager
+from .nar import NarrativeAttentionResidual
+from .critic import NarrativeCritic, apply_critic
+from .memory import get_shared_memory
 
 class PromptRefiner:
     """
     Intelligently refines and expands raw asset descriptions into high-quality AI prompts.
-    In a real-world scenario, this would call an LLM (e.g. GPT-4, Claude).
+    Incorporates NAR (Narrative Attention Residuals) for selective depth-wise aggregation.
     """
     
     STYLE_PRESETS = {
@@ -14,10 +17,7 @@ class PromptRefiner:
     }
 
     def get_spatial_hint(self, asset_type: str) -> str:
-        """
-        Determines the composition layout based on asset type.
-        Inspired by 'Masked-Attention Guidance' research.
-        """
+        """Determines the composition layout based on asset type."""
         layouts = {
             "人物立绘": "Composition: Full body portrait, centered, high-key lighting, blank background.",
             "背景图": "Composition: Wide angle, deep depth of field, environmental storytelling, rule of thirds.",
@@ -26,13 +26,15 @@ class PromptRefiner:
         return layouts.get(asset_type, "Standard centered composition.")
 
     def refine(self, asset_type: str, raw_description: str, 
-               attention: Optional[Dict[str, List[str]]] = None, 
-               entropy: float = 0.5,
-               relationships: Optional[Dict[str, Any]] = None,
-               refinement_passes: int = 1,
-               rejected_reasons: Optional[List[str]] = None) -> Dict[str, str]:
+                asset_id: Optional[str] = None,
+                attention: Optional[Dict[str, List[str]]] = None, 
+                entropy: float = 0.5,
+                relationships: Optional[Dict[str, Any]] = None,
+                refinement_passes: int = 1,
+                rejected_reasons: Optional[List[str]] = None,
+                nar_context: str = "") -> Dict[str, str]:
         """
-        Enhances the raw description with attention, spatial hints, social context, and recursive loops.
+        Enhances the raw description with attention, spatial hints, social context, and NAR integration.
         """
         # 1. Inject Social Context if available
         social_context = ""
@@ -40,16 +42,46 @@ class PromptRefiner:
             mgr = RelationshipManager(relationships.get("graph", {}))
             social_context = f" [SOCIAL: {mgr.get_prompt_context(relationships['speaker'], relationships['listener'])}]"
 
-        # 2. Base Refinement
-        base_result = self._base_refine(asset_type, raw_description, attention, entropy, social_context, rejected_reasons)
+        # Phase 19: World-State NAR Implementation
+        nar = NarrativeAttentionResidual(temperature=0.3)
+        snmb = get_shared_memory()
         
-        # 3. Recursive Refinement (Multi-pass)
+        # 1. Fetch World-State context instead of just config
+        # Phase 20: Entangled Fetch
+        if asset_id:
+            world_context = snmb.fetch_entangled(asset_id)
+        else:
+            world_context = snmb.fetch_all()
+            
+        for item in world_context:
+            nar.push(item["content"], metadata={**item["metadata"], "stage": "world-state"})
+            
+        # 2. Push current asset spotlight
+        nar.push(f"Attention Spotlight: {raw_description}", metadata={"stage": "spotlight"})
+        
+        # 3. Dynamic Entropy Scaling (Phase 18 legacy maintained)
+        saliency = nar.get_saliency_score()
+        effective_entropy = entropy * saliency
+        
+        # 4. Base Refinement
+        base_result = self._base_refine(asset_type, raw_description, attention, effective_entropy, social_context, rejected_reasons, nar_context)
+        
+        # 5. Recursive Refinement (Multi-pass) with ILC
         if refinement_passes > 1:
-            return self._recursive_loop(asset_type, base_result, refinement_passes)
+            res = self._recursive_loop(asset_type, base_result, refinement_passes, nar=nar, asset_id=asset_id)
+            # Push the final result to SNMB for World-State continuity
+            snmb.push(res["prompt"], metadata={"stage": "asset_nar_final", "type": asset_type, "asset_id": asset_id})
+            return res
         
+        # Final audit and world-state injection for single pass
+        base_result["prompt"] = nar.aggregate_prompts(base_result["prompt"])
+        base_result["prompt"] = apply_critic(base_result["prompt"], nar.stack)
+        snmb.push(base_result["prompt"], metadata={"stage": "asset_nar_final", "type": asset_type, "asset_id": asset_id})
         return base_result
 
-    def _base_refine(self, asset_type: str, raw_description: str, attention: Optional[Dict[str, List[str]]], entropy: float, social_context: str, rejected_reasons: Optional[List[str]] = None) -> Dict[str, str]:
+    def _base_refine(self, asset_type: str, raw_description: str, attention: Optional[Dict[str, List[str]]], 
+                     entropy: float, social_context: str, rejected_reasons: Optional[List[str]] = None,
+                     nar_context: str = "") -> Dict[str, str]:
         preset = self.STYLE_PRESETS.get(asset_type, "High quality asset.")
         spatial = self.get_spatial_hint(asset_type)
         
@@ -74,31 +106,63 @@ class PromptRefiner:
         focus = " ".join(pos_tokens)
         negative = ", ".join(neg_tokens)
         
-        refined_prompt = f"{spatial} {raw_description}{decorations}. {preset}{social_context}{anti_patterns} [FOCUS: {focus}]"
+        # Pipeline NAR Integration: Inject context from prior stages
+        pipe_context = f" [PIPE-NAR: {nar_context}]" if nar_context else ""
+        
+        refined_prompt = f"{spatial} {raw_description}{decorations}. {preset}{social_context}{anti_patterns}{pipe_context} [FOCUS: {focus}]"
         
         return {
             "prompt": refined_prompt,
             "negative_prompt": negative
         }
 
-    def _recursive_loop(self, asset_type: str, initial_result: Dict[str, str], passes: int) -> Dict[str, Any]:
+    def _recursive_loop(self, asset_type: str, initial_result: Dict[str, str], passes: int, 
+                        nar: Optional[NarrativeAttentionResidual] = None,
+                        asset_id: Optional[str] = None) -> Dict[str, Any]:
         """
-        Simulates the AI critiquing and improving its own prompt, returning snapshots.
+        Recursive NAR (Level 2): Aggregates previous refinement passes using softmax attention.
         """
-        snapshots = [{
+        if nar is None:
+            nar = NarrativeAttentionResidual(temperature=0.3)
+        
+        snapshots: List[Dict[str, Any]] = [{
             "pass": 0,
             "prompt": initial_result["prompt"],
             "critique": "Initial Draft"
         }]
         
         current_prompt = initial_result["prompt"]
+        nar.push(current_prompt, metadata={"stage": "refine_pass_0"})
+        
+        # Dynamic Cooling Schedule: start high (0.8) for exploration, end low (0.2) for convergence
+        temp_start = 0.8
+        temp_end = 0.2
+        
         for i in range(passes - 1):
+            # Calculate current temperature for this pass
+            cooling_temp = temp_start - (temp_start - temp_end) * (i / max(passes - 2, 1))
+            
             critique = f"Pass {i+1}: Enhance mood and specific texture details."
-            current_prompt += f" (Refined Pass {i+1}: {critique})"
+            
+            # Phase 19: In-Loop Critic (ILC) and Distillation
+            # Audit the pass BEFORE pushing to stack or moving to next pass
+            current_prompt = nar.aggregate_prompts(current_prompt, cooling_temp=cooling_temp)
+            raw_pass_prompt = f"{current_prompt} (Refined Pass {i+1}: {critique})"
+            
+            # Run audit inside the loop
+            current_prompt = apply_critic(raw_pass_prompt, nar.stack)
+            
+            nar.push(current_prompt, metadata={"stage": f"refine_pass_{i+1}", "asset_id": asset_id})
+            
+            # Distillation every 3 passes to prevent bloat
+            if (i + 1) % 3 == 0:
+                nar.distill(target_size=5)
+            
             snapshots.append({
                 "pass": i + 1,
                 "prompt": current_prompt,
-                "critique": critique
+                "critique": critique,
+                "cooling_temp": cooling_temp
             })
             
         return {
@@ -107,10 +171,11 @@ class PromptRefiner:
             "snapshots": snapshots
         }
 
+
 class MockRefiner(PromptRefiner):
     def refine(self, asset_type: str, raw_description: str, attention: Optional[Dict[str, List[str]]] = None, 
                entropy: float = 0.5, relationships: Optional[Dict[str, Any]] = None, refinement_passes: int = 1,
-               rejected_reasons: Optional[List[str]] = None) -> Dict[str, str]:
+               rejected_reasons: Optional[List[str]] = None, nar_context: str = "") -> Dict[str, str]:
         # Simulate LLM thinking
         pos_tokens = attention.get("positive", []) if attention else ["Standard"]
         neg_tokens = attention.get("negative", []) if attention else ["None"]

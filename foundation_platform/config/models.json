@@ -1,0 +1,13 @@
+{
+    "deepseek": {
+        "api_key": "sk-572ae3028b194a1b8b58b62b92d96107",
+        "base_url": "https://api.deepseek.com/v1",
+        "model": "deepseek-chat"
+    },
+    "siliconflow": {
+        "api_key": "sk-acnptrrfbupxlociiewtacucvewmtloxmxuvrbbwdnblajvk",
+        "base_url": "https://api.siliconflow.cn/v1",
+        "model": "Kwai-Kolors/Kolors",
+        "image_size": "1024x1024"
+    }
+}

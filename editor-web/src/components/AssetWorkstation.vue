@@ -39,16 +39,41 @@
       <div class="banner-actions">
         <div class="model-select-wrapper">
           <span class="label">基座模型:</span>
-          <el-select v-model="selectedProvider" size="small" style="width: 120px; margin-right: 12px;">
+          <el-select v-model="selectedProvider" size="small" style="width: 140px; margin-right: 12px;">
             <el-option v-for="p in providers" :key="p" :label="p.toUpperCase()" :value="p" />
           </el-select>
+          <el-switch v-model="useLLM" active-text="AI理解" inactive-text="规则" style="margin-right: 12px;" />
         </div>
         <el-button-group>
+          <el-button type="warning" :icon="Document" @click="onExtractFromScript" :loading="extracting">从剧本提取素材</el-button>
           <el-button type="primary" :icon="Refresh" @click="onRefresh">刷新状态</el-button>
-          <el-button type="success" :icon="MagicStick" @click="onGenerateAll" :disabled="stats.missing === 0">生成所有缺失项</el-button>
+          <el-button type="success" :icon="MagicStick" @click="onGenerateAll" :disabled="stats.missing === 0 || generating">生成所有缺失项</el-button>
+          <el-button :icon="List" @click="showTaskQueue = true">任务队列</el-button>
         </el-button-group>
       </div>
+      <!-- Generation Progress Bar -->
+      <transition name="fade">
+        <div v-if="generating" class="generation-progress">
+          <el-progress :percentage="genProgress" :format="genProgressFormat" :stroke-width="8" />
+          <span class="gen-status">{{ genStatusText }}</span>
+        </div>
+      </transition>
     </div>
+
+    <!-- Phase 24: Extraction Mode Badge -->
+    <div v-if="extractionMode" class="extraction-mode-badge">
+      <el-tag :type="extractionMode === 'llm' ? 'success' : 'info'" effect="dark" size="small">
+        {{ extractionMode === 'llm' ? '🧠 DeepSeek AI 智能提取' : '📝 规则提取 (Regex)' }}
+      </el-tag>
+    </div>
+
+    <!-- Phase 23: Asset Review List -->
+    <AssetReviewList 
+      v-if="showReviewList" 
+      :candidates="reviewCandidates" 
+      :stats="reviewStats"
+      @confirm="onReviewConfirm"
+    />
 
     <!-- Main Workspace -->
     <div class="workspace-tabs">
@@ -60,7 +85,7 @@
           <div class="asset-grid">
             <el-row :gutter="20">
               <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="item in getAssetsByType('背景图')" :key="item.path">
-                <AssetCard :asset="item" @generate="onGenerate" @view-monitor="onViewMonitor" @feedback="onFeedback" />
+                                <AssetCard :asset="item" @generate="onGenerate" @generate-variants="onGenerateVariants" @view-monitor="onViewMonitor" @feedback="onFeedback" />
               </el-col>
             </el-row>
           </div>
@@ -73,7 +98,7 @@
           <div class="asset-grid">
             <el-row :gutter="20">
               <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="item in getAssetsByType('人物立绘')" :key="item.path">
-                <AssetCard :asset="item" @generate="onGenerate" @view-monitor="onViewMonitor" @feedback="onFeedback" />
+                                <AssetCard :asset="item" @generate="onGenerate" @generate-variants="onGenerateVariants" @view-monitor="onViewMonitor" @feedback="onFeedback" />
               </el-col>
             </el-row>
           </div>
@@ -164,19 +189,39 @@
         </el-timeline>
       </div>
     </el-drawer>
+
+    <!-- Phase 28: Task Queue Drawer -->
+    <TaskQueueDrawer v-model="showTaskQueue" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { Refresh, MagicStick, PictureFilled, UserFilled, Headset } from '@element-plus/icons-vue'
+import { Refresh, MagicStick, PictureFilled, UserFilled, Headset, Document, List } from '@element-plus/icons-vue'
+import { API, API_BASE } from '../utils/api.config.js'
 import { ElMessage } from 'element-plus'
+import { useEditorStore } from '../stores/editor.js'
+import { apiService } from '../services/api'
 import AssetCard from './AssetCard.vue'
+import AssetReviewList from './AssetReviewList.vue'
+import TaskQueueDrawer from './TaskQueueDrawer.vue'
 
 const activeTab = ref('背景图')
 const auditData = ref(null)
-const selectedProvider = ref('mock')
-const providers = ref(['mock', 'coze'])
+const selectedProvider = ref('siliconflow')
+const providers = ref(['siliconflow', 'mock', 'coze'])
+const editorStore = useEditorStore()
+const extracting = ref(false)
+const useLLM = ref(true)
+const extractionMode = ref('')
+const showTaskQueue = ref(false)
+const showReviewList = ref(false)
+const reviewCandidates = ref([])
+const reviewStats = ref(null)
+const generating = ref(false)
+const genProgress = ref(0)
+const genStatusText = ref('')
+const genProgressFormat = (pct) => pct === 100 ? '完成!' : `${pct}%`
 const editDialogVisible = ref(false)
 const editingAsset = ref({ 
   path: '', 
@@ -187,7 +232,7 @@ const editingAsset = ref({
   listener: 'Narrator',
   refinement_passes: 1
 })
-const pollTimer = ref(null)
+const ws = ref(null)
 const monitorVisible = ref(false)
 const monitoringAsset = ref(null)
 
@@ -199,12 +244,56 @@ const bannerStyle = {
 
 onMounted(async () => {
   await onRefresh()
-  // Start polling
-  pollTimer.value = setInterval(onRefresh, 3000)
+  connectWebSocket()
 })
 
+function connectWebSocket() {
+  if (ws.value) return
+  
+  ws.value = new WebSocket(API.WEBSOCKET)
+  
+  ws.value.onopen = () => {
+    console.log('[WS] Connected to live updates')
+  }
+  
+  ws.value.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data)
+      if (!auditData.value || !auditData.value.details) return
+      
+      const asset = auditData.value.details.find(a => a.path === data.path)
+      if (!asset) return
+      
+      if (data.event === 'log_update') {
+        if (!asset.logs) asset.logs = []
+        asset.logs.push(data.log)
+        if (asset.logs.length > 5) asset.logs.shift()
+      } else if (data.event === 'status_update') {
+        asset.task_status = data.status
+        if (data.prompt) asset.last_prompt = data.prompt
+        if (data.status === 'COMPLETED') {
+          asset.status = 'FOUND'
+          auditData.value.summary.found++
+          auditData.value.summary.missing--
+        }
+      }
+    } catch (e) {
+      console.error('[WS] Error parsing message', e)
+    }
+  }
+  
+  ws.value.onclose = () => {
+    console.log('[WS] Disconnected. Reconnecting in 3s...')
+    ws.value = null
+    setTimeout(connectWebSocket, 3000)
+  }
+}
+
 onUnmounted(() => {
-  if (pollTimer.value) clearInterval(pollTimer.value)
+  if (ws.value) {
+    ws.value.onclose = null // Prevent auto-reconnect
+    ws.value.close()
+  }
 })
 
 const stats = computed(() => {
@@ -219,12 +308,67 @@ const completionRate = computed(() => {
 
 async function onRefresh() {
   try {
-    const res = await fetch('http://localhost:8088/status')
-    const data = await res.json()
+    const data = await apiService.getStatus()
     auditData.value = data
     if (data.providers) providers.value = data.providers
   } catch (err) {
     console.error('Service Offline:', err)
+  }
+}
+
+// Phase 23: 从剧本提取素材
+async function onExtractFromScript() {
+  extracting.value = true
+  try {
+    // 从 editorStore 获取章节和角色数据
+    const chapters = editorStore.chapters || []
+    const characters = editorStore.assets?.characters || []
+    
+    if (chapters.length === 0) {
+      ElMessage.warning('请先导入剧本 JSON 文件')
+      extracting.value = false
+      return
+    }
+    
+    const data = await apiService.extractFromScript({ chapters, characters, use_llm: useLLM.value })
+    
+    reviewCandidates.value = data.candidates || []
+    reviewStats.value = data.stats || null
+    extractionMode.value = data.extraction_mode || 'regex'
+    showReviewList.value = true
+    
+    ElMessage.success(data.message || '提取完成')
+  } catch (err) {
+    ElMessage.error('无法连接后端服务: ' + err.message)
+  } finally {
+    extracting.value = false
+  }
+}
+
+// Phase 23: 用户审阅后确认注册
+async function onReviewConfirm(selected) {
+  // 转换为 outline 格式发送给 /assets/register
+  const lines = []
+  const byType = {}
+  for (const item of selected) {
+    if (!byType[item.type]) byType[item.type] = []
+    byType[item.type].push(item)
+  }
+  
+  // 构建文本 outline
+  for (const [type, items] of Object.entries(byType)) {
+    const category = type === '人物立绘' ? '角色' : type === '背景图' ? '场景' : 'BGM'
+    const entries = items.map(i => i.description ? `${i.name}（${i.description}）` : i.name)
+    lines.push(`${category}：${entries.join('、')}`)
+  }
+  
+  try {
+    const data = await apiService.registerAssets(lines.join('\n'))
+    ElMessage.success(data.message || '注册成功')
+    showReviewList.value = false
+    await onRefresh()
+  } catch (err) {
+    ElMessage.error('注册失败: ' + err.message)
   }
 }
 
@@ -247,22 +391,18 @@ function onGenerate(asset) {
 async function confirmGenerate() {
   const asset = editingAsset.value
   try {
-    await fetch('http://localhost:8088/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        asset_path: asset.path,
-        description: asset.description,
-        asset_type: asset.type,
-        provider: selectedProvider.value,
-        entropy: asset.entropy,
-        relationships: {
-          speaker: asset.speaker,
-          listener: asset.listener,
-          graph: {} // In a real app, this would come from a global state
-        },
-        refinement_passes: asset.refinement_passes
-      })
+    await apiService.generateAsset({
+      asset_path: asset.path,
+      description: asset.description,
+      asset_type: asset.type,
+      provider: selectedProvider.value,
+      entropy: asset.entropy,
+      relationships: {
+        speaker: asset.speaker,
+        listener: asset.listener,
+        graph: {}
+      },
+      refinement_passes: asset.refinement_passes
     })
     ElMessage.success(`任务已加入队列 (Override): ${asset.path}`)
     editDialogVisible.value = false
@@ -272,22 +412,54 @@ async function confirmGenerate() {
   }
 }
 
+async function onGenerateVariants(asset) {
+  try {
+    const data = await apiService.generateVariants({
+      asset_path: asset.path,
+      description: asset.description || '',
+      asset_type: asset.type || 'auto',
+      provider: selectedProvider.value,
+      count: 3
+    })
+    ElMessage.success(data.message || '变体生成已启动')
+    showTaskQueue.value = true  // Auto-open task queue to see progress
+  } catch {
+    ElMessage.error('变体生成请求失败')
+  }
+}
+
 async function onGenerateAll() {
   const missing = auditData.value.details.filter(d => d.status === 'MISSING')
-  ElMessage.info(`正在开始批量生成 ${missing.length} 个资产...`)
-  for (const asset of missing) {
-    // For batch, we use the default descriptions
-    await fetch('http://localhost:8088/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+  if (missing.length === 0) return
+  
+  generating.value = true
+  genProgress.value = 0
+  genStatusText.value = `准备生成 ${missing.length} 个资产...`
+  
+  for (let i = 0; i < missing.length; i++) {
+    const asset = missing[i]
+    genStatusText.value = `正在生成 (${i + 1}/${missing.length}): ${asset.path.split('/').pop()}`
+    genProgress.value = Math.round(((i) / missing.length) * 100)
+    
+    try {
+      await apiService.generateAsset({
         asset_path: asset.path,
         description: asset.description,
         asset_type: asset.type,
         provider: selectedProvider.value
       })
-    })
+    } catch (err) {
+      console.error(`Failed to generate ${asset.path}:`, err)
+    }
   }
+  
+  genProgress.value = 100
+  genStatusText.value = `全部完成! 共生成 ${missing.length} 个资产`
+  ElMessage.success(`批量生成完成: ${missing.length} 个资产`)
+  
+  // Auto-hide progress bar after 3s
+  setTimeout(() => { generating.value = false }, 3000)
+  await onRefresh()
 }
 
 function onViewMonitor(asset) {
@@ -298,19 +470,15 @@ function onViewMonitor(asset) {
 async function onFeedback(data) {
   const { asset, status, reason } = data
   try {
-    await fetch('http://localhost:8088/narrative/feedback', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        asset_path: asset.path,
-        status: status,
-        reason: reason || null,
-        prompt: asset.last_prompt || asset.description,
-        context: {
-          type: asset.type,
-          description: asset.description
-        }
-      })
+    await apiService.submitFeedback({
+      asset_path: asset.path,
+      status: status,
+      reason: reason || null,
+      prompt: asset.last_prompt || asset.description,
+      context: {
+        type: asset.type,
+        description: asset.description
+      }
     })
     ElMessage.success(status === 'LIKED' ? '已记录好评' : '反馈已提交，将优化下次生成')
     
@@ -390,8 +558,15 @@ async function onFeedback(data) {
 .banner-actions {
   padding: 0 40px 20px;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
   margin-top: -30px;
+}
+
+.banner-actions > div:first-child {
+  display: flex;
+  align-items: center;
 }
 
 .workspace-tabs {
@@ -462,5 +637,36 @@ async function onFeedback(data) {
   border-radius: 4px;
   font-family: 'Fira Code', monospace;
   line-height: 1.5;
+}
+
+.generation-progress {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.generation-progress .el-progress {
+  flex: 1;
+}
+
+.gen-status {
+  font-size: 12px;
+  color: #67c23a;
+  white-space: nowrap;
+  min-width: 120px;
+  text-align: right;
+}
+
+.extraction-mode-badge {
+  padding: 4px 40px 8px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>
