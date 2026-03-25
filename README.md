@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
   <img src="https://img.shields.io/badge/Frontend-Vue_3-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/AI-NAR_Pipeline-FF6F00?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI-DeepSeek+FLUX-FF6F00?style=for-the-badge&logo=openai&logoColor=white" />
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 </p>
 
@@ -10,19 +10,33 @@
 
 ---
 
+## 📺 演示
+
+<p align="center">
+  <img src="docs_assets/script_editor.png" width="80%" alt="剧本排版编辑器" />
+</p>
+<p align="center"><em>剧本排版 → 输入纯文字 → 一键提取核心素材</em></p>
+
+<p align="center">
+  <img src="docs_assets/asset_workstation.png" width="80%" alt="素材工作站" />
+</p>
+<p align="center"><em>素材工作站 → AI 批量生成 → 实时进度追踪</em></p>
+
+---
+
 ## 💡 这是什么？
 
 一个 **AI 驱动的游戏资产生产平台**，专为视觉小说 / 互动叙事游戏设计。
 
-创作者只需 **导入剧本 JSON** 或 **输入纯文字大纲**，平台自动：
+创作者只需在**剧本编辑器中输入纯文字描述**，平台自动完成从需求分析到成品交付的全流程：
 
-1. 🧠 **智能提取** — DeepSeek AI 从全剧本中识别角色、场景、道具、CG、BGM、音效
+1. 🧠 **智能提取** — DeepSeek AI 从剧本文字中自动识别所需的角色立绘、场景背景、道具、CG、BGM、音效
 2. ✨ **叙事精炼** — NAR 注意力机制为每个素材生成高质量 AI 绘画提示词
 3. 🎨 **批量生成** — 调用 SiliconFlow (FLUX/Kolors) 等模型批量生产美术资产
 4. 📦 **一键导出** — 打包为 Godot 引擎可直接使用的 ZIP 资源包
 
 ```
-剧本 JSON / 纯文字大纲
+纯文字描述 / 剧本大纲
         │
         ▼
   ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
@@ -35,6 +49,59 @@
                         assets/             godot_assets.zip
                    (立绘/背景/BGM)        (Godot 引擎资源包)
 ```
+
+---
+
+## 🚀 快速启动
+
+### 🔥 一键启动（推荐）
+
+- **Windows**: 双击项目根目录下的 `start.bat`
+- **Mac/Linux**: 终端执行 `./start.sh`
+
+启动后浏览器打开 **http://localhost:5173** 即可使用。
+
+---
+
+### 手动分步启动
+
+#### 1. 安装依赖
+
+```bash
+# 后端 Python 依赖
+pip install fastapi uvicorn pydantic requests numpy
+
+# 前端 Node 依赖
+cd editor-web
+npm install
+```
+
+#### 2. 启动后端
+
+```bash
+# 在项目根目录执行（不是 foundation_platform 目录！）
+python -m foundation_platform.api.api
+# ✅ http://localhost:8095
+```
+
+#### 3. 启动前端
+
+```bash
+cd editor-web
+npm run dev
+# ✅ http://localhost:5173
+```
+
+---
+
+## 📖 使用方法
+
+1. **打开「剧本排版」页面** — 点击顶部第二个标签
+2. **新建章节** — 点击左侧 `+` 按钮
+3. **添加对白/旁白** — 点击右侧按钮，在文本框中**输入你的文字描述**
+4. **提取素材** — 点击右上角绿色的 **「✨ 提取核心素材」** 按钮
+5. **AI 自动分析** — 平台会自动识别文字中的角色、场景、音乐需求
+6. **批量生成** — 在「素材工作站」页面点击 **「生成所有缺失项」**
 
 ---
 
@@ -75,56 +142,23 @@
 │   └── src/
 │       ├── App.vue               #  主框架 (4 Tab 页面)
 │       ├── components/
+│       │   ├── ScriptEditor.vue       #  ✏️ 剧本排版编辑器 (纯文字输入)
 │       │   ├── AssetWorkstation.vue    #  📊 资产生产指挥中心
 │       │   ├── NarrativeControl.vue    #  🕸️ 叙事控制 (力导向图)
-│       │   ├── ScriptEditor.vue       #  ✏️ 剧本编辑器
 │       │   ├── OverviewPage.vue       #  📋 项目总览
-│       │   ├── GenerationWizard.vue   #  🧙 单资产生成向导
+│       │   ├── GenerationWizard.vue   #  🧙 一站式生成向导
 │       │   └── TaskQueueDrawer.vue    #  📦 任务队列
 │       ├── stores/                    #  Pinia 状态管理
 │       └── services/api.js            #  后端 API 封装
 │
-└── assets/                       ← 生成产物
-    ├── portraits/                #  人物立绘
-    ├── backgrounds/              #  背景图
-    ├── items/                    #  道具图
-    ├── cgs/                      #  剧情 CG
-    ├── bgm/                      #  背景音乐
-    └── sfx/                      #  音效
+├── start.bat                     ← Windows 一键启动
+├── start.sh                      ← Mac/Linux 一键启动
+└── assets/                       ← 生成产物 (自动创建)
 ```
 
 ---
 
-## 🚀 快速启动
-
-**🔥 一键启动（推荐）：**
-- **Windows**: 直接双击项目根目录下的 `start.bat`
-- **Mac/Linux**: 在终端执行 `./start.sh`
-即可同时启动并自动连接所有的前后端服务！
-
----
-
-### 手动分步启动方式（如需调试）：
-
-### 1. 后端
-
-```bash
-cd foundation_platform
-pip install fastapi uvicorn pydantic requests numpy
-python -m foundation_platform.api.api
-# ✅ http://localhost:8095
-```
-
-### 2. 前端
-
-```bash
-cd editor-web
-npm install
-npm run dev
-# ✅ http://localhost:5173
-```
-
-### 3. 配置 AI 模型（可选）
+## ⚙️ AI 模型配置
 
 编辑 `foundation_platform/config/models.json`：
 
@@ -162,13 +196,6 @@ npm run dev
 ### DPO 人类反馈对齐
 
 用户对生成结果 👍/👎 → 反馈注入 NAR 栈 → 权重衰减 → 下次自动规避。
-
-### 模态路由
-
-| 素材类型 | 路由 | 生成器 |
-|---------|------|--------|
-| 人物立绘 / 背景图 / 道具图 / 剧情CG | 图像管线 | SiliconFlow (FLUX/Kolors) |
-| BGM / 音效 | 占位生成 | Placeholder (预留 Audio-LLM 接口) |
 
 ---
 
